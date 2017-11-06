@@ -70,7 +70,7 @@
                     android:src="@drawable/profile" />
 
                 <EditText
-                    android:id="@+id/tvFullName"
+                    android:id="@+id/etFullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -93,7 +93,7 @@
                     android:src="@drawable/institution" />
 
                 <EditText
-                    android:id="@+id/tvMedicalCollege"
+                    android:id="@+id/etMedicalCollege"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
@@ -117,7 +117,7 @@
                     android:src="@drawable/caduceus" />
 
                 <EditText
-                    android:id="@+id/tvRegistrationNo"
+                    android:id="@+id/etRegistrationNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -140,7 +140,7 @@
                     android:src="@drawable/calender" />
 
                 <EditText
-                    android:id="@+id/tvDateOfBirth"
+                    android:id="@+id/etDateOfBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -164,7 +164,7 @@
                     android:src="@drawable/phone" />
 
                 <EditText
-                    android:id="@+id/tvContactNo"
+                    android:id="@+id/etContactNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -181,13 +181,13 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/ivWorkLocation"
+                    android:id="@+id/ibWorkLocation"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:src="@drawable/medical" />
 
                 <EditText
-                    android:id="@+id/tvWorkLocation"
+                    android:id="@+id/etWorkLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -239,6 +239,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:onClick="goSignup"
                 android:text="Sign Up" />
 
 
