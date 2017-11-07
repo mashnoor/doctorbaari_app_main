@@ -11,6 +11,7 @@ import com.doctorbaari.android.adapters.NewsfeedAdapter;
 import com.doctorbaari.android.models.SubPost;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.Sidebar;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -33,6 +34,7 @@ public class NewsfeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsfeed);
         ButterKnife.bind(this);
+       // Sidebar.build(this);
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to Doctor Baari Server...");
