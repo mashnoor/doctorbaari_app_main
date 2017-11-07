@@ -1,6 +1,7 @@
 package com.doctorbaari.android.acvities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -71,6 +72,7 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 dialog.dismiss();
                 showToast("Successfully created");
+                startActivity(new Intent(RegistrationActivity.this, NewsfeedActivity.class));
             }
 
             @Override
