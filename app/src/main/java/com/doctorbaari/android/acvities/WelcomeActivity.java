@@ -7,10 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.doctorbaari.android.R;
-import com.doctorbaari.android.utils.Sidebar;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -19,8 +17,6 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        android.support.v7.widget.Toolbar t = (android.support.v7.widget.Toolbar) getSupportActionBar().getCustomView();
-        Sidebar.build(this, t);
 
     }
     private void showToast(String msg)

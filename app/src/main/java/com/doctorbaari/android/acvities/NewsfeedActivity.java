@@ -3,6 +3,7 @@ package com.doctorbaari.android.acvities;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -11,7 +12,7 @@ import com.doctorbaari.android.adapters.NewsfeedAdapter;
 import com.doctorbaari.android.models.SubPost;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.Geson;
-import com.doctorbaari.android.utils.Sidebar;
+import com.doctorbaari.android.utils.SideBar;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -34,7 +35,7 @@ public class NewsfeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsfeed);
         ButterKnife.bind(this);
-       // Sidebar.build(this);
+        SideBar.attach(this);
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to Doctor Baari Server...");
@@ -68,6 +69,7 @@ public class NewsfeedActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 showToast("Some error occured");
+                Log.d("-------------", new String(responseBody));
                 dialog.dismiss();
 
             }

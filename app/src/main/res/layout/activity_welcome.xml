@@ -6,7 +6,6 @@
     android:fillViewport="true">
 
 
-
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/activity_sign_up"
         android:layout_width="match_parent"
@@ -18,7 +17,6 @@
         android:paddingRight="16dp"
         android:paddingTop="16dp"
         tools:context="com.example.shakilpc.doctorbari.SignUp">
-
 
 
         <ImageView
@@ -55,10 +53,10 @@
 
             android:layout_width="280dp"
             android:layout_height="40dp"
-            android:onClick="goMbbs"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:background="@color/button"
+            android:onClick="goMbbs"
             android:text="MBBS Doctor"
             android:textColor="@color/white"
             android:textStyle="bold" />

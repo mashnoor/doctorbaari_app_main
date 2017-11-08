@@ -10,5 +10,8 @@
 
     <color name="black_overlay">#66000000</color>
 
+    <color name="material_drawer_background">#ED1f24</color>
+    <!-- Material DEFAULT text / items colors -->
+    <color name="material_drawer_primary_text">#ffffff</color>
 
 </resources>

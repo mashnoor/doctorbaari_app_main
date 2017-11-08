@@ -121,8 +121,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+
                     android:hint="MBBS Registration No"
-                    android:inputType="textPersonName" />
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -144,8 +145,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:clickable="true"
+                    android:editable="false"
                     android:hint="Date of Birth"
-                    android:inputType="date" />
+                    android:inputType="none" />
 
 
             </LinearLayout>
@@ -169,7 +172,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Contact No."
-                    android:inputType="textPersonName" />
+                    android:inputType="numberDecimal" />
 
 
             </LinearLayout>
@@ -192,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Currently Working Location"
-                    android:inputType="textPersonName" />
+                    android:inputType="text" />
 
 
             </LinearLayout>
