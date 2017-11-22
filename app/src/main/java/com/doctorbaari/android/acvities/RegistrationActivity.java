@@ -1,5 +1,6 @@
 package com.doctorbaari.android.acvities;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -68,7 +69,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(RegistrationActivity.this, date, myCalendar
+                new DatePickerDialog(RegistrationActivity.this, AlertDialog.THEME_HOLO_LIGHT,  date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }

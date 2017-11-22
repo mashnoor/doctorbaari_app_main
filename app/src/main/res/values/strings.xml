@@ -4,4 +4,31 @@
     <string name="title_activity_fullscreen">DoctorBaari</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="facebook_app_id">1650119838331519</string>
+    <string name="account_kit_client_token">b905e04e782bab318bf244649bb01dd2</string>
+    <string name="title_activity_search_substitute">SearchSubstitute</string>
+
+    <string-array name="dummy_division">
+        <item>Select Division</item>
+        <item>Dhaka</item>
+        <item>Chittagong</item>
+        <item>Sylhet</item>
+    </string-array>
+    <string-array name="dummy_zilla">
+        <item>Select Zilla</item>
+        <item>Khilgaon</item>
+        <item>Uttara</item>
+        <item>Rampura</item>
+    </string-array>
+    <string-array name="dummy_thana">
+        <item>Select Thana</item>
+        <item>Joarsahara</item>
+        <item>Abul Hotel</item>
+    </string-array>
+    <string-array name="dummy_degrees">
+        <item>Select Degree</item>
+        <item>MBBS</item>
+        <item>FCPS</item>
+        <item>Intern</item>
+    </string-array>
 </resources>

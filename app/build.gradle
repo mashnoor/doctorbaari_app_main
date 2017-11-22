@@ -42,10 +42,8 @@ dependencies {
         transitive = true
     }
     implementation 'com.mikepenz:fastadapter:3.0.1@aar'
-    implementation  'com.android.support:recyclerview-v7:27.0.0'
-
-
-
+    implementation 'com.android.support:recyclerview-v7:27.0.0'
+    compile 'com.facebook.android:account-kit-sdk:4.+'
 
 
 }
