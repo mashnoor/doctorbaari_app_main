@@ -40,26 +40,6 @@
             android:textSize="50dp"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:onClick="goRegistration"
-            android:text="Your Phone No"
-            android:textColor="@android:color/white"
-            android:textSize="15sp" />
-
-        <EditText
-            android:id="@+id/etPhoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:inputType="phone"
-            android:maxLines="1"
-
-
-            android:textColor="@android:color/white" />
-
 
         <Button
 
@@ -70,7 +50,7 @@
             android:layout_marginTop="15dp"
             android:background="@color/button"
             android:onClick="goLogin"
-            android:text="Login"
+            android:text="Login with phone"
             android:textColor="@color/white"
             android:textStyle="bold" />
 

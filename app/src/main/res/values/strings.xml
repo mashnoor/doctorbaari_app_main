@@ -5,6 +5,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="facebook_app_id">1650119838331519</string>
+    <string name="fb_login_protocol_scheme">fb1650119838331519</string>
     <string name="account_kit_client_token">b905e04e782bab318bf244649bb01dd2</string>
     <string name="title_activity_search_substitute">SearchSubstitute</string>
 

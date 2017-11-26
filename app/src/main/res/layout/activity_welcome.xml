@@ -56,7 +56,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:background="@color/button"
-            android:onClick="goMbbs"
+            android:onClick="goSignUp"
             android:text="MBBS Doctor"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -69,6 +69,7 @@
             android:layout_marginTop="15dp"
             android:background="@color/button"
             android:text="Intern Doctor"
+            android:onClick="goSignUp"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -79,18 +80,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:background="@color/button"
-            android:text="Hospital manager"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="280dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:background="@color/button"
-            android:text="Consultant"
+            android:text="Hospital Authority"
             android:textColor="@color/white"
             android:textStyle="bold" />
 

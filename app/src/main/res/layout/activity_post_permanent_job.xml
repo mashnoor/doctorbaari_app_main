@@ -107,8 +107,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:onClick="goPost"
             android:background="@drawable/button_style"
+            android:onClick="goPost"
             android:text="Post"
             android:textColor="#ffffff"
             android:textStyle="bold" />

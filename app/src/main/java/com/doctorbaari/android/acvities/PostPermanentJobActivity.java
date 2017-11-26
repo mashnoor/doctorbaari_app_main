@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
+import com.doctorbaari.android.utils.SideBar;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -38,6 +39,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_permanent_job);
         ButterKnife.bind(this);
+        SideBar.attach(this);
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Getting data from server...");

@@ -24,28 +24,8 @@ public class WelcomeActivity extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    public void goMbbs(View v) {
-        CharSequence colors[] = new CharSequence[] {"Sign Up Using Facebook", "Alternative Sign Up"};
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Pick a option");
-        builder.setItems(colors, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which)
-                {
-                    case 0:
-                        showToast("Coming Soon");
-                        break;
-                    case 1:
-                        startActivity(new Intent(WelcomeActivity.this, RegistrationActivity.class));
-
-                }
-
-            }
-        });
-        builder.show();
-
+    public void goSignUp(View v) {
+        startActivity(new Intent(WelcomeActivity.this, RegistrationActivity.class));
 
     }
 }

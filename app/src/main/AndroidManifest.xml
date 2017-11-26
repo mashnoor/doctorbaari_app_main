@@ -25,6 +25,20 @@
             android:value="@string/account_kit_client_token" />
 
         <activity android:name="com.facebook.accountkit.ui.AccountKitActivity" />
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".acvities.WelcomeActivity"
             android:launchMode="singleInstance" />
@@ -51,7 +65,8 @@
             android:name=".acvities.SearchSubstitute"
             android:label="@string/title_activity_search_substitute"
             android:theme="@style/AppTheme" />
-        <activity android:name=".acvities.PostPermanentJobActivity"></activity>
+        <activity android:name=".acvities.PostPermanentJobActivity" />
+        <activity android:name=".acvities.ProfileActivity"></activity>
     </application>
 
 </manifest>

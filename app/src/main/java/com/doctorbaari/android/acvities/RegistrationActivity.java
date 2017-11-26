@@ -14,9 +14,22 @@ import android.widget.Toast;
 
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
+import com.doctorbaari.android.utils.DBHelper;
+import com.facebook.accountkit.Account;
+import com.facebook.accountkit.AccountKit;
+import com.facebook.accountkit.AccountKitCallback;
+import com.facebook.accountkit.AccountKitError;
+import com.facebook.accountkit.AccountKitLoginResult;
+import com.facebook.accountkit.PhoneNumber;
+import com.facebook.accountkit.ui.AccountKitActivity;
+import com.facebook.accountkit.ui.AccountKitConfiguration;
+import com.facebook.accountkit.ui.LoginType;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.orhanobut.hawk.Hawk;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 
 import java.util.Calendar;
 
@@ -42,6 +55,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
     ProgressDialog dialog;
     AsyncHttpClient client;
+    final static int APP_REQUEST_CODE = 55;
+    String phoneNumber = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +66,8 @@ public class RegistrationActivity extends AppCompatActivity {
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting with Doctor Baari server...");
+        Logger.addLogAdapter(new AndroidLogAdapter());
+        verifyNumber();
         final Calendar myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -69,7 +86,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(RegistrationActivity.this, AlertDialog.THEME_HOLO_LIGHT,  date, myCalendar
+                new DatePickerDialog(RegistrationActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -130,10 +147,23 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 dialog.dismiss();
-                showToast("Account created successfully");
+                String response = new String(responseBody);
+                if(response.equals("occupied"))
+                {
+                    showToast("Number already exists. Please login");
+                    finish();
 
-                startActivity(new Intent(RegistrationActivity.this, NewsfeedActivity.class));
-                finish();
+                }
+                else
+                {
+                    DBHelper.setUserId(RegistrationActivity.this, response);
+                    showToast("Account created successfully");
+                    startActivity(new Intent(RegistrationActivity.this, NewsfeedActivity.class));
+                    finish();
+                }
+
+
+
             }
 
             @Override
@@ -144,4 +174,83 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onActivityResult(
+            final int requestCode,
+            final int resultCode,
+            final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
+            AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
+
+            if (loginResult.getError() != null) {
+
+
+            } else if (loginResult.wasCancelled()) {
+
+                finish();
+
+            } else {
+
+
+
+                AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
+                    @Override
+                    public void onSuccess(final Account account) {
+                        PhoneNumber phn = account.getPhoneNumber();
+
+                        Logger.d(phn);
+                        phoneNumber = phn.toString();
+                        etContactno.setText(phoneNumber);
+
+
+
+                    }
+
+                    @Override
+                    public void onError(final AccountKitError error) {
+                        // Handle Error
+                        showToast("Erro gettign number");
+                        Log.d("------------", error.toString());
+                    }
+                });
+
+
+            }
+
+        }
+
+    }
+
+
+    private void verifyNumber()
+    {
+        final Intent intent = new Intent(this, AccountKitActivity.class);
+        AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
+                new AccountKitConfiguration.AccountKitConfigurationBuilder(
+                        LoginType.PHONE,
+                        AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
+        // ... perform additional configuration ...
+        intent.putExtra(
+                AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
+                configurationBuilder.build());
+        startActivityForResult(intent, APP_REQUEST_CODE);
+
+    }
+
+    /***
+    public void verifyNumber(View v) {
+        final Intent intent = new Intent(this, AccountKitActivity.class);
+        AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
+                new AccountKitConfiguration.AccountKitConfigurationBuilder(
+                        LoginType.PHONE,
+                        AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
+        // ... perform additional configuration ...
+        intent.putExtra(
+                AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
+                configurationBuilder.build());
+        startActivityForResult(intent, APP_REQUEST_CODE);
+    }
+     ***/
 }
