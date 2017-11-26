@@ -181,7 +181,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Logger.d(user);
                 tvUserName.setText(user.getFullname());
                 tvInstitue.setText("Medical College: " + user.getCollege());
-                tvCurrentlyWorking.setText("Currently Working: " + user.getWorkDivision());
+                tvCurrentlyWorking.setText("Currently Working: " + user.getWork1());
                 tvDegree.setText("Degree: " + user.getDesignation());
                 tvDateOfBirth.setText("Date of Birth:" + user.getBirthdate());
                 tvFbLink.setText("Facebook Profle: " + user.getFbProfile());
@@ -212,7 +212,7 @@ public class ProfileActivity extends AppCompatActivity {
         Toast.makeText(ProfileActivity.this, s, Toast.LENGTH_LONG).show();
     }
 
-    private void updateToServer(String email, String profileLink, String imageLink)
+    private void updateToServer(final String email, String profileLink, String imageLink)
     {
         RequestParams params = new RequestParams();
         params.put("userid", DBHelper.getUserid(ProfileActivity.this));
@@ -224,6 +224,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onStart() {
                 super.onStart();
                 dialog.show();
+                Logger.d(DBHelper.getUserid(ProfileActivity.this));
             }
 
             @Override
@@ -237,7 +238,11 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
+
+                dialog.dismiss();
                 showToast("Something went wrong");
+                Logger.d(error.getMessage());
+                Logger.d(new String(responseBody));
 
             }
         });

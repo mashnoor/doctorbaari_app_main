@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DoctorBaari.iml" filepath="$PROJECT_DIR$/DoctorBaari.iml" />
+      <module fileurl="file://E:\doctorbaari_app_main\DoctorBaari.iml" filepath="E:\doctorbaari_app_main\DoctorBaari.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\doctorbaari_app_main\app\app.iml" filepath="E:\doctorbaari_app_main\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/doctorbaari_app_main.iml" filepath="$PROJECT_DIR$/doctorbaari_app_main.iml" />
     </modules>
   </component>
 </project>
