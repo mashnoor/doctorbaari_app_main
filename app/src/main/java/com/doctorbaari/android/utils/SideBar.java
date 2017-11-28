@@ -8,18 +8,15 @@ import android.view.View;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.acvities.LoginActivity;
 import com.doctorbaari.android.acvities.PostPermanentJobActivity;
+import com.doctorbaari.android.acvities.PostSubstituteActivity;
 import com.doctorbaari.android.acvities.ProfileActivity;
-import com.doctorbaari.android.acvities.SearchSubstitute;
+import com.doctorbaari.android.acvities.SearchPermanentJob;
 import com.facebook.accountkit.AccountKit;
-import com.mikepenz.materialdrawer.AccountHeader;
-import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 /**
  * Created by Nowfel Mashnoor on 11/8/2017.
@@ -35,6 +32,7 @@ public class SideBar {
         PrimaryDrawerItem profileItem = new PrimaryDrawerItem().withName("Profile").withIcon(R.drawable.profileicon);
         PrimaryDrawerItem searchJob = new PrimaryDrawerItem().withName("Post Permanent Job").withIcon(R.drawable.searchjob);
         PrimaryDrawerItem searchSub = new PrimaryDrawerItem().withName("Post for Substitute").withIcon(R.drawable.searchjob);
+        PrimaryDrawerItem searchPermanent = new PrimaryDrawerItem().withName("Search for Permanent job").withIcon(R.drawable.searchjob);
 
 
         PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIcon(R.drawable.logout);
@@ -56,7 +54,9 @@ public class SideBar {
                         new DividerDrawerItem(),
                         logout,
                         new DividerDrawerItem(),
-                        about
+                        about,
+                        new DividerDrawerItem(),
+                        searchPermanent
 
 
                 )
@@ -72,13 +72,16 @@ public class SideBar {
                                 activity.startActivity(new Intent(activity, PostPermanentJobActivity.class));
                                 break;
                             case 6:
-                                activity.startActivity(new Intent(activity, SearchSubstitute.class));
+                                activity.startActivity(new Intent(activity, PostSubstituteActivity.class));
                                 break;
                             case 8:
                                 AccountKit.logOut();
                                 DBHelper.setSignedInStatus(activity, false);
                                 activity.finish();
                                 activity.startActivity(new Intent(activity, LoginActivity.class));
+                            case 10:
+                                activity.startActivity(new Intent(activity, SearchPermanentJob.class));
+                                break;
 
                         }
                         return true;

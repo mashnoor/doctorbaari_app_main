@@ -9,52 +9,21 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/activity_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.example.shakilpc.doctorbari.Profile">
+        android:padding="7dp">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="History" />
-
-
-        </LinearLayout>
-
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="30dp" />
-
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/profile"
-            app:civ_border_width="1dp"
             android:layout_gravity="center"
-            app:civ_border_color="#FF000000"/>
+            android:src="@drawable/profile"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="1dp" />
 
 
         <TextView
@@ -66,6 +35,14 @@
             android:text="User Name"
             android:textSize="22sp"
             android:textStyle="bold" />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp" />
 
 
         <TextView
@@ -146,6 +123,55 @@
             android:layout_marginBottom="5dp"
             android:text="Email: abc@example.com"
             android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/dsgfdsf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Substitution Avaibility Info"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etAvaiblabeFromDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="From Date" />
+
+        <EditText
+            android:id="@+id/etAvailableToDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="To Date" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+
+                android:text="Available as Substitute:" />
+
+            <Switch
+                android:id="@+id/swtchAvailable"
+                android:layout_width="wrap_content"
+
+
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Avaibility Status" />
 
 
     </LinearLayout>

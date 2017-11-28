@@ -13,5 +13,7 @@ public class Constants {
     public final static String GET_PROFILE_URL = BASE_URL + "getuser";
     public final static String VERIFY_IF_NUMBER_ADDED = BASE_URL + "isnumberavailable";
     public final static String UPDATE_PROFILE = BASE_URL + "updateuserprofile";
+    public final static String GET_COLLEGE_LIST = BASE_URL + "getcollegelist";
+    public final static String CHANGE_STATUS = BASE_URL + "changestatus";
 
 }

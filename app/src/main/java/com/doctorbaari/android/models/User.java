@@ -75,6 +75,23 @@ public class User {
     @SerializedName("doctor")
     private Integer doctor;
 
+    @SerializedName("available")
+    private String available;
+
+    @SerializedName("from_date")
+    private String fromDate;
+
+    @SerializedName("to_date")
+    private String toDate;
+
+    public String getFromDate() {
+        return fromDate;
+    }
+
+    public String getToDate() {
+        return toDate;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -250,5 +267,14 @@ public class User {
     public void setDoctor(Integer doctor) {
         this.doctor = doctor;
     }
+
+    public boolean isAvailable()
+    {
+        return available.equals("1");
+    }
+
+
+
+
 
 }

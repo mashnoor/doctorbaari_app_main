@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,6 +73,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     @BindView(R.id.profile_image)
     CircleImageView profileImage;
+
+    @BindView(R.id.swtchAvailable)
+    Switch swtchAvailable;
     AsyncHttpClient client;
     ProgressDialog dialog;
     CallbackManager callbackManager;
@@ -81,6 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         Logger.d(data);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,12 +115,19 @@ public class ProfileActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
 
+        swtchAvailable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                pushChangeStatustoServer(b);
+            }
+        });
+
 
         loginButton.setReadPermissions(Arrays.asList(
-                 "public_profile", "email"));
+                "public_profile", "email"));
 
 
-        callbackManager  = CallbackManager.Factory.create();
+        callbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -127,19 +140,16 @@ public class ProfileActivity extends AppCompatActivity {
                                 Log.v("LoginActivity", response.toString());
 
                                 // Application code
-                                try
-                                {
+                                try {
                                     Logger.d(object);
                                     String email = object.getString("email");
                                     String profileLink = object.getString("link");
                                     String imageLink = object.getJSONObject("picture").getJSONObject("data").getString("url");
                                     updateToServer(email, profileLink, imageLink);
-                                }
-                                catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
-                               // 01/31/1980 format
+                                // 01/31/1980 format
                             }
                         });
                 Bundle parameters = new Bundle();
@@ -160,7 +170,6 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
-
 
 
         RequestParams params = new RequestParams();
@@ -187,6 +196,9 @@ public class ProfileActivity extends AppCompatActivity {
                 tvFbLink.setText("Facebook Profle: " + user.getFbProfile());
                 tvEmail.setText("Email: " + user.getEmail());
                 tvMobile.setText("Phone: " + user.getPhone());
+                if (user.isAvailable()) {
+                    swtchAvailable.setChecked(true);
+                }
                 RequestOptions requestOptions = new RequestOptions();
                 requestOptions.placeholder(R.drawable.profile);
                 requestOptions.error(R.drawable.profile);
@@ -207,13 +219,41 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    private void showToast(String s)
-    {
+    private void pushChangeStatustoServer(final boolean b) {
+        RequestParams params = new RequestParams();
+        params.put("userid", DBHelper.getUserid(ProfileActivity.this));
+        if (b)
+            params.put("status", "1");
+        else
+            params.put("status", "0");
+        client.post(Constants.CHANGE_STATUS, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                dialog.show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                showToast("Changed availability status successfully");
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+
+                dialog.dismiss();
+                showToast("Something went wrong");
+            }
+        });
+    }
+
+    private void showToast(String s) {
         Toast.makeText(ProfileActivity.this, s, Toast.LENGTH_LONG).show();
     }
 
-    private void updateToServer(final String email, String profileLink, String imageLink)
-    {
+    private void updateToServer(final String email, String profileLink, String imageLink) {
         RequestParams params = new RequestParams();
         params.put("userid", DBHelper.getUserid(ProfileActivity.this));
         params.put("email", email);

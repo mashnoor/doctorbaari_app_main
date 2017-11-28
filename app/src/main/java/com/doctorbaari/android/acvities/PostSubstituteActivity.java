@@ -5,16 +5,12 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,16 +27,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
-public class SearchSubstitute extends AppCompatActivity {
+public class PostSubstituteActivity extends AppCompatActivity {
 
     @BindView(R.id.etInstituteName)
     EditText etInstituteName;
-    @BindView(R.id.spnrDivision)
-    Spinner spnrDivision;
-    @BindView(R.id.spnrThana)
-    Spinner spnrThana;
-    @BindView(R.id.spnrZilla)
-    Spinner spnrZilla;
+
     @BindView(R.id.etDetails)
     EditText etDetails;
 
@@ -54,7 +45,7 @@ public class SearchSubstitute extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_substitute);
+        setContentView(R.layout.activity_post_substitue);
         ButterKnife.bind(this);
         SideBar.attach(this);
 
@@ -86,7 +77,7 @@ public class SearchSubstitute extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 which[0] = 0;
-                new DatePickerDialog(SearchSubstitute.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                new DatePickerDialog(PostSubstituteActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
@@ -99,7 +90,7 @@ public class SearchSubstitute extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 which[0] = 1;
-                new DatePickerDialog(SearchSubstitute.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                new DatePickerDialog(PostSubstituteActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
@@ -116,9 +107,7 @@ public class SearchSubstitute extends AppCompatActivity {
 
     public void goPost(View v) {
         String instituteName = etInstituteName.getText().toString().trim();
-        String division = spnrDivision.getSelectedItem().toString();
-        String thana = spnrThana.getSelectedItem().toString();
-        String zilla = spnrZilla.getSelectedItem().toString();
+
         String details = etDetails.getText().toString();
 
         String date_to = tvToDate.getText().toString();
@@ -126,10 +115,7 @@ public class SearchSubstitute extends AppCompatActivity {
         RequestParams params = new RequestParams();
         params.put("date_to", date_to);
         params.put("date_from", date_from);
-        params.put("division", division);
-        params.put("division", division);
-        params.put("thana", thana);
-        params.put("zilla", zilla);
+
         params.put("hospital", instituteName);
         params.put("details", details);
         params.put("username", "ABC");

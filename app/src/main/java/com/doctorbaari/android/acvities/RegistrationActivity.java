@@ -24,10 +24,14 @@ import com.facebook.accountkit.PhoneNumber;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.hawk.Hawk;
+
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
@@ -48,8 +52,7 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText etContactno;
     @BindView(R.id.etDateOfBirth)
     EditText etdateOfBirth;
-    @BindView(R.id.etWorkLocation)
-    EditText etWorkLocation;
+
     @BindView(R.id.etRegistrationNo)
     EditText etRegNo;
 
@@ -57,17 +60,22 @@ public class RegistrationActivity extends AppCompatActivity {
     AsyncHttpClient client;
     final static int APP_REQUEST_CODE = 55;
     String phoneNumber = "";
+    String workingPlaceName = "";
+    String workingPlaceLat = "";
+    String workingPlaceLon = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
+        registerPlaceFragment();
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting with Doctor Baari server...");
         Logger.addLogAdapter(new AndroidLogAdapter());
         verifyNumber();
+        getCollegeList();
         final Calendar myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -93,16 +101,32 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
+    private void getCollegeList()
+    {
+        client.get(Constants.GET_COLLEGE_LIST, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
+    }
+
     private void showToast(String s) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show();
     }
 
     public void goSignup(View v) {
+
         String fullName = etFullName.getText().toString().trim();
         String medicalCollege = etMedicalCollege.getText().toString().trim();
         String contactNo = etContactno.getText().toString().trim();
         String dateOfBirth = etdateOfBirth.getText().toString().trim();
-        String workLocation = etWorkLocation.getText().toString().trim();
+        String workLocation = workingPlaceName;
         String regNo = etRegNo.getText().toString().trim();
         if (fullName.isEmpty()) {
             etFullName.setError("Full name can't be empty!");
@@ -121,7 +145,7 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
         if (workLocation.isEmpty()) {
-            etWorkLocation.setError("Work location can't be empty");
+            showToast("Please select your working location");
             return;
         }
         if (regNo.isEmpty()) {
@@ -137,6 +161,8 @@ public class RegistrationActivity extends AppCompatActivity {
         params.put("designation", "doctor");
         params.put("dateofbirth", dateOfBirth);
         params.put("worklocation", workLocation);
+        params.put("workinglat", workingPlaceLat);
+        params.put("workinglon", workingPlaceLon);
         client.post(Constants.SIGNUP_URL, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
@@ -148,20 +174,16 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 dialog.dismiss();
                 String response = new String(responseBody);
-                if(response.equals("occupied"))
-                {
+                if (response.equals("occupied")) {
                     showToast("Number already exists. Please login");
                     finish();
 
-                }
-                else
-                {
+                } else {
                     DBHelper.setUserId(RegistrationActivity.this, response);
                     showToast("Account created successfully");
                     startActivity(new Intent(RegistrationActivity.this, NewsfeedActivity.class));
                     finish();
                 }
-
 
 
             }
@@ -185,6 +207,8 @@ public class RegistrationActivity extends AppCompatActivity {
             AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
 
             if (loginResult.getError() != null) {
+                showToast("Something went wrong! Try again later");
+                finish();
 
 
             } else if (loginResult.wasCancelled()) {
@@ -192,7 +216,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 finish();
 
             } else {
-
 
 
                 AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
@@ -203,7 +226,6 @@ public class RegistrationActivity extends AppCompatActivity {
                         Logger.d(phn);
                         phoneNumber = phn.toString();
                         etContactno.setText(phoneNumber);
-
 
 
                     }
@@ -224,8 +246,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    private void verifyNumber()
-    {
+    private void verifyNumber() {
         final Intent intent = new Intent(this, AccountKitActivity.class);
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
@@ -239,18 +260,27 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
-    /***
-    public void verifyNumber(View v) {
-        final Intent intent = new Intent(this, AccountKitActivity.class);
-        AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
-                new AccountKitConfiguration.AccountKitConfigurationBuilder(
-                        LoginType.PHONE,
-                        AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
-        // ... perform additional configuration ...
-        intent.putExtra(
-                AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
-                configurationBuilder.build());
-        startActivityForResult(intent, APP_REQUEST_CODE);
+    private void registerPlaceFragment() {
+
+        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+                getFragmentManager().findFragmentById(R.id.etWorkLocation);
+
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Logger.d(place.getName());
+                workingPlaceName = place.getName().toString();
+                workingPlaceLat = String.valueOf(place.getLatLng().latitude);
+                workingPlaceLon = String.valueOf(place.getLatLng().longitude);
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Logger.d(status);
+            }
+        });
+
     }
-     ***/
 }

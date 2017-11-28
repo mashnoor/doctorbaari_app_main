@@ -88,44 +88,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Select Area"
-            android:textSize="20dp"
+            android:text="Location"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
-        <LinearLayout
+        <fragment
+            android:id="@+id/place_autocomplete_fragment"
+            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:id="@+id/spnrDivision"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-
-                android:background="@drawable/layoutstyle"
-                android:entries="@array/dummy_division" />
-
-
-            <Spinner
-                android:id="@+id/spnrZilla"
-                android:layout_width="0dp"
-
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/layoutstyle"
-                android:entries="@array/dummy_zilla" />
-
-
-            <Spinner
-                android:id="@+id/spnrThana"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/layoutstyle"
-                android:entries="@array/dummy_thana" />
-
-        </LinearLayout>
-
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/tvDegree"
@@ -169,8 +140,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:onClick="goPost"
             android:background="@drawable/button_style"
+            android:onClick="goPost"
             android:text="Post"
             android:textColor="#ffffff" />
 
