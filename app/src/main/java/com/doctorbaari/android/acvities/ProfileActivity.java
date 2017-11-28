@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +46,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
@@ -67,6 +70,10 @@ public class ProfileActivity extends AppCompatActivity {
     TextView tvEmail;
     @BindView(R.id.tvMobile)
     TextView tvMobile;
+    @BindView(R.id.etAvaiblabeFromDate)
+    EditText etAvailableFromDate;
+    @BindView(R.id.etAvailableToDate)
+    EditText etAvailableTodate;
 
     @BindView(R.id.login_button)
     LoginButton loginButton;
@@ -114,13 +121,6 @@ public class ProfileActivity extends AppCompatActivity {
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
-
-        swtchAvailable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                pushChangeStatustoServer(b);
-            }
-        });
 
 
         loginButton.setReadPermissions(Arrays.asList(
@@ -219,35 +219,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    private void pushChangeStatustoServer(final boolean b) {
-        RequestParams params = new RequestParams();
-        params.put("userid", DBHelper.getUserid(ProfileActivity.this));
-        if (b)
-            params.put("status", "1");
-        else
-            params.put("status", "0");
-        client.post(Constants.CHANGE_STATUS, params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onStart() {
-                super.onStart();
-                dialog.show();
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                showToast("Changed availability status successfully");
-                dialog.dismiss();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-
-                dialog.dismiss();
-                showToast("Something went wrong");
-            }
-        });
-    }
 
     private void showToast(String s) {
         Toast.makeText(ProfileActivity.this, s, Toast.LENGTH_LONG).show();
@@ -284,6 +255,39 @@ public class ProfileActivity extends AppCompatActivity {
                 Logger.d(error.getMessage());
                 Logger.d(new String(responseBody));
 
+            }
+        });
+    }
+
+    public void updateAvaibilityStatus(View v) {
+        RequestParams params = new RequestParams();
+        params.put("userid", DBHelper.getUserid(ProfileActivity.this));
+        if (swtchAvailable.isChecked())
+            params.put("status", "1");
+        else
+            params.put("status", "0");
+
+        params.put("from_date", etAvailableFromDate.getText().toString());
+        params.put("to_date", etAvailableTodate.getText().toString());
+        client.post(Constants.CHANGE_STATUS, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                dialog.show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                showToast("Changed availability status successfully");
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+
+                dialog.dismiss();
+                showToast("Something went wrong");
             }
         });
     }
