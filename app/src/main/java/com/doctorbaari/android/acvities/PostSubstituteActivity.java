@@ -16,10 +16,17 @@ import android.widget.Toast;
 
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
+import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.SideBar;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.AutocompleteFilter;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.orhanobut.logger.Logger;
 
 import java.util.Calendar;
 
@@ -42,12 +49,15 @@ public class PostSubstituteActivity extends AppCompatActivity {
     AsyncHttpClient client;
     ProgressDialog dialog;
 
+    String placename = "", placelat = "", placelon = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_substitue);
         ButterKnife.bind(this);
         SideBar.attach(this);
+        registerPlaceFragment();
 
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
@@ -100,8 +110,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
     }
 
-    public void showToast(String msg)
-    {
+    public void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
@@ -113,12 +122,16 @@ public class PostSubstituteActivity extends AppCompatActivity {
         String date_to = tvToDate.getText().toString();
         String date_from = tvDateFrom.getText().toString();
         RequestParams params = new RequestParams();
+
         params.put("date_to", date_to);
         params.put("date_from", date_from);
-
-        params.put("hospital", instituteName);
+        params.put("institute", instituteName);
         params.put("details", details);
-        params.put("username", "ABC");
+        params.put("place", placename);
+        params.put("placelat", placelat);
+        params.put("placelon", placelon);
+        params.put("userid", DBHelper.getUserid(PostSubstituteActivity.this));
+
         client.post(Constants.POST_SUB_URL, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
@@ -141,6 +154,34 @@ public class PostSubstituteActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void registerPlaceFragment() {
+        AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+                .setCountry("BD")
+                .build();
+
+        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        autocompleteFragment.setFilter(typeFilter);
+
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Logger.d(place.getName());
+                placename = place.getName().toString();
+                placelat = String.valueOf(place.getLatLng().latitude);
+                placelon = String.valueOf(place.getLatLng().longitude);
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Logger.d(status);
+            }
+        });
 
     }
 

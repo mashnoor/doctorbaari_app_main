@@ -71,7 +71,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".acvities.PostPermanentJobActivity" />
         <activity android:name=".acvities.ProfileActivity" />
-        <activity android:name=".acvities.SearchPermanentJob"></activity>
+        <activity android:name=".acvities.SearchPermanentJob"/>
     </application>
 
 </manifest>

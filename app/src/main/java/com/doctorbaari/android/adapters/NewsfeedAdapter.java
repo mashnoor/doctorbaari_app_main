@@ -1,10 +1,13 @@
 package com.doctorbaari.android.adapters;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.doctorbaari.android.R;
@@ -45,15 +48,28 @@ public class NewsfeedAdapter extends BaseAdapter {
             final LayoutInflater layoutInflater = LayoutInflater.from(activity);
             v = layoutInflater.inflate(R.layout.row_newsfeed, null);
         }
-        TextView hospitalName = v.findViewById(R.id.tvHospitalName);
-        TextView duration = v.findViewById(R.id.tvDuraion);
+        TextView tvInstitueName = v.findViewById(R.id.tvInstituteName);
+        TextView tvLocation = v.findViewById(R.id.tvLocation);
         TextView postedOn = v.findViewById(R.id.tvPostedOn);
-        TextView location = v.findViewById(R.id.tvLocation);
+
+        ImageView iv = v.findViewById(R.id.ivLocation);
         SubPost currpost = getItem(i);
-        hospitalName.setText(currpost.getHospitalName());
-        duration.setText("Duration: " + currpost.getDateFrom() + " to " + currpost.getDateTo());
-        postedOn.setText("Posted On: " + currpost.getPostDate());
-        location.setText(currpost.getDivision());
+        tvInstitueName.setText(currpost.getInstitute());
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("geo:0,0?q=" + ("40.7890011, -124.1719112")));
+                try {
+                    activity.startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        postedOn.setText("Posted On: " + currpost.getPostDatetime());
+        tvLocation.setText("Location: " + currpost.getPlace());
         return v;
     }
 }

@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
 
             android:background="@drawable/layoutstyle"
-            android:entries="@array/dummy_degrees" />
+            android:entries="@array/degrees" />
 
         <TextView
             android:id="@+id/hf"

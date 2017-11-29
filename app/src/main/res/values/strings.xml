@@ -26,10 +26,24 @@
         <item>Joarsahara</item>
         <item>Abul Hotel</item>
     </string-array>
-    <string-array name="dummy_degrees">
-        <item>Select Degree</item>
-        <item>MBBS</item>
-        <item>FCPS</item>
-        <item>Intern</item>
+    <string-array name="degrees">
+        <item>FCPS Medicine</item>
+        <item>FCPS Surgery</item>
+        <item>FCPS Orthopedics</item>
+        <item>MS Medicine</item>
+        <item>MS Surgery</item>
+        <item>MS Orthopedics</item>
+        <item>FRCP</item>
+        <item>FRCS</item>
+        <item>MRCP</item>
+        <item>MRCS</item>
+        <item>Diploma</item>
+        <item>M. Phil</item>
+        <item>CCDP</item>
+        <item>FCGP</item>
+        <item>GUU</item>
+
+        <item>MUU</item>
+        <item>PGT</item>
     </string-array>
 </resources>

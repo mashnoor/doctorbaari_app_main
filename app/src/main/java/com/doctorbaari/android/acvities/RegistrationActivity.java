@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.doctorbaari.android.R;
@@ -25,6 +26,7 @@ import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
@@ -52,6 +54,8 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText etContactno;
     @BindView(R.id.etDateOfBirth)
     EditText etdateOfBirth;
+    @BindView(R.id.spnrDegree)
+    Spinner spnrDegree;
 
     @BindView(R.id.etRegistrationNo)
     EditText etRegNo;
@@ -101,8 +105,7 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    private void getCollegeList()
-    {
+    private void getCollegeList() {
         client.get(Constants.GET_COLLEGE_LIST, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -128,6 +131,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String dateOfBirth = etdateOfBirth.getText().toString().trim();
         String workLocation = workingPlaceName;
         String regNo = etRegNo.getText().toString().trim();
+        String degree = spnrDegree.getSelectedItem().toString();
         if (fullName.isEmpty()) {
             etFullName.setError("Full name can't be empty!");
             return;
@@ -154,15 +158,16 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         RequestParams params = new RequestParams();
-        params.put("name", fullName);
+        params.put("username", fullName);
         params.put("medicalcollege", medicalCollege);
         params.put("regno", regNo);
         params.put("contact", contactNo);
-        params.put("designation", "doctor");
+        params.put("degree", degree);
         params.put("dateofbirth", dateOfBirth);
-        params.put("worklocation", workLocation);
-        params.put("workinglat", workingPlaceLat);
-        params.put("workinglon", workingPlaceLon);
+        params.put("place", workLocation);
+        params.put("placelat", workingPlaceLat);
+        params.put("placelon", workingPlaceLon);
+        params.put("type", "doctor");
         client.post(Constants.SIGNUP_URL, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
@@ -192,6 +197,8 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
                 //Log.d("--------", new String(responseBody));
+                dialog.dismiss();
+                Logger.d(new String(responseBody));
                 showToast("Some error occured");
             }
         });
@@ -261,9 +268,13 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void registerPlaceFragment() {
+        AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+                .setCountry("BD")
+                .build();
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.etWorkLocation);
+        autocompleteFragment.setFilter(typeFilter);
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override

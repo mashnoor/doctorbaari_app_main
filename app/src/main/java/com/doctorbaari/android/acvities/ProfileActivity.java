@@ -188,12 +188,12 @@ public class ProfileActivity extends AppCompatActivity {
                 Logger.d(response);
                 User user = Geson.g().fromJson(response, User.class);
                 Logger.d(user);
-                tvUserName.setText(user.getFullname());
+                tvUserName.setText(user.getUsername());
                 tvInstitue.setText("Medical College: " + user.getCollege());
-                tvCurrentlyWorking.setText("Currently Working: " + user.getWork1());
-                tvDegree.setText("Degree: " + user.getDesignation());
+                tvCurrentlyWorking.setText("Currently Working: " + user.getPlace());
+                tvDegree.setText("Degree: " + user.getDegree());
                 tvDateOfBirth.setText("Date of Birth:" + user.getBirthdate());
-                tvFbLink.setText("Facebook Profle: " + user.getFbProfile());
+                tvFbLink.setText("Facebook Profle: " + user.getFb_profile());
                 tvEmail.setText("Email: " + user.getEmail());
                 tvMobile.setText("Phone: " + user.getPhone());
                 if (user.isAvailable()) {
