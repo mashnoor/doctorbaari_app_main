@@ -14,6 +14,7 @@ import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.SideBar;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
@@ -71,8 +72,8 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         String details = etDetails.getText().toString();
 
         RequestParams params = new RequestParams();
-        params.put("hospital", institution);
-        params.put("placename", placename);
+        params.put("institute", institution);
+        params.put("place", placename);
         params.put("details", details);
         params.put("degree", degree);
         params.put("deadline", startingfrom);
@@ -108,9 +109,14 @@ public class PostPermanentJobActivity extends AppCompatActivity {
     }
 
     private void registerPlaceFragment() {
+        AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
+                .setCountry("BD")
+                .build();
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+
+        autocompleteFragment.setFilter(typeFilter);
 
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {

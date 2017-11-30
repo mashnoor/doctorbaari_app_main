@@ -30,9 +30,9 @@ public class SideBar {
 
         PrimaryDrawerItem feedItem = new PrimaryDrawerItem().withName("Feed").withIcon(R.drawable.newsfeed);
         PrimaryDrawerItem profileItem = new PrimaryDrawerItem().withName("Profile").withIcon(R.drawable.profileicon);
-        PrimaryDrawerItem searchJob = new PrimaryDrawerItem().withName("Post Permanent Job").withIcon(R.drawable.searchjob);
-        PrimaryDrawerItem searchSub = new PrimaryDrawerItem().withName("Post for Substitute").withIcon(R.drawable.searchjob);
-        PrimaryDrawerItem searchPermanent = new PrimaryDrawerItem().withName("Search for Permanent job").withIcon(R.drawable.searchjob);
+        PrimaryDrawerItem searchJob = new PrimaryDrawerItem().withName("Post Permanent Job").withIcon(R.drawable.search);
+        PrimaryDrawerItem searchSub = new PrimaryDrawerItem().withName("Post for Substitute").withIcon(R.drawable.search);
+        PrimaryDrawerItem searchPermanent = new PrimaryDrawerItem().withName("Search for Permanent job").withIcon(R.drawable.search);
 
 
         PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIcon(R.drawable.logout);
@@ -79,6 +79,7 @@ public class SideBar {
                                 DBHelper.setSignedInStatus(activity, false);
                                 activity.finish();
                                 activity.startActivity(new Intent(activity, LoginActivity.class));
+                                break;
                             case 10:
                                 activity.startActivity(new Intent(activity, SearchPermanentJob.class));
                                 break;
