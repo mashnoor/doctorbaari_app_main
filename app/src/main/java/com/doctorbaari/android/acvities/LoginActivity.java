@@ -40,12 +40,10 @@ public class LoginActivity extends AppCompatActivity {
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
-        if(DBHelper.isSignedIn(this))
-        {
+        if (DBHelper.isSignedIn(this)) {
             startActivity(new Intent(this, NewsfeedActivity.class));
             finish();
         }
-
 
 
     }
@@ -89,14 +87,13 @@ public class LoginActivity extends AppCompatActivity {
             } else if (loginResult.wasCancelled()) {
 
 
-
             } else {
 
                 AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
                     @Override
                     public void onSuccess(final Account account) {
 
-                      String phoneNumber = account.getPhoneNumber().toString();
+                        String phoneNumber = account.getPhoneNumber().toString();
                         RequestParams params = new RequestParams();
                         params.put("phone", phoneNumber);
                         client.post(Constants.VERIFY_IF_NUMBER_ADDED, params, new AsyncHttpResponseHandler() {

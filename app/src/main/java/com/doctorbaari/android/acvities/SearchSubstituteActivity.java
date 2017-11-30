@@ -4,16 +4,15 @@ import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-
+import android.widget.TextView;
 
 import com.doctorbaari.android.R;
-
-import com.doctorbaari.android.adapters.JobAdapter;
-import com.doctorbaari.android.models.Job;
+import com.doctorbaari.android.adapters.DoctorAdapter;
+import com.doctorbaari.android.models.DoctorSub;
 import com.doctorbaari.android.utils.Constants;
+import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
@@ -29,50 +28,53 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
-public class SearchPermanentJob extends AppCompatActivity {
-
-    @BindView(R.id.etDeadline)
-    EditText etDeadline;
-
-    @BindView(R.id.spnrPreferredDegree)
-    Spinner spnrPreferredDegree;
-
-    @BindView(R.id.lvPermanentJobSearchResult)
-    ListView lvPermanentJobSearch;
-
-    AsyncHttpClient client;
-
-    JobAdapter adapter;
-
-    ProgressDialog dialog;
+public class SearchSubstituteActivity extends AppCompatActivity {
 
 
     String placename = "", placelat = "", placelon = "";
 
+    @BindView(R.id.tvFromDate)
+    TextView tvFromDate;
+
+    @BindView(R.id.tvToDate)
+    TextView tvToDate;
+
+    @BindView(R.id.spnrDegree)
+    Spinner spnrDegree;
+
+    @BindView(R.id.lvSubstitute)
+    ListView lvSubstitute;
+
+    AsyncHttpClient client;
+
+    ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_permanent_job);
+        setContentView(R.layout.activity_search_substitute);
         ButterKnife.bind(this);
-        client = new AsyncHttpClient();
-        dialog = new ProgressDialog(this);
-        dialog.setMessage("Connecting to Server...");
         Logger.addLogAdapter(new AndroidLogAdapter());
         registerPlaceFragment();
+        client = new AsyncHttpClient();
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Connecting with server...");
     }
 
-    public void searchPermanent(View v)
+    public void searchSubstitute(View v)
     {
-        String deadline = etDeadline.getText().toString();
-        String degree = spnrPreferredDegree.getSelectedItem().toString();
-
         RequestParams params = new RequestParams();
-        params.put("deadline", deadline);
-        params.put("degree", degree);
+        String fromDate = tvFromDate.getText().toString();
+        String toDate = tvToDate.getText().toString();
+        String preferredDegree = spnrDegree.getSelectedItem().toString();
+        params.put("fromdate", fromDate);
+        params.put("todate", toDate);
         params.put("place", placename);
         params.put("placelat", placelat);
         params.put("placelon", placelon);
-        client.post(Constants.SEARCH_PERMANENT_JOB, params, new AsyncHttpResponseHandler() {
+        params.put("degree", preferredDegree);
+        params.put("userid", DBHelper.getUserid(SearchSubstituteActivity.this));
+        client.post(Constants.SEARCH_SUB, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 super.onStart();
@@ -81,22 +83,27 @@ public class SearchPermanentJob extends AppCompatActivity {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                dialog.dismiss();
                 String response = new String(responseBody);
-                Job[] posts = Geson.g().fromJson(response, Job[].class);
-                adapter = new JobAdapter(SearchPermanentJob.this, posts);
-                lvPermanentJobSearch.setAdapter(adapter);
+                DoctorSub[] subs = Geson.g().fromJson(response, DoctorSub[].class);
+                DoctorAdapter adapter = new DoctorAdapter(SearchSubstituteActivity.this, subs);
+                lvSubstitute.setAdapter(adapter);
+                dialog.dismiss();
+
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                dialog.dismiss();
                 Logger.d(new String(responseBody));
+                dialog.dismiss();
 
             }
         });
+
+
+
     }
+
 
     private void registerPlaceFragment() {
 

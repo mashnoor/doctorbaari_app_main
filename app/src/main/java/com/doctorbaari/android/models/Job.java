@@ -5,7 +5,7 @@ package com.doctorbaari.android.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SubPost {
+public class Job {
 
     @SerializedName("id")
 
@@ -44,8 +44,13 @@ public class SubPost {
 
     private String details;
     @SerializedName("available")
-
     private Integer available;
+
+    @SerializedName("deadline")
+    private String deadline;
+
+    @SerializedName("type")
+    private String type;
 
     public Integer getId() {
         return id;

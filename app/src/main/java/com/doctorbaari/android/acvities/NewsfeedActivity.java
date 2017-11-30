@@ -8,8 +8,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.doctorbaari.android.R;
-import com.doctorbaari.android.adapters.NewsfeedAdapter;
-import com.doctorbaari.android.models.SubPost;
+import com.doctorbaari.android.adapters.JobAdapter;
+import com.doctorbaari.android.models.Job;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.Geson;
 import com.doctorbaari.android.utils.SideBar;
@@ -25,7 +25,7 @@ public class NewsfeedActivity extends AppCompatActivity {
     @BindView(R.id.lvnewsFeed)
     ListView lvnewsFeed;
 
-    NewsfeedAdapter adapter;
+    JobAdapter adapter;
     AsyncHttpClient client;
     ProgressDialog dialog;
 
@@ -43,8 +43,7 @@ public class NewsfeedActivity extends AppCompatActivity {
 
     }
 
-    private void showToast(String msg)
-    {
+    private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
@@ -59,8 +58,8 @@ public class NewsfeedActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
-                SubPost[] posts = Geson.g().fromJson(response, SubPost[].class);
-                adapter = new NewsfeedAdapter(NewsfeedActivity.this, posts);
+                Job[] posts = Geson.g().fromJson(response, Job[].class);
+                adapter = new JobAdapter(NewsfeedActivity.this, posts);
                 lvnewsFeed.setAdapter(adapter);
                 dialog.dismiss();
 

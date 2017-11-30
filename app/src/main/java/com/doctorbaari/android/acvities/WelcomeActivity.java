@@ -19,8 +19,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
     }
-    private void showToast(String msg)
-    {
+
+    private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 

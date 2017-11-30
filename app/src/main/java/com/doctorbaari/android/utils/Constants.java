@@ -15,5 +15,7 @@ public class Constants {
     public final static String UPDATE_PROFILE = BASE_URL + "updateuserprofile";
     public final static String GET_COLLEGE_LIST = BASE_URL + "getcollegelist";
     public final static String CHANGE_STATUS = BASE_URL + "changestatus";
+    public final static String SEARCH_PERMANENT_JOB = BASE_URL + "searchpermanentjob";
+    public final static String SEARCH_SUB = BASE_URL + "searchsub";
 
 }

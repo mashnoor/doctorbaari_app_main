@@ -11,17 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.doctorbaari.android.R;
-import com.doctorbaari.android.models.SubPost;
+import com.doctorbaari.android.models.Job;
 
 /**
  * Created by Nowfel Mashnoor on 11/7/2017.
  */
 
-public class NewsfeedAdapter extends BaseAdapter {
+public class JobAdapter extends BaseAdapter {
     private Activity activity;
-    private SubPost[] posts;
+    private Job[] posts;
 
-    public NewsfeedAdapter(Activity activity, SubPost[] posts) {
+    public JobAdapter(Activity activity, Job[] posts) {
         this.activity = activity;
         this.posts = posts;
     }
@@ -32,7 +32,7 @@ public class NewsfeedAdapter extends BaseAdapter {
     }
 
     @Override
-    public SubPost getItem(int i) {
+    public Job getItem(int i) {
         return posts[i];
     }
 
@@ -46,14 +46,14 @@ public class NewsfeedAdapter extends BaseAdapter {
         View v = view;
         if (v == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(activity);
-            v = layoutInflater.inflate(R.layout.row_newsfeed, null);
+            v = layoutInflater.inflate(R.layout.row_job, null);
         }
         TextView tvInstitueName = v.findViewById(R.id.tvInstituteName);
         TextView tvLocation = v.findViewById(R.id.tvLocation);
         TextView postedOn = v.findViewById(R.id.tvPostedOn);
 
         ImageView iv = v.findViewById(R.id.ivLocation);
-        SubPost currpost = getItem(i);
+        Job currpost = getItem(i);
         tvInstitueName.setText(currpost.getInstitute());
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
