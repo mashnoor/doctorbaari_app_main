@@ -12,7 +12,7 @@ import com.doctorbaari.android.adapters.JobAdapter;
 import com.doctorbaari.android.models.Job;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.Geson;
-import com.doctorbaari.android.utils.SideBar;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -35,12 +35,18 @@ public class NewsfeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsfeed);
         ButterKnife.bind(this);
-        SideBar.attach(this);
+        SideNToolbarController.attach(this, "Newsfeed");
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to Doctor Baari Server...");
         getNewsFeed();
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        client.cancelAllRequests(true);
     }
 
     private void showToast(String msg) {

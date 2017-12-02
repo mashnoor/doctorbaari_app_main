@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
-import com.doctorbaari.android.utils.SideBar;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
@@ -60,7 +60,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_substitue);
         ButterKnife.bind(this);
-        SideBar.attach(this);
+        SideNToolbarController.attach(this, "Post For Substitute");
         registerPlaceFragment();
 
         client = new AsyncHttpClient();

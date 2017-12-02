@@ -16,6 +16,7 @@ import com.doctorbaari.android.models.Avaibility;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
@@ -55,6 +56,7 @@ public class AvaibilityListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avaibility_list);
         ButterKnife.bind(this);
+        SideNToolbarController.attach(this, "My Avaibility Schedule");
         registerPlaceFragment();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");

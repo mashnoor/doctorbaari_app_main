@@ -49,7 +49,7 @@
             android:name=".acvities.WelcomeActivity"
             android:launchMode="singleInstance" />
         <activity
-            android:name=".acvities.RegistrationActivity"
+            android:name=".acvities.DoctorRegistrationActivity"
             android:launchMode="singleInstance" />
         <activity android:name=".acvities.NewsfeedActivity" />
         <activity
@@ -71,14 +71,31 @@
             android:name=".acvities.PostSubstituteActivity"
             android:label="@string/title_activity_search_substitute"
             android:theme="@style/AppTheme" />
-        <activity android:name=".acvities.PostPermanentJobActivity" />
-        <activity android:name=".acvities.ProfileActivity" />
-        <activity android:name=".acvities.SearchPermanentJob" />
-        <activity android:name=".acvities.ViewAvailableSubstituteActivity" />
-        <activity android:name=".acvities.AvaibilityListActivity" />
-        <activity android:name=".acvities.HistoryActivity" />
-        <activity android:name=".acvities.HistorySubSearchResult" />
-        <activity android:name=".acvities.SearchSubstituteJobs"></activity>
+        <activity
+            android:name=".acvities.PostPermanentJobActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".acvities.ProfileActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".acvities.SearchPermanentJob"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".acvities.ViewAvailableSubstituteActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".acvities.AvaibilityListActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".acvities.HistoryActivity"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".acvities.HistorySubSearchResult"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".acvities.SearchSubstituteJobs"
+            android:launchMode="singleInstance" />
+        <activity android:name=".acvities.InternRegistration"></activity>
     </application>
 
 </manifest>

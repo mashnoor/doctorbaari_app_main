@@ -56,7 +56,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:background="@color/button"
-            android:onClick="goSignUp"
+            android:onClick="goDoctorSignUp"
             android:text="MBBS Doctor"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -69,7 +69,8 @@
             android:layout_marginTop="15dp"
             android:background="@color/button"
             android:text="Intern Doctor"
-            android:onClick="goSignUp"
+
+            android:onClick="goInternSignup"
             android:textColor="@color/white"
             android:textStyle="bold" />
 

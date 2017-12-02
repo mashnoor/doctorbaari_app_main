@@ -13,6 +13,7 @@ import com.doctorbaari.android.models.DoctorSub;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -38,6 +39,7 @@ public class HistorySubSearchResult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_sub_search_result);
         ButterKnife.bind(this);
+        SideNToolbarController.attach(this, "Search Results");
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         Logger.d(new AndroidLogAdapter());

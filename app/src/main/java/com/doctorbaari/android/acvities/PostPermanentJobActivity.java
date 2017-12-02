@@ -3,15 +3,17 @@ package com.doctorbaari.android.acvities;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
-import com.doctorbaari.android.utils.SideBar;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
@@ -51,9 +53,11 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_permanent_job);
         ButterKnife.bind(this);
-        SideBar.attach(this);
+        SideNToolbarController.attach(this, "Post Permanent Job");
         registerPlaceFragment();
         Logger.d(new AndroidLogAdapter());
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Getting data from server...");

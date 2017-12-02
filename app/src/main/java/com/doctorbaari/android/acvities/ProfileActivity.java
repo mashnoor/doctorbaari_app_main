@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -24,13 +23,12 @@ import com.doctorbaari.android.utils.CommonDialog;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
-import com.doctorbaari.android.utils.SideBar;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpClient;
@@ -46,7 +44,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
@@ -70,10 +67,6 @@ public class ProfileActivity extends AppCompatActivity {
     TextView tvEmail;
     @BindView(R.id.tvMobile)
     TextView tvMobile;
-    @BindView(R.id.etAvaiblabeFromDate)
-    EditText etAvailableFromDate;
-    @BindView(R.id.etAvailableToDate)
-    EditText etAvailableTodate;
 
     @BindView(R.id.login_button)
     LoginButton loginButton;
@@ -81,8 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.profile_image)
     CircleImageView profileImage;
 
-    @BindView(R.id.swtchAvailable)
-    Switch swtchAvailable;
+
     AsyncHttpClient client;
     ProgressDialog dialog;
     CallbackManager callbackManager;
@@ -99,7 +91,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
-        SideBar.attach(this);
+        SideNToolbarController.attach(this, "Your Profile");
         Logger.addLogAdapter(new AndroidLogAdapter());
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
@@ -196,9 +188,7 @@ public class ProfileActivity extends AppCompatActivity {
                 tvFbLink.setText("Facebook Profle: " + user.getFb_profile());
                 tvEmail.setText("Email: " + user.getEmail());
                 tvMobile.setText("Phone: " + user.getPhone());
-                if (user.isAvailable()) {
-                    swtchAvailable.setChecked(true);
-                }
+
                 RequestOptions requestOptions = new RequestOptions();
                 requestOptions.placeholder(R.drawable.profile);
                 requestOptions.error(R.drawable.profile);
@@ -258,6 +248,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+    /***
 
     public void updateAvaibilityStatus(View v) {
         RequestParams params = new RequestParams();
@@ -291,6 +282,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+     ***/
 
     public void goAvaibilityActivity(View v)
     {

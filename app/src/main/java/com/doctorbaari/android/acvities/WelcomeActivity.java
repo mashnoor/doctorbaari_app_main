@@ -1,8 +1,6 @@
 package com.doctorbaari.android.acvities;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,8 +22,12 @@ public class WelcomeActivity extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    public void goSignUp(View v) {
-        startActivity(new Intent(WelcomeActivity.this, RegistrationActivity.class));
+    public void goDoctorSignUp(View v) {
+        startActivity(new Intent(WelcomeActivity.this, DoctorRegistrationActivity.class));
 
+    }
+    public void goInternSignup(View v)
+    {
+        startActivity(new Intent(this, InternRegistration.class));
     }
 }

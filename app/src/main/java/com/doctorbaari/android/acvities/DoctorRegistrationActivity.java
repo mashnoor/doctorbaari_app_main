@@ -44,7 +44,7 @@ import butterknife.ButterKnife;
 
 import cz.msebera.android.httpclient.Header;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class DoctorRegistrationActivity extends AppCompatActivity {
 
     @BindView(R.id.etFullName)
     EditText etFullName;
@@ -71,7 +71,7 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_doctor_registration);
         ButterKnife.bind(this);
         registerPlaceFragment();
         client = new AsyncHttpClient();
@@ -98,7 +98,7 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(RegistrationActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                new DatePickerDialog(DoctorRegistrationActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -184,9 +184,9 @@ public class RegistrationActivity extends AppCompatActivity {
                     finish();
 
                 } else {
-                    DBHelper.setUserId(RegistrationActivity.this, response);
+                    DBHelper.setUserId(DoctorRegistrationActivity.this, response);
                     showToast("Account created successfully");
-                    startActivity(new Intent(RegistrationActivity.this, NewsfeedActivity.class));
+                    startActivity(new Intent(DoctorRegistrationActivity.this, NewsfeedActivity.class));
                     finish();
                 }
 

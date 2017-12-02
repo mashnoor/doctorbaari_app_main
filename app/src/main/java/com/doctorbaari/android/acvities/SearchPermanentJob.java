@@ -15,6 +15,7 @@ import com.doctorbaari.android.adapters.JobAdapter;
 import com.doctorbaari.android.models.Job;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
@@ -34,7 +35,7 @@ public class SearchPermanentJob extends AppCompatActivity {
     @BindView(R.id.etDeadline)
     EditText etDeadline;
 
-    @BindView(R.id.spnrPreferredDegree)
+    @BindView(R.id.spnrDegree)
     Spinner spnrPreferredDegree;
 
     @BindView(R.id.lvPermanentJobSearchResult)
@@ -54,6 +55,7 @@ public class SearchPermanentJob extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_permanent_job);
         ButterKnife.bind(this);
+        SideNToolbarController.attach(this, "Search Permanent Job");
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to Server...");

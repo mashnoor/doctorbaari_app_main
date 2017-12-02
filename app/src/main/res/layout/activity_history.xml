@@ -3,13 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.doctorbaari.android.acvities.HistoryActivity">
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
 
     <ListView
         android:id="@+id/lvHistory"
 
-        android:descendantFocusability="blocksDescendants"
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants" />
 
 </LinearLayout>
