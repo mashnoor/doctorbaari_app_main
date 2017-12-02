@@ -74,10 +74,11 @@
         <activity android:name=".acvities.PostPermanentJobActivity" />
         <activity android:name=".acvities.ProfileActivity" />
         <activity android:name=".acvities.SearchPermanentJob" />
-        <activity android:name=".acvities.SearchSubstituteActivity" />
+        <activity android:name=".acvities.ViewAvailableSubstituteActivity" />
         <activity android:name=".acvities.AvaibilityListActivity" />
         <activity android:name=".acvities.HistoryActivity" />
-        <activity android:name=".acvities.HistorySubSearchResult"></activity>
+        <activity android:name=".acvities.HistorySubSearchResult" />
+        <activity android:name=".acvities.SearchSubstituteJobs"></activity>
     </application>
 
 </manifest>

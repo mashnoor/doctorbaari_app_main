@@ -28,7 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
-public class SearchSubstituteActivity extends AppCompatActivity {
+public class ViewAvailableSubstituteActivity extends AppCompatActivity {
 
 
     String placename = "", placelat = "", placelon = "";
@@ -52,7 +52,7 @@ public class SearchSubstituteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_substitute);
+        setContentView(R.layout.activity_view_available_substitute);
         ButterKnife.bind(this);
         Logger.addLogAdapter(new AndroidLogAdapter());
         registerPlaceFragment();
@@ -73,7 +73,7 @@ public class SearchSubstituteActivity extends AppCompatActivity {
         params.put("placelat", placelat);
         params.put("placelon", placelon);
         params.put("degree", preferredDegree);
-        params.put("userid", DBHelper.getUserid(SearchSubstituteActivity.this));
+        params.put("userid", DBHelper.getUserid(ViewAvailableSubstituteActivity.this));
         client.post(Constants.SEARCH_SUB, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
@@ -85,7 +85,7 @@ public class SearchSubstituteActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
                 DoctorSub[] subs = Geson.g().fromJson(response, DoctorSub[].class);
-                DoctorAdapter adapter = new DoctorAdapter(SearchSubstituteActivity.this, subs);
+                DoctorAdapter adapter = new DoctorAdapter(ViewAvailableSubstituteActivity.this, subs);
                 lvSubstitute.setAdapter(adapter);
                 dialog.dismiss();
 

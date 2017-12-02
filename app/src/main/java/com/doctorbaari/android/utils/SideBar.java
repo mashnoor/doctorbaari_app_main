@@ -8,11 +8,10 @@ import android.view.View;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.acvities.LoginActivity;
 import com.doctorbaari.android.acvities.NewsfeedActivity;
-import com.doctorbaari.android.acvities.PostPermanentJobActivity;
 import com.doctorbaari.android.acvities.PostSubstituteActivity;
 import com.doctorbaari.android.acvities.ProfileActivity;
 import com.doctorbaari.android.acvities.SearchPermanentJob;
-import com.doctorbaari.android.acvities.SearchSubstituteActivity;
+import com.doctorbaari.android.acvities.ViewAvailableSubstituteActivity;
 import com.facebook.accountkit.AccountKit;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
@@ -36,6 +35,7 @@ public class SideBar {
         PrimaryDrawerItem postSub = new PrimaryDrawerItem().withName("Post for Substitute").withIcon(R.drawable.search);
         PrimaryDrawerItem searchPermanent = new PrimaryDrawerItem().withName("Search for Permanent job").withIcon(R.drawable.search);
         PrimaryDrawerItem searchSubstitute = new PrimaryDrawerItem().withName("Search for Substitute job").withIcon(R.drawable.search);
+        PrimaryDrawerItem viewAvailableSubstitutes = new PrimaryDrawerItem().withName("View available substitutes").withIcon(R.drawable.search);
 
 
         PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIcon(R.drawable.logout);
@@ -59,9 +59,11 @@ public class SideBar {
                         new DividerDrawerItem(),
                         searchSubstitute, //10
                         new DividerDrawerItem(),
-                        about, //12
+                        viewAvailableSubstitutes, //12
                         new DividerDrawerItem(),
-                        logout //14
+                        about, //14
+                        new DividerDrawerItem(),
+                         logout //16
 
 
                 )
@@ -86,11 +88,11 @@ public class SideBar {
                                 activity.startActivity(new Intent(activity, SearchPermanentJob.class));
                                 break;
                             case 10:
-                                activity.startActivity(new Intent(activity, SearchSubstituteActivity.class));
+                                activity.startActivity(new Intent(activity, ViewAvailableSubstituteActivity.class));
                                 break;
 
 
-                            case 14:
+                            case 16:
                                 AccountKit.logOut();
                                 DBHelper.setSignedInStatus(activity, false);
                                 activity.finish();
