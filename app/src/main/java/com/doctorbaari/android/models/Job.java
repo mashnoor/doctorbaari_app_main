@@ -24,19 +24,19 @@ public class Job {
     private Integer duration;
     @SerializedName("userid")
 
-    private Object userid;
+    private String userid;
     @SerializedName("username")
 
     private String username;
     @SerializedName("place")
 
-    private Object place;
+    private String place;
     @SerializedName("placelat")
 
-    private Object placelat;
+    private String placelat;
     @SerializedName("placelon")
 
-    private Object placelon;
+    private String placelon;
     @SerializedName("institute")
 
     private String institute;
@@ -51,6 +51,21 @@ public class Job {
 
     @SerializedName("type")
     private String type;
+
+    @SerializedName("degree")
+    private String degree;
+
+    public String getDeadline() {
+        return deadline;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
 
     public Integer getId() {
         return id;
@@ -92,11 +107,11 @@ public class Job {
         this.duration = duration;
     }
 
-    public Object getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Object userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 
@@ -108,27 +123,27 @@ public class Job {
         this.username = username;
     }
 
-    public Object getPlace() {
+    public String getPlace() {
         return place;
     }
 
-    public void setPlace(Object place) {
+    public void setPlace(String place) {
         this.place = place;
     }
 
-    public Object getPlacelat() {
+    public String getPlacelat() {
         return placelat;
     }
 
-    public void setPlacelat(Object placelat) {
+    public void setPlacelat(String placelat) {
         this.placelat = placelat;
     }
 
-    public Object getPlacelon() {
+    public String getPlacelon() {
         return placelon;
     }
 
-    public void setPlacelon(Object placelon) {
+    public void setPlacelon(String placelon) {
         this.placelon = placelon;
     }
 

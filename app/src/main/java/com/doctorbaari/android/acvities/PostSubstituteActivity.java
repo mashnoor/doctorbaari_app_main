@@ -11,6 +11,7 @@ import android.view.View;
 
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,9 @@ public class PostSubstituteActivity extends AppCompatActivity {
     TextView tvDateFrom;
     @BindView(R.id.tvToDate)
     TextView tvToDate;
+    @BindView(R.id.spnrDegree)
+    Spinner spnrDegree;
+
     AsyncHttpClient client;
     ProgressDialog dialog;
 
@@ -121,6 +125,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
         String date_to = tvToDate.getText().toString();
         String date_from = tvDateFrom.getText().toString();
+        String degree = spnrDegree.getSelectedItem().toString();
         RequestParams params = new RequestParams();
 
         params.put("date_to", date_to);
@@ -131,6 +136,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
         params.put("placelat", placelat);
         params.put("placelon", placelon);
         params.put("userid", DBHelper.getUserid(PostSubstituteActivity.this));
+        params.put("degree", degree);
 
         client.post(Constants.POST_SUB_URL, params, new AsyncHttpResponseHandler() {
             @Override

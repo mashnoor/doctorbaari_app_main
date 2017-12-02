@@ -291,4 +291,14 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void goAvaibilityActivity(View v)
+    {
+        startActivity(new Intent(this, AvaibilityListActivity.class));
+    }
+
+    public void goViewHistory(View view)
+    {
+        startActivity(new Intent(this, HistoryActivity.class));
+    }
 }

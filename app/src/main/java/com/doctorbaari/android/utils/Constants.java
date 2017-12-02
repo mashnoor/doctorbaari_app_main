@@ -17,5 +17,8 @@ public class Constants {
     public final static String CHANGE_STATUS = BASE_URL + "changestatus";
     public final static String SEARCH_PERMANENT_JOB = BASE_URL + "searchpermanentjob";
     public final static String SEARCH_SUB = BASE_URL + "searchsub";
+    public final static String ADD_TO_AVAIBILITY = BASE_URL + "addtoavaibility";
+    public final static String GET_AVAIBILITY_LIST = BASE_URL + "getavaibilitylist";
+    public final static String GET_HISTORY = BASE_URL + "gethistory";
 
 }
