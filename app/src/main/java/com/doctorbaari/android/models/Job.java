@@ -55,6 +55,13 @@ public class Job {
     @SerializedName("degree")
     private String degree;
 
+    @SerializedName("user")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
     public String getDeadline() {
         return deadline;
     }

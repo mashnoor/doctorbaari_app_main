@@ -134,8 +134,8 @@ public class ProfileActivity extends AppCompatActivity {
                                 // Application code
                                 try {
                                     Logger.d(object);
-                                    String email = object.getString("email");
-                                    String profileLink = object.getString("link");
+                                    String email = object.optString("email", "Not Available");
+                                    String profileLink = object.optString("link", "Not Available");
                                     String imageLink = object.getJSONObject("picture").getJSONObject("data").getString("url");
                                     updateToServer(email, profileLink, imageLink);
                                 } catch (Exception e) {
@@ -248,49 +248,45 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
     /***
 
-    public void updateAvaibilityStatus(View v) {
-        RequestParams params = new RequestParams();
-        params.put("userid", DBHelper.getUserid(ProfileActivity.this));
-        if (swtchAvailable.isChecked())
-            params.put("status", "1");
-        else
-            params.put("status", "0");
+     public void updateAvaibilityStatus(View v) {
+     RequestParams params = new RequestParams();
+     params.put("userid", DBHelper.getUserid(ProfileActivity.this));
+     if (swtchAvailable.isChecked())
+     params.put("status", "1");
+     else
+     params.put("status", "0");
 
-        params.put("from_date", etAvailableFromDate.getText().toString());
-        params.put("to_date", etAvailableTodate.getText().toString());
-        client.post(Constants.CHANGE_STATUS, params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onStart() {
-                super.onStart();
-                dialog.show();
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                showToast("Changed availability status successfully");
-                dialog.dismiss();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-
-                dialog.dismiss();
-                showToast("Something went wrong");
-            }
-        });
+     params.put("from_date", etAvailableFromDate.getText().toString());
+     params.put("to_date", etAvailableTodate.getText().toString());
+     client.post(Constants.CHANGE_STATUS, params, new AsyncHttpResponseHandler() {
+    @Override public void onStart() {
+    super.onStart();
+    dialog.show();
     }
+
+    @Override public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+    showToast("Changed availability status successfully");
+    dialog.dismiss();
+    }
+
+    @Override public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+
+    dialog.dismiss();
+    showToast("Something went wrong");
+    }
+    });
+     }
      ***/
 
-    public void goAvaibilityActivity(View v)
-    {
+    public void goAvaibilityActivity(View v) {
         startActivity(new Intent(this, AvaibilityListActivity.class));
     }
 
-    public void goViewHistory(View view)
-    {
+    public void goViewHistory(View view) {
         startActivity(new Intent(this, HistoryActivity.class));
     }
 }

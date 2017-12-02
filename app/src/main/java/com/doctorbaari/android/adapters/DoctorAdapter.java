@@ -81,9 +81,7 @@ public class DoctorAdapter extends BaseAdapter {
 
                     new Intent(Intent.ACTION_VIEW,
                             Uri.parse(currentDoctorSub.getFbProfile()));
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     Toast.makeText(activity, "Facebook Profile not available!", Toast.LENGTH_LONG).show();
                 }
 

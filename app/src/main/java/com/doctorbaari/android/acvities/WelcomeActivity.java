@@ -18,16 +18,17 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
 
-    private void showToast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-    }
 
     public void goDoctorSignUp(View v) {
         startActivity(new Intent(WelcomeActivity.this, DoctorRegistrationActivity.class));
 
     }
-    public void goInternSignup(View v)
-    {
+
+    public void goInternSignup(View v) {
         startActivity(new Intent(this, InternRegistration.class));
+    }
+
+    public void goHospitalAuthoritySignup(View v) {
+        startActivity(new Intent(this, HospitalAuthorityRegistration.class));
     }
 }

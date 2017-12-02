@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.doctorbaari.android.acvities.JobDetailsActivity">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post Info"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/tvPostTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post Time:" />
+
+            <TextView
+                android:id="@+id/tvFromDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From Date:" />
+
+            <TextView
+                android:id="@+id/tvToDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To Date:" />
+
+            <TextView
+                android:id="@+id/tvInstitute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Institute:" />
+
+            <TextView
+                android:id="@+id/tvPreferredDegree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preferred Degree:" />
+
+            <TextView
+                android:id="@+id/tvPlace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Place:" />
+
+            <TextView
+                android:id="@+id/tvJobType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Job Type:" />
+            <TextView
+                android:id="@+id/tvDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details:" />
+            <Button
+                android:id="@+id/btnUserProfile"
+                android:text="User Profile"
+                android:onClick="viewProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
+

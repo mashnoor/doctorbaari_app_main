@@ -54,7 +54,7 @@ public class NewsfeedActivity extends AppCompatActivity {
     }
 
     private void getNewsFeed() {
-        client.get(Constants.GET_ALL_SUBS_URL, new AsyncHttpResponseHandler() {
+        client.get(Constants.GET_NEWSFEED, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 super.onStart();

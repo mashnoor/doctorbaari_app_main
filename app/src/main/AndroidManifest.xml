@@ -95,7 +95,10 @@
         <activity
             android:name=".acvities.SearchSubstituteJobs"
             android:launchMode="singleInstance" />
-        <activity android:name=".acvities.InternRegistration"></activity>
+        <activity android:name=".acvities.InternRegistration" />
+        <activity android:name=".acvities.HospitalAuthorityRegistration" />
+        <activity android:name=".acvities.JobDetailsActivity" />
+        <activity android:name=".acvities.ProfileDetail"></activity>
     </application>
 
 </manifest>

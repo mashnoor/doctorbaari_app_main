@@ -80,6 +80,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
+            android:onClick="goHospitalAuthoritySignup"
             android:background="@color/button"
 
             android:text="Hospital Authority"

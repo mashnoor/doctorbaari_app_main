@@ -1,10 +1,13 @@
 package com.doctorbaari.android.acvities;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -24,6 +27,8 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,11 +61,42 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         SideNToolbarController.attach(this, "Post Permanent Job");
         registerPlaceFragment();
         Logger.d(new AndroidLogAdapter());
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        registerFuckingCalenderListener();
+
 
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Getting data from server...");
+    }
+
+    private void registerFuckingCalenderListener() {
+        final Calendar myCalendar = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+
+                etStatingFrom.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+
+
+            }
+
+        };
+        etStatingFrom.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                new DatePickerDialog(PostPermanentJobActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+            }
+        });
+
     }
 
     private void showToast(String msg) {
