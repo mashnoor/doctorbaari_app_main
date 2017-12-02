@@ -15,8 +15,11 @@ import com.doctorbaari.android.acvities.PostPermanentJobActivity;
 import com.doctorbaari.android.acvities.PostSubstituteActivity;
 import com.doctorbaari.android.acvities.ProfileActivity;
 import com.doctorbaari.android.acvities.SearchPermanentJob;
+import com.doctorbaari.android.acvities.SearchSubstituteJobs;
 import com.doctorbaari.android.acvities.ViewAvailableSubstituteActivity;
+import com.facebook.FacebookSdk;
 import com.facebook.accountkit.AccountKit;
+import com.facebook.login.LoginManager;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -102,12 +105,17 @@ public class SideNToolbarController {
                                 activity.startActivity(new Intent(activity, ViewAvailableSubstituteActivity.class));
                                 break;
 
+                            case 10:
+                                activity.startActivity(new Intent(activity, SearchSubstituteJobs.class));
+                                break;
 
                             case 16:
                                 AccountKit.logOut();
                                 DBHelper.setSignedInStatus(activity, false);
-                                activity.finish();
+                                activity.finishAffinity();
                                 activity.startActivity(new Intent(activity, LoginActivity.class));
+                                FacebookSdk.sdkInitialize(activity);
+                                LoginManager.getInstance().logOut();
                                 break;
 
 

@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
+import com.doctorbaari.android.utils.Geson;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitCallback;
@@ -48,14 +51,13 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
 
     @BindView(R.id.etFullName)
     EditText etFullName;
-    @BindView(R.id.etMedicalCollege)
-    EditText etMedicalCollege;
+    @BindView(R.id.spnrCollege)
+    Spinner spnrMedicalCollege;
     @BindView(R.id.etContactNo)
     EditText etContactno;
     @BindView(R.id.etDateOfBirth)
     EditText etdateOfBirth;
-    @BindView(R.id.spnrDegree)
-    Spinner spnrDegree;
+
 
     @BindView(R.id.etRegistrationNo)
     EditText etRegNo;
@@ -105,19 +107,6 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         });
     }
 
-    private void getCollegeList() {
-        client.get(Constants.GET_COLLEGE_LIST, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-            }
-        });
-    }
 
     private void showToast(String s) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show();
@@ -126,18 +115,18 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
     public void goSignup(View v) {
 
         String fullName = etFullName.getText().toString().trim();
-        String medicalCollege = etMedicalCollege.getText().toString().trim();
+        String medicalCollege = spnrMedicalCollege.getSelectedItem().toString();
         String contactNo = etContactno.getText().toString().trim();
         String dateOfBirth = etdateOfBirth.getText().toString().trim();
         String workLocation = workingPlaceName;
         String regNo = etRegNo.getText().toString().trim();
-        String degree = spnrDegree.getSelectedItem().toString();
+        String degree = "Not Available";
         if (fullName.isEmpty()) {
             etFullName.setError("Full name can't be empty!");
             return;
         }
         if (medicalCollege.isEmpty()) {
-            etMedicalCollege.setError("Medical College name can't be empty");
+            showToast("Select a medical college");
             return;
         }
         if (contactNo.isEmpty()) {
@@ -252,6 +241,37 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
 
     }
 
+    private void getCollegeList() {
+        client.get(Constants.GET_COLLEGE_LIST, new AsyncHttpResponseHandler() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                dialog.show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                String[] colleges = Geson.g().fromJson(response, String[].class);
+
+                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>
+                        (DoctorRegistrationActivity.this, android.R.layout.simple_spinner_item,
+                                colleges); //selected item will look like a spinner set from XML
+                spinnerArrayAdapter.setDropDownViewResource(android.R.layout
+                        .simple_spinner_dropdown_item);
+                spnrMedicalCollege.setAdapter(spinnerArrayAdapter);
+                dialog.dismiss();
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                showToast("Something went wrong");
+                dialog.dismiss();
+
+            }
+        });
+    }
 
     private void verifyNumber() {
         final Intent intent = new Intent(this, AccountKitActivity.class);
@@ -293,5 +313,12 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void degreeChecked(View v) {
+        CheckBox cb = (CheckBox) v;
+        if (cb.isChecked()) {
+            Logger.d(cb.getText().toString());
+        }
     }
 }
