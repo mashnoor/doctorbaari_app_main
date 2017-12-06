@@ -3,18 +3,21 @@ package com.doctorbaari.android.acvities;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.adapters.JobAdapter;
 import com.doctorbaari.android.models.Job;
 import com.doctorbaari.android.utils.Constants;
+import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
 import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
@@ -35,23 +38,23 @@ import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
 public class SearchSubstituteJobs extends AppCompatActivity {
-    @BindView(R.id.lvPermanentJobSearchResult)
-    ListView lvPermanentJobSearch;
+
 
     AsyncHttpClient client;
 
-    JobAdapter adapter;
 
     ProgressDialog dialog;
 
 
     String placename = "", placelat = "", placelon = "";
-    @BindView(R.id.tvFromDate)
-    TextView tvDateFrom;
-    @BindView(R.id.tvToDate)
-    TextView tvToDate;
+    @BindView(R.id.etFromDate)
+    EditText etFromDate;
+    @BindView(R.id.etToDate)
+    EditText etToDate;
 
     int which;
+    @BindView(R.id.swtchAvailable)
+    Switch swtchAvailable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,15 +111,15 @@ public class SearchSubstituteJobs extends AppCompatActivity {
                                   int dayOfMonth) {
                 // TODO Auto-generated method stub
                 if (which == 0)
-                    tvDateFrom.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                    etFromDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
 
                 else
-                    tvToDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                    etToDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
             }
 
         };
 
-        tvDateFrom.setOnClickListener(new View.OnClickListener() {
+        etFromDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -129,7 +132,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
             }
         });
 
-        tvToDate.setOnClickListener(new View.OnClickListener() {
+        etToDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -145,12 +148,62 @@ public class SearchSubstituteJobs extends AppCompatActivity {
 
     }
 
-    public void searchSubstituteJobs(View v) {
-        String deadline = "Not available";
-        String degree = "Not Available";
+    public void addToAvailability(View v) {
+        String fromdate = etFromDate.getText().toString();
+        String todate = etToDate.getText().toString();
+        if (fromdate.isEmpty() || todate.isEmpty() || placename.isEmpty()) {
+            HelperFunc.showToast(SearchSubstituteJobs.this, "All fields must be filled");
+            return;
+        }
         RequestParams params = new RequestParams();
-        params.put("deadline", deadline);
-        params.put("degree", degree);
+        params.put("fromdate", fromdate);
+        params.put("todate", todate);
+        params.put("place", placename);
+        params.put("placelat", placelat);
+        params.put("placelon", placelon);
+        params.put("available", String.valueOf(swtchAvailable.isChecked() ? 1 : 0));
+        params.put("userid", DBHelper.getUserid(SearchSubstituteJobs.this));
+        client.post(Constants.ADD_TO_AVAIBILITY, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                dialog.show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+
+                dialog.dismiss();
+                HelperFunc.showToast(SearchSubstituteJobs.this, "Successfully added to avaibility list");
+                searchSubstituteJobs(null);
+
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                dialog.dismiss();
+                HelperFunc.showToast(SearchSubstituteJobs.this, "Something went wrong");
+                Logger.d(new String(responseBody));
+
+
+            }
+        });
+    }
+
+
+    public void searchSubstituteJobs(View v) {
+        String fromdate = etFromDate.getText().toString();
+        String todate = etToDate.getText().toString();
+        if (fromdate.isEmpty() || todate.isEmpty() || placename.isEmpty()) {
+            HelperFunc.showToast(SearchSubstituteJobs.this, "All fields must be filled");
+            return;
+        }
+        RequestParams params = new RequestParams();
+        params.put("fromdate", fromdate);
+
+        params.put("todate", todate);
         params.put("place", placename);
         params.put("placelat", placelat);
         params.put("placelon", placelon);
@@ -165,9 +218,9 @@ public class SearchSubstituteJobs extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 dialog.dismiss();
                 String response = new String(responseBody);
-                Job[] posts = Geson.g().fromJson(response, Job[].class);
-                adapter = new JobAdapter(SearchSubstituteJobs.this, posts);
-                lvPermanentJobSearch.setAdapter(adapter);
+                Intent i = new Intent(SearchSubstituteJobs.this, SubstituteJobSearchResult.class);
+                i.putExtra("response", response);
+                startActivity(i);
 
             }
 
