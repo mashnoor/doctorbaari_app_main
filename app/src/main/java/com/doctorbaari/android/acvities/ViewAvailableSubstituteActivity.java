@@ -17,6 +17,7 @@ import com.doctorbaari.android.models.DoctorSub;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
@@ -123,6 +124,11 @@ public class ViewAvailableSubstituteActivity extends AppCompatActivity {
         String fromDate = tvFromDate.getText().toString();
         String toDate = tvToDate.getText().toString();
         String preferredDegree = spnrDegree.getSelectedItem().toString();
+        if(fromDate.isEmpty() || toDate.isEmpty() || placename.isEmpty() || placelat.isEmpty() || placelon.isEmpty() || preferredDegree.isEmpty())
+        {
+            HelperFunc.showToast(ViewAvailableSubstituteActivity.this, "All fields must be filled");
+            return;
+        }
         params.put("fromdate", fromDate);
         params.put("todate", toDate);
         params.put("place", placename);
@@ -130,7 +136,7 @@ public class ViewAvailableSubstituteActivity extends AppCompatActivity {
         params.put("placelon", placelon);
         params.put("degree", preferredDegree);
         params.put("userid", DBHelper.getUserid(ViewAvailableSubstituteActivity.this));
-        client.post(Constants.SEARCH_SUB, params, new AsyncHttpResponseHandler() {
+        client.post(Constants.SEARCH_AVAILABLE_SUB, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 super.onStart();
@@ -153,6 +159,7 @@ public class ViewAvailableSubstituteActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 Logger.d(new String(responseBody));
                 dialog.dismiss();
+                HelperFunc.showToast(ViewAvailableSubstituteActivity.this, "Something went wrong");
 
             }
         });

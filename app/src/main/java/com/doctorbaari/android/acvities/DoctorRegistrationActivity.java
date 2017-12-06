@@ -40,6 +40,9 @@ import com.loopj.android.http.RequestParams;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
+import org.json.JSONArray;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import butterknife.BindView;
@@ -69,6 +72,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
     String workingPlaceName = "";
     String workingPlaceLat = "";
     String workingPlaceLon = "";
+    ArrayList<String> degrees;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_registration);
         ButterKnife.bind(this);
         registerPlaceFragment();
+        degrees = new ArrayList<>();
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting with Doctor Baari server...");
@@ -120,7 +125,15 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         String dateOfBirth = etdateOfBirth.getText().toString().trim();
         String workLocation = workingPlaceName;
         String regNo = etRegNo.getText().toString().trim();
-        String degree = "Not Available";
+
+        String degree;
+        JSONArray array = new JSONArray(degrees);
+        degree = array.toString();
+        if(degrees.isEmpty())
+        {
+            showToast("Please select a degree");
+            return;
+        }
         if (fullName.isEmpty()) {
             etFullName.setError("Full name can't be empty!");
             return;
@@ -317,8 +330,15 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
 
     public void degreeChecked(View v) {
         CheckBox cb = (CheckBox) v;
+
         if (cb.isChecked()) {
             Logger.d(cb.getText().toString());
+            degrees.add(cb.getText().toString());
         }
+        else
+        {
+            degrees.remove(cb.getText().toString());
+        }
+
     }
 }

@@ -69,7 +69,7 @@ public class HistorySubSearchResult extends AppCompatActivity {
         params.put("placelon", placelon);
         params.put("degree", preferredDegree);
         params.put("userid", DBHelper.getUserid(HistorySubSearchResult.this));
-        client.post(Constants.SEARCH_SUB, params, new AsyncHttpResponseHandler() {
+        client.post(Constants.SEARCH_AVAILABLE_SUB, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 super.onStart();

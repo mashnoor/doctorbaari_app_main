@@ -1,16 +1,22 @@
 package com.doctorbaari.android.acvities;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.adapters.JobAdapter;
 import com.doctorbaari.android.models.Job;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
@@ -21,6 +27,8 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.orhanobut.logger.Logger;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,6 +46,12 @@ public class SearchSubstituteJobs extends AppCompatActivity {
 
 
     String placename = "", placelat = "", placelon = "";
+    @BindView(R.id.tvFromDate)
+    TextView tvDateFrom;
+    @BindView(R.id.tvToDate)
+    TextView tvToDate;
+
+    int which;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +59,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
         setContentView(R.layout.activity_search_substitute_jobs);
         ButterKnife.bind(this);
         registerPlaceFragment();
+        registerFuckingCalenderListener();
         SideNToolbarController.attach(this, "Search Substitute Jobs");
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
@@ -83,7 +98,54 @@ public class SearchSubstituteJobs extends AppCompatActivity {
 
     }
 
-    public void searchPermanent(View v) {
+    private void registerFuckingCalenderListener() {
+
+        final Calendar myCalendar = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                if (which == 0)
+                    tvDateFrom.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+
+                else
+                    tvToDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+            }
+
+        };
+
+        tvDateFrom.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                which = 0;
+                new DatePickerDialog(SearchSubstituteJobs.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+            }
+        });
+
+        tvToDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                which = 1;
+                new DatePickerDialog(SearchSubstituteJobs.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+            }
+        });
+
+
+    }
+
+    public void searchSubstituteJobs(View v) {
         String deadline = "Not available";
         String degree = "Not Available";
         RequestParams params = new RequestParams();
@@ -113,6 +175,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 dialog.dismiss();
                 Logger.d(new String(responseBody));
+                HelperFunc.showToast(SearchSubstituteJobs.this, "Something went wrong");
 
             }
         });

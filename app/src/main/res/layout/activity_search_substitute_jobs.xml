@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="To DDate"
+            android:hint="To Date"
             android:focusable="false"
             android:inputType="textPersonName" />
 
@@ -86,7 +86,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:background="@drawable/button_style"
-            android:onClick="searchPermanent"
+            android:onClick="searchSubstituteJobs"
             android:padding="15dp"
             android:text="Search"
             android:textColor="#ffffff" />
