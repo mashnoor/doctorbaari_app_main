@@ -32,9 +32,16 @@ public class Avaibility {
     @SerializedName("userid")
     
     private Integer userid;
+
     @SerializedName("available")
-    
     private String available;
+
+    @SerializedName("type")
+    private String type;
+
+    public String getType() {
+        return type;
+    }
 
     public Integer getId() {
         return id;

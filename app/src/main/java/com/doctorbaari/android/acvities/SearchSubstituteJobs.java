@@ -161,6 +161,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
         params.put("place", placename);
         params.put("placelat", placelat);
         params.put("placelon", placelon);
+        params.put("type", "sub");
         params.put("available", String.valueOf(swtchAvailable.isChecked() ? 1 : 0));
         params.put("userid", DBHelper.getUserid(SearchSubstituteJobs.this));
         client.post(Constants.ADD_TO_AVAIBILITY, params, new AsyncHttpResponseHandler() {

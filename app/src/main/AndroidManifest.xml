@@ -99,7 +99,8 @@
         <activity android:name=".acvities.HospitalAuthorityRegistration" />
         <activity android:name=".acvities.JobDetailsActivity" />
         <activity android:name=".acvities.ProfileDetail" />
-        <activity android:name=".acvities.SubstituteJobSearchResult"></activity>
+        <activity android:name=".acvities.SubstituteJobSearchResult" />
+        <activity android:name=".acvities.Reviews"></activity>
     </application>
 
 </manifest>

@@ -10,11 +10,10 @@
         layout="@layout/toolbar" />
 
 
-
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:fillViewport="true">
 
 
@@ -46,7 +45,6 @@
                 android:text="User Name"
                 android:textSize="22sp"
                 android:textStyle="bold" />
-
 
 
             <TextView
@@ -128,9 +126,43 @@
                 android:text="Email: abc@example.com"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/uhjd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Review"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <Button
+                android:text="View previous reviews"
+                android:onClick="viewReviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RatingBar
+                android:id="@+id/rbReview"
+                android:stepSize="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/etReview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Review" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="postReview"
+                android:text="Post Review" />
+
 
         </LinearLayout>
 
     </ScrollView>
+
+
 
 </LinearLayout>

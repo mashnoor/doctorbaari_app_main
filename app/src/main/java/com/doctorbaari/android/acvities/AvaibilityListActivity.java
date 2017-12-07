@@ -44,14 +44,10 @@ public class AvaibilityListActivity extends AppCompatActivity {
     @BindView(R.id.lvAvaibilityList)
     ListView lvAvaibilityList;
 
-    @BindView(R.id.swtchAvailable)
-    Switch swtchAvailable;
 
-    String placename = "", placelat = "", placelon = "";
 
     ProgressDialog dialog;
     AsyncHttpClient client;
-    int which;
 
 
     @Override
@@ -60,7 +56,6 @@ public class AvaibilityListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_avaibility_list);
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "My Avaibility Schedule");
-        registerPlaceFragment();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
         client = new AsyncHttpClient();
@@ -76,8 +71,7 @@ public class AvaibilityListActivity extends AppCompatActivity {
     }
 
 
-    private void loadAvaibilityList()
-    {
+    private void loadAvaibilityList() {
         RequestParams params = new RequestParams();
         params.put("userid", DBHelper.getUserid(AvaibilityListActivity.this));
         client.post(Constants.GET_AVAIBILITY_LIST, params, new AsyncHttpResponseHandler() {
@@ -105,35 +99,5 @@ public class AvaibilityListActivity extends AppCompatActivity {
         });
     }
 
-    private void registerPlaceFragment() {
-        AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
-                .setCountry("BD")
-                .build();
 
-
-        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
-                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
-
-        autocompleteFragment.setFilter(typeFilter);
-
-
-        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
-            @Override
-            public void onPlaceSelected(Place place) {
-                // TODO: Get info about the selected place.
-                Logger.d(place.getName());
-                placename = place.getName().toString();
-                placelat = String.valueOf(place.getLatLng().latitude);
-                placelon = String.valueOf(place.getLatLng().longitude);
-
-            }
-
-            @Override
-            public void onError(Status status) {
-                // TODO: Handle the error.
-                Logger.d(status);
-            }
-        });
-
-    }
 }

@@ -72,8 +72,7 @@ public class ViewAvailableSubstituteActivity extends AppCompatActivity {
         registerFuckingCalenderListener();
     }
 
-    private void registerFuckingCalenderListener()
-    {
+    private void registerFuckingCalenderListener() {
         final Calendar myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -118,14 +117,12 @@ public class ViewAvailableSubstituteActivity extends AppCompatActivity {
 
     }
 
-    public void searchSubstitute(View v)
-    {
+    public void searchSubstitute(View v) {
         RequestParams params = new RequestParams();
         String fromDate = tvFromDate.getText().toString();
         String toDate = tvToDate.getText().toString();
         String preferredDegree = spnrDegree.getSelectedItem().toString();
-        if(fromDate.isEmpty() || toDate.isEmpty() || placename.isEmpty() || placelat.isEmpty() || placelon.isEmpty() || preferredDegree.isEmpty())
-        {
+        if (fromDate.isEmpty() || toDate.isEmpty() || placename.isEmpty() || placelat.isEmpty() || placelon.isEmpty() || preferredDegree.isEmpty()) {
             HelperFunc.showToast(ViewAvailableSubstituteActivity.this, "All fields must be filled");
             return;
         }
@@ -163,7 +160,6 @@ public class ViewAvailableSubstituteActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }

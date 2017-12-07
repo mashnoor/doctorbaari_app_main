@@ -4,20 +4,28 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
+import com.doctorbaari.android.adapters.ReviewsListAdapter;
+import com.doctorbaari.android.models.Review;
 import com.doctorbaari.android.models.User;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
@@ -43,7 +51,10 @@ public class ProfileDetail extends AppCompatActivity {
     TextView tvEmail;
     @BindView(R.id.tvMobile)
     TextView tvMobile;
-
+    @BindView(R.id.etReview)
+    EditText etReview;
+    @BindView(R.id.rbReview)
+    RatingBar rbReview;
 
 
     @BindView(R.id.profile_image)
@@ -52,6 +63,7 @@ public class ProfileDetail extends AppCompatActivity {
 
     AsyncHttpClient client;
     ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +73,22 @@ public class ProfileDetail extends AppCompatActivity {
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
+        Logger.addLogAdapter(new AndroidLogAdapter());
+        loadUserProfile();
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+
+    private void loadUserProfile()
+
+    {
 
         Intent i = getIntent();
         String userid = i.getStringExtra("userid");
@@ -96,6 +124,7 @@ public class ProfileDetail extends AppCompatActivity {
 
                 Glide.with(ProfileDetail.this).load(user.getPpUrl()).apply(requestOptions).into(profileImage);
                 dialog.dismiss();
+
             }
 
             @Override
@@ -105,12 +134,49 @@ public class ProfileDetail extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    public void postReview(View v) {
+        Intent i = getIntent();
+        String reviewed_to = i.getStringExtra("userid");
+        String review = etReview.getText().toString();
+        String reviewed_from = DBHelper.getUserid(ProfileDetail.this);
+        String rating = String.valueOf(rbReview.getRating());
+        RequestParams params = new RequestParams();
+        params.put("reviewed_from", reviewed_from);
+        params.put("reviewed_to", reviewed_to);
+        params.put("review", review);
+        params.put("rating", rating);
+        client.post(Constants.POST_A_REVIEW, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                dialog.show();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                dialog.dismiss();
+                HelperFunc.showToast(ProfileDetail.this, "Successfully Posted Review");
+                recreate();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                HelperFunc.showToast(ProfileDetail.this, "Something went wrong");
+                dialog.dismiss();
+                Logger.d(new String(responseBody));
+
+            }
+        });
+
 
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
+    public void viewReviews(View v) {
+        Intent i = new Intent(this, Reviews.class);
+        i.putExtra("userid", getIntent().getStringExtra("userid"));
+        startActivity(i);
     }
 }
