@@ -19,6 +19,18 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+
+            android:background="@drawable/button_style"
+            android:onClick="goSubSchedule"
+
+
+            android:text="My Substitute Schedule"
+            android:textColor="#ffffff" />
+
 
         <EditText
             android:id="@+id/etFromDate"

@@ -129,8 +129,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         String degree;
         JSONArray array = new JSONArray(degrees);
         degree = array.toString();
-        if(degrees.isEmpty())
-        {
+        if (degrees.isEmpty()) {
             showToast("Please select a degree");
             return;
         }
@@ -334,9 +333,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         if (cb.isChecked()) {
             Logger.d(cb.getText().toString());
             degrees.add(cb.getText().toString());
-        }
-        else
-        {
+        } else {
             degrees.remove(cb.getText().toString());
         }
 

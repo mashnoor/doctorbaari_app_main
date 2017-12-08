@@ -50,7 +50,7 @@ public class AvaibilityListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         View v = view;
         if (v == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(activity);
@@ -60,7 +60,7 @@ public class AvaibilityListAdapter extends BaseAdapter {
         TextView tvFromdate = v.findViewById(R.id.tvFromdate);
         TextView tvTodate = v.findViewById(R.id.tvTodate);
         TextView tvLocation = v.findViewById(R.id.tvLocation);
-        Switch swtchAvailable = v.findViewById(R.id.swtchAvailable);
+        final Switch swtchAvailable = v.findViewById(R.id.swtchAvailable);
 
         final Avaibility currAvaibility = getItem(i);
         tvFromdate.setText(currAvaibility.getFromDate());
@@ -71,13 +71,14 @@ public class AvaibilityListAdapter extends BaseAdapter {
         } else {
             swtchAvailable.setChecked(false);
         }
-        swtchAvailable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        swtchAvailable.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            public void onClick(View view) {
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.put("availability_id", currAvaibility.getId());
-                params.put("status", (b) ? 1 : 0);
+                params.put("status", swtchAvailable.isChecked() ? 1 : 0);
                 final ProgressDialog dialog = new ProgressDialog(activity);
                 dialog.setMessage("Connecting to server...");
                 client.post(Constants.CHANGE_STATUS, params, new AsyncHttpResponseHandler() {
@@ -85,6 +86,7 @@ public class AvaibilityListAdapter extends BaseAdapter {
                     public void onStart() {
                         super.onStart();
                         dialog.show();
+                        getItem(i).setAvailable(swtchAvailable.isChecked() ? "1" : "0");
 
                     }
 
@@ -102,6 +104,7 @@ public class AvaibilityListAdapter extends BaseAdapter {
                 });
             }
         });
+
 
         return v;
     }

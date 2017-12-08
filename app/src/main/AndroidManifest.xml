@@ -5,6 +5,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -81,7 +83,7 @@
             android:name=".acvities.SearchPermanentJob"
             android:launchMode="singleInstance" />
         <activity
-            android:name=".acvities.ViewAvailableSubstituteActivity"
+            android:name=".acvities.ViewAvailableDoctorsActivity"
             android:launchMode="singleInstance" />
         <activity
             android:name=".acvities.AvaibilityListActivity"

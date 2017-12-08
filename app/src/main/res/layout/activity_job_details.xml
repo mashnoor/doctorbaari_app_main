@@ -69,17 +69,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Job Type:" />
+
             <TextView
                 android:id="@+id/tvDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Details:" />
+
+            <ImageView
+                android:id="@+id/ivPermanentJobImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
             <Button
                 android:id="@+id/btnUserProfile"
-                android:text="User Profile"
-                android:onClick="viewProfile"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="viewProfile"
+                android:text="User Profile" />
 
 
         </LinearLayout>

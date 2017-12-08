@@ -35,6 +35,7 @@ public class HistoryActivity extends AppCompatActivity {
     ProgressDialog dialog;
     AsyncHttpClient client;
     Job[] posts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,15 +51,17 @@ public class HistoryActivity extends AppCompatActivity {
         Logger.addLogAdapter(new AndroidLogAdapter());
 
     }
-    private void showToast(String msg)
-    {
+
+    private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    private void loadHistory()
-    {
+    private void loadHistory() {
+
+
         RequestParams params = new RequestParams();
         params.put("userid", DBHelper.getUserid(HistoryActivity.this));
+        params.put("type", getIntent().getStringExtra("type"));
         client.post(Constants.GET_HISTORY, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {

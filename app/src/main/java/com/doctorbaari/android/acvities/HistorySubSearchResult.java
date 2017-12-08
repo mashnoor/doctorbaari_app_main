@@ -52,50 +52,49 @@ public class HistorySubSearchResult extends AppCompatActivity {
         String placelat = i.getStringExtra("placelat");
         String placelon = i.getStringExtra("placelon");
         String degree = i.getStringExtra("degree");
-        loadSearchResult(fromDate, todate, placename, placelat, placelon, degree);
+        //loadSearchResult(fromDate, todate, placename, placelat, placelon, degree);
 
     }
 
 
     //This is for loadig the search result of the posted sub jobs
+    /***
 
-    public void loadSearchResult(String fromDate, String toDate, String placename, String placelat, String placelon, String preferredDegree) {
-        RequestParams params = new RequestParams();
+     public void loadSearchResult(String fromDate, String toDate, String placename, String placelat, String placelon, String preferredDegree) {
+     RequestParams params = new RequestParams();
 
-        params.put("fromdate", fromDate);
-        params.put("todate", toDate);
-        params.put("place", placename);
-        params.put("placelat", placelat);
-        params.put("placelon", placelon);
-        params.put("degree", preferredDegree);
-        params.put("userid", DBHelper.getUserid(HistorySubSearchResult.this));
-        client.post(Constants.SEARCH_AVAILABLE_SUB, params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onStart() {
-                super.onStart();
-                dialog.show();
-            }
+     params.put("fromdate", fromDate);
+     params.put("todate", toDate);
+     params.put("place", placename);
+     params.put("placelat", placelat);
+     params.put("placelon", placelon);
+     params.put("degree", preferredDegree);
+     params.put("userid", DBHelper.getUserid(HistorySubSearchResult.this));
+     client.post(Constants.SEARCH_AVAILABLE_SUB, params, new AsyncHttpResponseHandler() {
+    @Override public void onStart() {
+    super.onStart();
+    dialog.show();
+    }
 
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String response = new String(responseBody);
-                DoctorSub[] subs = Geson.g().fromJson(response, DoctorSub[].class);
-                DoctorAdapter adapter = new DoctorAdapter(HistorySubSearchResult.this, subs);
-                lvSubstitute.setAdapter(adapter);
+    @Override public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+    String response = new String(responseBody);
+    DoctorSub[] subs = Geson.g().fromJson(response, DoctorSub[].class);
+    DoctorAdapter adapter = new DoctorAdapter(HistorySubSearchResult.this, subs);
+    lvSubstitute.setAdapter(adapter);
 
-                dialog.dismiss();
-
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Logger.d(new String(responseBody));
-                dialog.dismiss();
-
-            }
-        });
+    dialog.dismiss();
 
 
     }
+
+    @Override public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+    Logger.d(new String(responseBody));
+    dialog.dismiss();
+
+    }
+    });
+
+
+     }
+     ***/
 }

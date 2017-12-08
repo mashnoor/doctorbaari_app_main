@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -150,6 +151,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
                 dialog.dismiss();
                 showToast("Successfully Posted");
+                viewAvailableDoctors();
             }
 
             @Override
@@ -161,6 +163,22 @@ public class PostSubstituteActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void viewAvailableDoctors() {
+
+
+        String date_to = tvToDate.getText().toString();
+        String date_from = tvDateFrom.getText().toString();
+        String degree = spnrDegree.getSelectedItem().toString();
+        Intent i = new Intent(this, ViewAvailableDoctorsActivity.class);
+        i.putExtra("fromdate", date_from);
+        i.putExtra("todate", date_to);
+        i.putExtra("degrees", degree);
+        i.putExtra("placelat", placelat);
+        i.putExtra("placelon", placelon);
+        i.putExtra("type", "sub");
+        startActivity(i);
     }
 
     private void registerPlaceFragment() {
@@ -189,6 +207,12 @@ public class PostSubstituteActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void goPostedSubJobs(View v) {
+        Intent i = new Intent(this, HistoryActivity.class);
+        i.putExtra("type", "sub");
+        startActivity(i);
     }
 
 }

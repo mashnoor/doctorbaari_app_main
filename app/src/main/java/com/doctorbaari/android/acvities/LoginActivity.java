@@ -139,15 +139,10 @@ public class LoginActivity extends AppCompatActivity {
 
             }
 
-            // If you have an authorization code, retrieve it from
-            // loginResult.getAuthorizationCode()
-            // and pass it to your server and exchange it for an access token.
-
-            // Success! Start your next activity...
 
         }
 
-        // Surface the result to your user in an appropriate way.
+
 
 
     }

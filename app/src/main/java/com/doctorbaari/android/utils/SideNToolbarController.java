@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.doctorbaari.android.R;
@@ -16,7 +15,7 @@ import com.doctorbaari.android.acvities.PostSubstituteActivity;
 import com.doctorbaari.android.acvities.ProfileActivity;
 import com.doctorbaari.android.acvities.SearchPermanentJob;
 import com.doctorbaari.android.acvities.SearchSubstituteJobs;
-import com.doctorbaari.android.acvities.ViewAvailableSubstituteActivity;
+import com.doctorbaari.android.acvities.ViewAvailableDoctorsActivity;
 import com.facebook.FacebookSdk;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.login.LoginManager;
@@ -102,7 +101,7 @@ public class SideNToolbarController {
                                 activity.startActivity(new Intent(activity, SearchPermanentJob.class));
                                 break;
                             case 12:
-                                activity.startActivity(new Intent(activity, ViewAvailableSubstituteActivity.class));
+                                activity.startActivity(new Intent(activity, ViewAvailableDoctorsActivity.class));
                                 break;
 
                             case 10:

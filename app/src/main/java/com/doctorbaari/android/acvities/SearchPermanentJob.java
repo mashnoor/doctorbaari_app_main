@@ -219,4 +219,11 @@ public class SearchPermanentJob extends AppCompatActivity {
         });
     }
 
+    public void goPermanentJobSchedule(View v)
+    {
+        Intent i = new Intent(this, AvaibilityListActivity.class);
+        i.putExtra("type", "per");
+        startActivity(i);
+    }
+
 }

@@ -58,6 +58,13 @@ public class Job {
     @SerializedName("user")
     private User user;
 
+    @SerializedName("imagelink")
+    private String imageLink;
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
     public User getUser() {
         return user;
     }

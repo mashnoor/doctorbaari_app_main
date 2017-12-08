@@ -234,4 +234,10 @@ public class SearchSubstituteJobs extends AppCompatActivity {
             }
         });
     }
+    public void goSubSchedule(View v)
+    {
+        Intent i = new Intent(this, AvaibilityListActivity.class);
+        i.putExtra("type", "sub");
+        startActivity(i);
+    }
 }

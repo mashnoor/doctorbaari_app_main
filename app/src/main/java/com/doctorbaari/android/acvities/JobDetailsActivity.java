@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.models.Job;
 import com.doctorbaari.android.utils.Geson;
@@ -41,6 +44,8 @@ public class JobDetailsActivity extends AppCompatActivity {
     @BindView(R.id.tvDetails)
     TextView tvDetails;
 
+    @BindView(R.id.ivPermanentJobImage)
+    ImageView ivPermanentJobImage;
 
 
     Job job;
@@ -57,6 +62,12 @@ public class JobDetailsActivity extends AppCompatActivity {
             tvTodate.setVisibility(View.INVISIBLE);
             tvFromDate.setText("Deadline: " + job.getDeadline());
             tvJobType.setText("Job Type: Permanent");
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.no_image);
+            requestOptions.error(R.drawable.no_image);
+
+            Glide.with(JobDetailsActivity.this).load(job.getImageLink()).apply(requestOptions).into(ivPermanentJobImage);
+
         } else {
             tvFromDate.setText("From Date: " + job.getDateFrom());
             tvTodate.setText("To Date: " + job.getDateTo());
@@ -80,8 +91,7 @@ public class JobDetailsActivity extends AppCompatActivity {
         finish();
     }
 
-    public void viewProfile(View v)
-    {
+    public void viewProfile(View v) {
         Intent i = new Intent(this, ProfileDetail.class);
         i.putExtra("userid", job.getUserid());
         startActivity(i);
