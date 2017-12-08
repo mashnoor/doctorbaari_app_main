@@ -231,7 +231,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
                         LoginType.PHONE,
-                        AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
+                        AccountKitActivity.ResponseType.TOKEN).setDefaultCountryCode("+880"); // or .ResponseType.TOKEN
         // ... perform additional configuration ...
         intent.putExtra(
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,

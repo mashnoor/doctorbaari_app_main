@@ -192,9 +192,16 @@ public class InternRegistration extends AppCompatActivity {
                 String response = new String(responseBody);
                 String[] colleges = Geson.g().fromJson(response, String[].class);
 
+                String[] collegesFinal = new String[colleges.length + 1];
+                collegesFinal[0] = "Select your college";
+                for(int  i = 1; i<=colleges.length; i++)
+                {
+                    collegesFinal[i] =colleges[i-1];
+                }
                 ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
                         (InternRegistration.this, android.R.layout.simple_spinner_item,
-                                colleges); //selected item will look like a spinner set from XML
+                                collegesFinal); //selected item will look like a spinner set from XML
+
                 spinnerArrayAdapter.setDropDownViewResource(android.R.layout
                         .simple_spinner_dropdown_item);
                 spnrCollege.setAdapter(spinnerArrayAdapter);
@@ -224,31 +231,11 @@ public class InternRegistration extends AppCompatActivity {
         String workLocation = workingPlaceName;
         String regNo = etRegNo.getText().toString().trim();
 
-        String degree = "intern";
-        if (fullName.isEmpty()) {
-            etFullName.setError("Full name can't be empty!");
-            return;
-        }
-
-        if (contactNo.isEmpty()) {
-            etContactno.setError("Contact no can't be empty");
-            return;
-        }
-        if (dateOfBirth.isEmpty()) {
-            etdateOfBirth.setError("Date of birth can't be empty");
-            return;
-        }
-        if (workLocation.isEmpty()) {
-            showToast("Please select your working location");
-            return;
-        }
-        if (regNo.isEmpty()) {
-            etRegNo.setError("Reg No can't be empty");
-            return;
-        }
-        if(email.isEmpty() && profileLink.isEmpty() && imageLink.isEmpty())
-        {
-            showToast("You must login with facebook to continue");
+        String degree = "Intern";
+        if (degree.isEmpty() || fullName.isEmpty() ||
+                medicalCollege.isEmpty() || contactNo.isEmpty() || dateOfBirth.isEmpty() || workLocation.isEmpty() ||
+                regNo.isEmpty() || workingPlaceName.isEmpty()) {
+            showToast("All field are required");
             return;
         }
 
@@ -366,7 +353,7 @@ public class InternRegistration extends AppCompatActivity {
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
                         LoginType.PHONE,
-                        AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
+                        AccountKitActivity.ResponseType.TOKEN).setDefaultCountryCode("+880"); // or .ResponseType.TOKEN
         // ... perform additional configuration ...
         intent.putExtra(
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,

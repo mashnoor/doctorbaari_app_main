@@ -60,6 +60,7 @@ public class Reviews extends AppCompatActivity {
                 Review[] reviews = Geson.g().fromJson(response, Review[].class);
                 ReviewsListAdapter adapter = new ReviewsListAdapter(Reviews.this, reviews);
                 lvReviews.setAdapter(adapter);
+                dialog.dismiss();
             }
 
             @Override

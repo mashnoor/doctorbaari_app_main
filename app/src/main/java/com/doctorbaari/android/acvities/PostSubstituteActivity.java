@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
+import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
@@ -128,6 +129,10 @@ public class PostSubstituteActivity extends AppCompatActivity {
         String date_from = tvDateFrom.getText().toString();
         String degree = spnrDegree.getSelectedItem().toString();
         RequestParams params = new RequestParams();
+        if(date_to.isEmpty() || date_from.isEmpty() || instituteName.isEmpty() || details.isEmpty() || placename.isEmpty() || degree.isEmpty())
+        {
+            HelperFunc.showToast(PostSubstituteActivity.this, "All fields are required");
+        }
 
         params.put("date_to", date_to);
         params.put("date_from", date_from);

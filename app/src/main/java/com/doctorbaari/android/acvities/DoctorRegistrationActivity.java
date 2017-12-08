@@ -19,6 +19,11 @@ import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitCallback;
@@ -28,6 +33,8 @@ import com.facebook.accountkit.PhoneNumber;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
@@ -41,8 +48,10 @@ import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 import butterknife.BindView;
@@ -60,6 +69,10 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
     EditText etContactno;
     @BindView(R.id.etDateOfBirth)
     EditText etdateOfBirth;
+    @BindView(R.id.login_button)
+    LoginButton loginButton;
+
+    CallbackManager callbackManager;
 
 
     @BindView(R.id.etRegistrationNo)
@@ -73,6 +86,9 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
     String workingPlaceLat = "";
     String workingPlaceLon = "";
     ArrayList<String> degrees;
+    String email = "Not Available";
+    String profileLink = "Not Available";
+    String imageLink = "Not Available";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +103,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         Logger.addLogAdapter(new AndroidLogAdapter());
         verifyNumber();
         getCollegeList();
+        registerLogin();
         final Calendar myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -129,34 +146,13 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         String degree;
         JSONArray array = new JSONArray(degrees);
         degree = array.toString();
-        if (degrees.isEmpty()) {
-            showToast("Please select a degree");
+        if (degrees.isEmpty() || fullName.isEmpty() ||
+                medicalCollege.isEmpty() || contactNo.isEmpty() || dateOfBirth.isEmpty() || workLocation.isEmpty() ||
+                regNo.isEmpty() || workingPlaceName.isEmpty()) {
+            showToast("All field are required");
             return;
         }
-        if (fullName.isEmpty()) {
-            etFullName.setError("Full name can't be empty!");
-            return;
-        }
-        if (medicalCollege.isEmpty()) {
-            showToast("Select a medical college");
-            return;
-        }
-        if (contactNo.isEmpty()) {
-            etContactno.setError("Contact no can't be empty");
-            return;
-        }
-        if (dateOfBirth.isEmpty()) {
-            etdateOfBirth.setError("Date of birth can't be empty");
-            return;
-        }
-        if (workLocation.isEmpty()) {
-            showToast("Please select your working location");
-            return;
-        }
-        if (regNo.isEmpty()) {
-            etRegNo.setError("Reg No can't be empty");
-            return;
-        }
+
 
         RequestParams params = new RequestParams();
         params.put("username", fullName);
@@ -169,6 +165,9 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         params.put("placelat", workingPlaceLat);
         params.put("placelon", workingPlaceLon);
         params.put("type", "doctor");
+        params.put("email", email);
+        params.put("link", profileLink);
+        params.put("picture_url", imageLink);
         client.post(Constants.SIGNUP_URL, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
@@ -213,7 +212,13 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
             AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
+            try {
+                callbackManager.onActivityResult(requestCode, resultCode, data);
+            }
+            catch (Exception e)
+            {
 
+            }
             if (loginResult.getError() != null) {
                 showToast("Something went wrong! Try again later");
                 finish();
@@ -253,6 +258,61 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
 
     }
 
+    private void registerLogin() {
+
+        loginButton.setReadPermissions(Arrays.asList(
+                "public_profile", "email"));
+
+
+        callbackManager = CallbackManager.Factory.create();
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Logger.d(loginResult.getRecentlyGrantedPermissions());
+                GraphRequest request = GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject object, GraphResponse response) {
+                                Log.v("LoginActivity", response.toString());
+
+                                // Application code
+                                try {
+                                    Logger.d(object);
+                                    email = object.optString("email", "Not Available");
+                                    profileLink = object.optString("link", "Not Available");
+                                    imageLink = object.getJSONObject("picture").getJSONObject("data").optString("url", "Not Available");
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                // 01/31/1980 format
+                            }
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,email,gender,birthday,link,picture.type(large)");
+                request.setParameters(parameters);
+                request.executeAsync();
+
+
+            }
+
+            @Override
+            public void onCancel() {
+                showToast("Cancelled Login");
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+                showToast("Something went wrong");
+            }
+        });
+
+
+    }
+
     private void getCollegeList() {
         client.get(Constants.GET_COLLEGE_LIST, new AsyncHttpResponseHandler() {
             @Override
@@ -265,10 +325,16 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
                 String[] colleges = Geson.g().fromJson(response, String[].class);
+                String[] collegesFinal = new String[colleges.length + 1];
+                collegesFinal[0] = "Select your college";
+                for (int i = 1; i <= colleges.length; i++) {
+                    collegesFinal[i] = colleges[i - 1];
+                }
+                spnrMedicalCollege.setPrompt("Select Medical College");
 
                 ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>
                         (DoctorRegistrationActivity.this, android.R.layout.simple_spinner_item,
-                                colleges); //selected item will look like a spinner set from XML
+                                collegesFinal); //selected item will look like a spinner set from XML
                 spinnerArrayAdapter.setDropDownViewResource(android.R.layout
                         .simple_spinner_dropdown_item);
                 spnrMedicalCollege.setAdapter(spinnerArrayAdapter);
@@ -290,7 +356,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
                         LoginType.PHONE,
-                        AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
+                        AccountKitActivity.ResponseType.TOKEN).setDefaultCountryCode("+880"); // or .ResponseType.TOKEN
         // ... perform additional configuration ...
         intent.putExtra(
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,

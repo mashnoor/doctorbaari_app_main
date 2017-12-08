@@ -1,9 +1,11 @@
 package com.doctorbaari.android.acvities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -80,5 +82,16 @@ public class NewsfeedActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void goMySchedule(View v) {
+        Intent i = new Intent(this, AvaibilityListActivity.class);
+        i.putExtra("type", "sub");
+        startActivity(i);
+    }
+    public void goNotification(View v)
+    {
+        Intent i = new Intent(this, NotificationActivity.class);
+        startActivity(i);
     }
 }

@@ -72,11 +72,9 @@ public class SideNToolbarController {
                         new DividerDrawerItem(),
                         searchSubstitute, //10
                         new DividerDrawerItem(),
-                        viewAvailableSubstitutes, //12
+                        about, //12
                         new DividerDrawerItem(),
-                        about, //14
-                        new DividerDrawerItem(),
-                         logout //16
+                        logout //14
 
 
                 )
@@ -100,15 +98,12 @@ public class SideNToolbarController {
                             case 8:
                                 activity.startActivity(new Intent(activity, SearchPermanentJob.class));
                                 break;
-                            case 12:
-                                activity.startActivity(new Intent(activity, ViewAvailableDoctorsActivity.class));
-                                break;
 
                             case 10:
                                 activity.startActivity(new Intent(activity, SearchSubstituteJobs.class));
                                 break;
 
-                            case 16:
+                            case 14:
                                 AccountKit.logOut();
                                 DBHelper.setSignedInStatus(activity, false);
                                 activity.finishAffinity();
@@ -124,6 +119,8 @@ public class SideNToolbarController {
                 })
                 .withSelectedItem(-1)
                 .build();
+        d.closeDrawer();
+
 
     }
 }

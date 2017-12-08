@@ -135,6 +135,9 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         String placename = placeName;
         String degree = spnrDegree.getSelectedItem().toString();
         String details = etDetails.getText().toString();
+        if (startingfrom.isEmpty() || placename.isEmpty() || institution.isEmpty() || details.isEmpty() || degree.isEmpty()) {
+            HelperFunc.showToast(PostPermanentJobActivity.this, "All fields are required");
+        }
 
         RequestParams params = new RequestParams();
         params.put("institute", institution);
