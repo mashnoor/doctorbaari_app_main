@@ -38,6 +38,15 @@
                 android:id="@+id/swtchAvailable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnSeeresults"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="right"
+                android:background="@color/pink"
+                android:text="See Results"
+                android:textColor="@color/white" />
         </LinearLayout>
 
 

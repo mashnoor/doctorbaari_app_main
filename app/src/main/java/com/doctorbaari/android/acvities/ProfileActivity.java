@@ -283,10 +283,14 @@ public class ProfileActivity extends AppCompatActivity {
      ***/
 
     public void goAvaibilityActivity(View v) {
-        startActivity(new Intent(this, AvaibilityListActivity.class));
+        Intent i = new Intent(this, AvaibilityListActivity.class);
+        i.putExtra("type", "sub");
+        startActivity(i);
     }
 
     public void goViewHistory(View view) {
-        startActivity(new Intent(this, HistoryActivity.class));
+        Intent i = new Intent(this, HistoryActivity.class);
+        i.putExtra("type", "sub");
+        startActivity(i);
     }
 }

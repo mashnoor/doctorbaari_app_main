@@ -2,21 +2,27 @@ package com.doctorbaari.android.adapters;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.doctorbaari.android.R;
+import com.doctorbaari.android.acvities.SearchPermanentJob;
+import com.doctorbaari.android.acvities.SubstituteJobSearchResult;
 import com.doctorbaari.android.models.Avaibility;
 import com.doctorbaari.android.utils.Constants;
+import com.doctorbaari.android.utils.DBHelper;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.orhanobut.logger.Logger;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -60,9 +66,62 @@ public class AvaibilityListAdapter extends BaseAdapter {
         TextView tvFromdate = v.findViewById(R.id.tvFromdate);
         TextView tvTodate = v.findViewById(R.id.tvTodate);
         TextView tvLocation = v.findViewById(R.id.tvLocation);
+        Button btnSeeResults = v.findViewById(R.id.btnSeeresults);
         final Switch swtchAvailable = v.findViewById(R.id.swtchAvailable);
 
         final Avaibility currAvaibility = getItem(i);
+
+        btnSeeResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AsyncHttpClient client = new AsyncHttpClient();
+                final ProgressDialog dialog = new ProgressDialog(activity);
+                dialog.setMessage("Connecting to server...");
+
+                RequestParams params = new RequestParams();
+                params.put("fromdate", currAvaibility.getFromDate());
+                params.put("userid", DBHelper.getUserid(activity));
+                params.put("place", currAvaibility.getPlace());
+                params.put("placelat", currAvaibility.getPlacelat());
+                params.put("placelon", currAvaibility.getPlacelon());
+                String whichUrlToHit;
+                if(currAvaibility.getType().equals("per"))
+                    whichUrlToHit = Constants.SEARCH_PERMANENT_JOB;
+                else
+                    whichUrlToHit = Constants.SEARCH_SUBSTITUTE_JOBS;
+
+                client.post(whichUrlToHit, params, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        dialog.show();
+                    }
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        dialog.dismiss();
+                        String response = new String(responseBody);
+                        Intent i = new Intent(activity, SubstituteJobSearchResult.class);
+                        i.putExtra("response", response);
+                        activity.startActivity(i);
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        dialog.dismiss();
+                        Logger.d(new String(responseBody));
+
+                    }
+                });
+
+
+
+
+            }
+        });
+
         tvFromdate.setText(currAvaibility.getFromDate());
         tvTodate.setText(currAvaibility.getToDate());
         tvLocation.setText(currAvaibility.getPlace());
