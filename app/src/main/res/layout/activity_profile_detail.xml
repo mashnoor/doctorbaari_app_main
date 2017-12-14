@@ -23,7 +23,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="7dp">
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp">
 
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -44,6 +47,7 @@
                 android:gravity="center"
                 android:text="User Name"
                 android:textSize="22sp"
+                android:textColor="@color/black_bg"
                 android:textStyle="bold" />
 
 
@@ -54,7 +58,8 @@
                 android:layout_marginBottom="10dp"
                 android:text="General Info"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/black_bg"/>
 
 
             <TextView
@@ -62,24 +67,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Medical: Institue Name"
-                android:textSize="15sp" />
+                android:text="Medical :  Institue Name"
+                android:textSize="15sp"
+                android:textColor="@color/black_bg" />
 
             <TextView
                 android:id="@+id/tvCurrentlyWorking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Currently working: Currently Working"
-                android:textSize="15sp" />
+                android:text="Currently working :  Currently Working"
+                android:textSize="15sp"
+                android:textColor="@color/black_bg" />
 
             <TextView
                 android:id="@+id/tvDegree"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Degree: MBBS"
-                android:textSize="15sp" />
+                android:text="Degree :  MBBS"
+                android:textSize="15sp"
+                android:textColor="@color/black_bg" />
 
 
             <TextView
@@ -87,8 +95,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:text="Date of Birth: 19/06/1990"
-                android:textSize="15sp" />
+                android:text="Date of Birth :  19/06/1990"
+                android:textSize="15sp"
+                android:textColor="@color/black_bg" />
 
 
             <TextView
@@ -98,38 +107,94 @@
                 android:layout_marginBottom="10dp"
                 android:text="Contact Info"
                 android:textSize="20sp"
+                android:textColor="@color/black_bg"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvFbLink"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Facebook: FB Link"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
 
-                android:textSize="15dp" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/facebook"
+                    android:id="@+id/facebook"
+                    android:layout_marginRight="15dp"/>
 
-            <TextView
-                android:id="@+id/tvMobile"
+                <TextView
+                    android:id="@+id/tvFbLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FB Link"
+                    android:textSize="15dp"
+                    android:textColor="@color/black_bg" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Mobile: Mobile"
-                android:textSize="15sp" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
 
 
-            <TextView
-                android:id="@+id/tvEmail"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/call_button"
+                    android:id="@+id/call"
+                    android:layout_marginRight="15dp"/>
+
+                <TextView
+                    android:id="@+id/tvMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile"
+                    android:textColor="@color/black_bg"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Email: abc@example.com"
-                android:textSize="15sp" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/mail_icon"
+                    android:id="@+id/email"
+                    android:layout_marginRight="15dp"/>
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="abc@example.com"
+                    android:textColor="@color/black_bg"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
                 android:onClick="goContact"
-                android:text="Contact" />
+                android:text="Contact"
+                android:background="@color/pink"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/uhjd"
@@ -138,12 +203,13 @@
                 android:layout_marginBottom="10dp"
                 android:text="Review"
                 android:textSize="20sp"
+                android:textColor="@color/black_bg"
                 android:textStyle="bold" />
             <Button
                 android:text="View previous reviews"
                 android:onClick="viewReviews"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
             <RatingBar
                 android:id="@+id/rbReview"
@@ -161,7 +227,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="postReview"
-                android:text="Post Review" />
+                android:text="Post Review"
+                android:background="@color/black_bg"
+                android:textColor="@color/white"
+                android:padding="10dp"/>
 
 
         </LinearLayout>

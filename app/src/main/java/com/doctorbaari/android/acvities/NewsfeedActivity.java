@@ -94,4 +94,9 @@ public class NewsfeedActivity extends AppCompatActivity {
         Intent i = new Intent(this, NotificationActivity.class);
         startActivity(i);
     }
+    public void goAvaibilityActivity(View v) {
+        Intent i = new Intent(this, AvaibilityListActivity.class);
+        i.putExtra("type", "sub");
+        startActivity(i);
+    }
 }

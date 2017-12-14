@@ -4,7 +4,7 @@
     android:id="@+id/activity_welcome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcomepage"
+    android:background="@drawable/welcome_bg"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -13,20 +13,11 @@
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
-        app:srcCompat="@drawable/whitelogo" />
+        android:layout_weight="6"
+        android:src="@drawable/whitelogo" />
 
-    <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="3"
-        android:fontFamily="cursive"
-        android:text="Welcome"
-        android:textColor="@color/white"
-        android:textSize="50dp"
-        android:textStyle="bold" />
+
+
 
 
 </LinearLayout>

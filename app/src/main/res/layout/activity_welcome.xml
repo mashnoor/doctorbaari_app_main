@@ -2,21 +2,21 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/welcome_bg"
 
     android:fillViewport="true">
 
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:id="@+id/activity_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/pink"
+
         android:orientation="vertical"
         android:paddingBottom="16dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        tools:context="com.example.shakilpc.doctorbari.SignUp">
+        android:paddingTop="16dp">
 
 
         <ImageView
@@ -61,6 +61,15 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
 
+
+        <ImageView
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:onClick="goDoctorSignUp"
+            android:src="@drawable/intern_doctors" />
+
+
         <Button
             android:id="@+id/button1"
             android:layout_width="280dp"
@@ -68,9 +77,9 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:background="@color/button"
-            android:text="Intern Doctor"
-
             android:onClick="goInternSignup"
+
+            android:text="Intern Doctor"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
@@ -80,8 +89,8 @@
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:onClick="goHospitalAuthoritySignup"
             android:background="@color/button"
+            android:onClick="goHospitalAuthoritySignup"
 
             android:text="Hospital Authority"
             android:textColor="@color/white"

@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
             android:text="DMC"
+            android:textColor="@color/black_bg"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -27,6 +28,7 @@
             android:layout_height="wrap_content"
 
             android:layout_marginBottom="7dp"
+            android:textColor="@color/black_bg"
             android:text="Location:"
             android:textSize="15sp" />
 
@@ -35,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
+            android:textColor="@color/black_bg"
 
             android:text="Posted On:"/>
 
@@ -51,26 +54,25 @@
                 android:id="@+id/ivLocation"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.29"
-                android:src="@drawable/location" />
+                android:src="@drawable/location_black" />
 
 
             <Button
                 android:id="@+id/btnJobdetails"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_weight="0.29"
-                android:background="@color/azur"
+                android:background="@drawable/edit_text_style"
                 android:text="See Details" />
 
             <Button
                 android:id="@+id/btnContact"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_weight="0.29"
-                android:background="@color/pink"
+                android:background="@color/black_bg"
                 android:text="Contact"
                 android:textColor="@color/white" />
 

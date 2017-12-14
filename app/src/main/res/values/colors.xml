@@ -8,10 +8,14 @@
     <color name="white">#ffffff</color>
     <color name="button">#D51f26</color>
 
+    <color name="black_bg">#131314</color>
+
     <color name="black_overlay">#66000000</color>
 
-    <color name="material_drawer_background">#ED1f24</color>
+    <color name="material_drawer_background">#2F4F4F</color>
     <!-- Material DEFAULT text / items colors -->
     <color name="material_drawer_primary_text">#ffffff</color>
+    <color name="new_tool_color">#2F4F4F</color>
+
 
 </resources>

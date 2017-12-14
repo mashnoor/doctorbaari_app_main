@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
+    android:background="@color/new_tool_color"
     android:minHeight="?attr/actionBarSize"
-    android:background="@color/pink"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4">
 
         <TextView
-            android:text="Activity Name"
-            android:textSize="20sp"
             android:id="@+id/tvActivityName"
-            android:layout_gravity="left"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="3"
+            android:text="Activity Name"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/refresh"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:src="@drawable/refresh_button" />
 
 
+    </LinearLayout>
 
 </android.support.v7.widget.Toolbar>
 

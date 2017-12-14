@@ -45,15 +45,10 @@ public class SearchPermanentJob extends AppCompatActivity {
     @BindView(R.id.etFromDate)
     EditText etFromDate;
 
-    @BindView(R.id.lvPermanentJobSearchResult)
-    ListView lvPermanentJobSearch;
 
-    @BindView(R.id.swtchAvailable)
-    Switch swtchAvailable;
 
     AsyncHttpClient client;
 
-    JobAdapter adapter;
 
     ProgressDialog dialog;
 
@@ -74,7 +69,7 @@ public class SearchPermanentJob extends AppCompatActivity {
         registerFuckingCalenderListener();
     }
 
-    public void searchPermanent(View v) {
+    public void searchPermanent() {
         String fromDate = etFromDate.getText().toString();
         if (fromDate.isEmpty() || placename.isEmpty()) {
             HelperFunc.showToast(SearchPermanentJob.this, "All fields must be filled");
@@ -174,7 +169,7 @@ public class SearchPermanentJob extends AppCompatActivity {
 
     }
 
-    public void addToAvailability(View v) {
+    public void saveAndSearch(View v) {
         String fromdate = etFromDate.getText().toString();
         String todate = "Not Available";
         if (fromdate.isEmpty() || todate.isEmpty() || placename.isEmpty()) {
@@ -188,7 +183,7 @@ public class SearchPermanentJob extends AppCompatActivity {
         params.put("placelat", placelat);
         params.put("placelon", placelon);
         params.put("type", "per");
-        params.put("available", String.valueOf(swtchAvailable.isChecked() ? 1 : 0));
+        params.put("available", "1");
         params.put("userid", DBHelper.getUserid(SearchPermanentJob.this));
         client.post(Constants.ADD_TO_AVAIBILITY, params, new AsyncHttpResponseHandler() {
             @Override
@@ -203,7 +198,7 @@ public class SearchPermanentJob extends AppCompatActivity {
 
                 dialog.dismiss();
                 HelperFunc.showToast(SearchPermanentJob.this, "Successfully added to availability list");
-                searchPermanent(null);
+                searchPermanent();
 
 
             }
@@ -219,11 +214,6 @@ public class SearchPermanentJob extends AppCompatActivity {
         });
     }
 
-    public void goPermanentJobSchedule(View v)
-    {
-        Intent i = new Intent(this, AvaibilityListActivity.class);
-        i.putExtra("type", "per");
-        startActivity(i);
-    }
+
 
 }

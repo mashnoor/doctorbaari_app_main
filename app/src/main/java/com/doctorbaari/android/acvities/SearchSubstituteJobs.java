@@ -53,8 +53,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
     EditText etToDate;
 
     int which;
-    @BindView(R.id.swtchAvailable)
-    Switch swtchAvailable;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +147,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
 
     }
 
-    public void addToAvailability(View v) {
+    public void saveAndSearch(View v) {
         String fromdate = etFromDate.getText().toString();
         String todate = etToDate.getText().toString();
         if (fromdate.isEmpty() || todate.isEmpty() || placename.isEmpty()) {
@@ -162,7 +161,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
         params.put("placelat", placelat);
         params.put("placelon", placelon);
         params.put("type", "sub");
-        params.put("available", String.valueOf(swtchAvailable.isChecked() ? 1 : 0));
+        params.put("available", "1");
         params.put("userid", DBHelper.getUserid(SearchSubstituteJobs.this));
         client.post(Constants.ADD_TO_AVAIBILITY, params, new AsyncHttpResponseHandler() {
             @Override
@@ -177,7 +176,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
 
                 dialog.dismiss();
                 HelperFunc.showToast(SearchSubstituteJobs.this, "Successfully added to avaibility list");
-                searchSubstituteJobs(null);
+                searchSubstituteJobs();
 
 
             }
@@ -194,7 +193,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
     }
 
 
-    public void searchSubstituteJobs(View v) {
+    public void searchSubstituteJobs() {
         String fromdate = etFromDate.getText().toString();
         String todate = etToDate.getText().toString();
         if (fromdate.isEmpty() || todate.isEmpty() || placename.isEmpty()) {
@@ -234,10 +233,5 @@ public class SearchSubstituteJobs extends AppCompatActivity {
             }
         });
     }
-    public void goSubSchedule(View v)
-    {
-        Intent i = new Intent(this, AvaibilityListActivity.class);
-        i.putExtra("type", "sub");
-        startActivity(i);
-    }
+
 }

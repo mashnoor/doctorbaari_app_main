@@ -34,6 +34,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20sp"
                 android:text="Profile name"
+                android:textColor="@color/black_bg"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -45,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="College: DMC"
+            android:textColor="@color/black_bg"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -55,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="Degree: MBBS"
+            android:textColor="@color/black_bg"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -65,13 +68,14 @@
             android:layout_marginBottom="5dp"
             android:text="Location: Banasree"
             android:textSize="15sp"
+            android:textColor="@color/black_bg"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center"
-
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -86,7 +90,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/callbutton" />
+                android:src="@drawable/call_button" />
 
             <ImageView
                 android:id="@+id/ivPlace"

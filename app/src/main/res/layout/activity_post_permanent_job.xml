@@ -67,6 +67,7 @@
                     android:layout_marginRight="10dp"
                     android:text="Place"
                     android:textSize="20dp"
+                    android:textColor="@color/black_bg"
                     android:textStyle="bold" />
 
                 <fragment
@@ -88,7 +89,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="selectImage"
-                android:text="Select Image" />
+                android:text="Select Image"
+                android:padding="10dp"/>
 
 
             <LinearLayout
@@ -104,6 +106,7 @@
                     android:layout_marginRight="10dp"
                     android:text="Preffered Degree"
                     android:textSize="20dp"
+                    android:textColor="@color/black_bg"
                     android:textStyle="bold" />
 
                 <Spinner
@@ -123,6 +126,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="Details"
                 android:textSize="18dp"
+                android:textColor="@color/black_bg"
                 android:textStyle="bold" />
 
             <EditText

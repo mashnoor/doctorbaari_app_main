@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout android:id="@+id/activity_sign_up"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    android:fillViewport="true">
-
-
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_sign_up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/pink"
-        android:orientation="vertical"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        tools:context="com.example.shakilpc.doctorbari.SignUp">
+    android:layout_height="wrap_content"
+    android:background="@drawable/welcome_bg"
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 
         <ImageView
@@ -48,7 +42,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="15dp"
-            android:background="@color/button"
+            android:background="@color/black_bg"
             android:onClick="goLogin"
             android:text="Login with phone"
             android:textColor="@color/white"
@@ -66,5 +60,3 @@
 
     </LinearLayout>
 
-
-</ScrollView>

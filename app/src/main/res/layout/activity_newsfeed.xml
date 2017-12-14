@@ -16,19 +16,33 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
             android:onClick="goMySchedule"
-            android:text="My Schedule" />
+            android:src="@drawable/news_feed_black" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
             android:onClick="goNotification"
-            android:text="Notification" />
+            android:src="@drawable/notification_icon" />
+
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:onClick="goAvaibilityActivity"
+            android:src="@drawable/time_icon_black" />
+
     </LinearLayout>
 
     <ListView
