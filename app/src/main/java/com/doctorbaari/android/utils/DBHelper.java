@@ -2,6 +2,7 @@ package com.doctorbaari.android.utils;
 
 import android.app.Activity;
 
+import com.doctorbaari.android.models.Advertise;
 import com.orhanobut.hawk.Hawk;
 
 /**
@@ -28,5 +29,15 @@ public class DBHelper {
     {
         Hawk.init(activity).build();
         return Hawk.get("signed", false);
+    }
+    public static void saveAdvertises(Activity activity, Advertise[] advertises)
+    {
+        Hawk.init(activity).build();
+        Hawk.put("advertises", advertises);
+    }
+    public static Advertise[] getAdvertises(Activity activity)
+    {
+        Hawk.init(activity).build();
+        return Hawk.get("advertises", new Advertise[]{});
     }
 }

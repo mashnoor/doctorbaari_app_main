@@ -18,6 +18,7 @@ import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -90,6 +91,7 @@ public class InternRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intern_registration);
         ButterKnife.bind(this);
+        SideNToolbarController.attach(this, "Intern Doctor Registration");
         registerPlaceFragment();
         Logger.addLogAdapter(new AndroidLogAdapter());
         client = new AsyncHttpClient();

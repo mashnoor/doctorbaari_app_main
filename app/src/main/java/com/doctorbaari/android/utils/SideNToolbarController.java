@@ -5,9 +5,13 @@ import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.doctorbaari.android.R;
+import com.doctorbaari.android.acvities.DoctorRegistrationActivity;
+import com.doctorbaari.android.acvities.HospitalAuthorityRegistration;
+import com.doctorbaari.android.acvities.InternRegistration;
 import com.doctorbaari.android.acvities.LoginActivity;
 import com.doctorbaari.android.acvities.NewsfeedActivity;
 import com.doctorbaari.android.acvities.PostPermanentJobActivity;
@@ -16,6 +20,7 @@ import com.doctorbaari.android.acvities.ProfileActivity;
 import com.doctorbaari.android.acvities.SearchPermanentJob;
 import com.doctorbaari.android.acvities.SearchSubstituteJobs;
 import com.doctorbaari.android.acvities.ViewAvailableDoctorsActivity;
+import com.doctorbaari.android.acvities.WelcomeActivity;
 import com.facebook.FacebookSdk;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.login.LoginManager;
@@ -30,11 +35,40 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
  */
 
 public class SideNToolbarController {
-    public SideNToolbarController() {
+    private SideNToolbarController() {
     }
 
-    public static void attach(final Activity activity, String name) {
+    public static void attach(final Activity activity, String name)
 
+    {
+
+
+        Toolbar t = activity.findViewById(R.id.toolbar);
+
+
+        TextView activityName = activity.findViewById(R.id.tvActivityName);
+        ImageView ivRefresh = activity.findViewById(R.id.ivRefresh);
+        ivRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.recreate();
+            }
+        });
+        if ((activity instanceof DoctorRegistrationActivity) || (activity instanceof InternRegistration) || (activity instanceof HospitalAuthorityRegistration)) {
+            ivRefresh.setVisibility(View.INVISIBLE);
+        } else {
+            createDrawer(activity, t);
+        }
+
+
+        activityName.setText(name);
+
+
+    }
+
+    private static void createDrawer(final Activity activity, Toolbar t)
+
+    {
         PrimaryDrawerItem feedItem = new PrimaryDrawerItem().withName("Feed").withIcon(R.drawable.newsfeed);
         PrimaryDrawerItem profileItem = new PrimaryDrawerItem().withName("Profile").withIcon(R.drawable.profileicon);
         PrimaryDrawerItem postPermanent = new PrimaryDrawerItem().withName("Post Permanent Job").withIcon(R.drawable.postjob);
@@ -45,11 +79,6 @@ public class SideNToolbarController {
 
         PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIcon(R.drawable.logout);
         PrimaryDrawerItem about = new PrimaryDrawerItem().withName("About").withIcon(R.drawable.about);
-        TextView activityName = activity.findViewById(R.id.tvActivityName);
-
-        activityName.setText(name);
-
-        Toolbar t = activity.findViewById(R.id.toolbar);
 
 
         final Drawer d = new DrawerBuilder()
@@ -84,6 +113,7 @@ public class SideNToolbarController {
                         switch (position) {
                             case 0:
                                 activity.startActivity(new Intent(activity, NewsfeedActivity.class));
+
                                 break;
                             case 2:
                                 activity.startActivity(new Intent(activity, ProfileActivity.class));
@@ -119,7 +149,5 @@ public class SideNToolbarController {
                 .withSelectedItem(-1)
                 .build();
         d.closeDrawer();
-
-
     }
 }

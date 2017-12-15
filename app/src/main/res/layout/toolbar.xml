@@ -25,7 +25,7 @@
             android:textSize="15sp" />
 
         <ImageView
-            android:id="@+id/refresh"
+            android:id="@+id/ivRefresh"
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:layout_gravity="end"

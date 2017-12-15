@@ -19,6 +19,7 @@ import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -95,6 +96,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_registration);
         ButterKnife.bind(this);
+        SideNToolbarController.attach(this, "Doctor Registration");
         registerPlaceFragment();
         degrees = new ArrayList<>();
         client = new AsyncHttpClient();

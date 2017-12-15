@@ -66,6 +66,7 @@ public class AvaibilityListAdapter extends BaseAdapter {
         TextView tvFromdate = v.findViewById(R.id.tvFromdate);
         TextView tvTodate = v.findViewById(R.id.tvTodate);
         TextView tvLocation = v.findViewById(R.id.tvLocation);
+        TextView tvJobType = v.findViewById(R.id.tvJobType);
         Button btnSeeResults = v.findViewById(R.id.btnSeeresults);
         final Switch swtchAvailable = v.findViewById(R.id.swtchAvailable);
 
@@ -86,7 +87,7 @@ public class AvaibilityListAdapter extends BaseAdapter {
                 params.put("placelat", currAvaibility.getPlacelat());
                 params.put("placelon", currAvaibility.getPlacelon());
                 String whichUrlToHit;
-                if(currAvaibility.getType().equals("per"))
+                if (currAvaibility.getType().equals("per"))
                     whichUrlToHit = Constants.SEARCH_PERMANENT_JOB;
                 else
                     whichUrlToHit = Constants.SEARCH_SUBSTITUTE_JOBS;
@@ -117,14 +118,13 @@ public class AvaibilityListAdapter extends BaseAdapter {
                 });
 
 
-
-
             }
         });
 
-        tvFromdate.setText(currAvaibility.getFromDate());
-        tvTodate.setText(currAvaibility.getToDate());
-        tvLocation.setText(currAvaibility.getPlace());
+        tvFromdate.setText("From Date: " + currAvaibility.getFromDate());
+        tvTodate.setText("To Date: " + currAvaibility.getToDate());
+        tvLocation.setText("Location: " + currAvaibility.getPlace());
+        tvJobType.setText("Job Type: " + currAvaibility.getType());
         if (currAvaibility.getAvailable().equals("1")) {
             swtchAvailable.setChecked(true);
         } else {

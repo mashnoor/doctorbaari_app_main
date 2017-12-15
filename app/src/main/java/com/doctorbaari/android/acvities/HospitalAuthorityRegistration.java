@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitCallback;
@@ -66,6 +67,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital_authority_registration);
         ButterKnife.bind(this);
+        SideNToolbarController.attach(this, "Hospital Authority Registration");
         registerPlaceFragment();
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
