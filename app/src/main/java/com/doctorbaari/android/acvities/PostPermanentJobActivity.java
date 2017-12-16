@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -37,7 +38,10 @@ import com.loopj.android.http.RequestParams;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
+import org.json.JSONArray;
+
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -54,8 +58,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
     @BindView(R.id.etStartingFrom)
     EditText etStatingFrom;
 
-    @BindView(R.id.spnrDegree)
-    Spinner spnrDegree;
+
     @BindView(R.id.etDetails)
     EditText etDetails;
     @BindView(R.id.ivPermanentJobImage)
@@ -70,6 +73,8 @@ public class PostPermanentJobActivity extends AppCompatActivity {
 
     File imgfile = null;
 
+    ArrayList<String> degrees;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +83,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "Post Permanent Job");
         registerPlaceFragment();
+        degrees = new ArrayList<>();
         Logger.d(new AndroidLogAdapter());
         registerFuckingCalenderListener();
 
@@ -133,9 +139,10 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         String institution = etInstitution.getText().toString();
         String startingfrom = etStatingFrom.getText().toString();
         String placename = placeName;
-        String degree = spnrDegree.getSelectedItem().toString();
+        JSONArray degreesJson = new JSONArray(degrees);
+        String degree = degreesJson.toString();
         String details = etDetails.getText().toString();
-        if (startingfrom.isEmpty() || placename.isEmpty() || institution.isEmpty() || details.isEmpty() || degree.isEmpty()) {
+        if (startingfrom.isEmpty() || placename.isEmpty() || institution.isEmpty() || details.isEmpty() || degrees.isEmpty()) {
             HelperFunc.showToast(PostPermanentJobActivity.this, "All fields are required");
         }
 
@@ -192,7 +199,8 @@ public class PostPermanentJobActivity extends AppCompatActivity {
 
         String date_to = etStatingFrom.getText().toString();
         String date_from = "Not Available";
-        String degree = spnrDegree.getSelectedItem().toString();
+        JSONArray degreesArray = new JSONArray(degrees);
+        String degree = degreesArray.toString();
         Intent i = new Intent(this, ViewAvailableDoctorsActivity.class);
         i.putExtra("fromdate", date_from);
         i.putExtra("todate", date_to);
@@ -280,5 +288,17 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         Intent i = new Intent(this, HistoryActivity.class);
         i.putExtra("type", "per");
         startActivity(i);
+    }
+
+    public void degreeChecked(View v) {
+        CheckBox cb = (CheckBox) v;
+
+        if (cb.isChecked()) {
+            Logger.d(cb.getText().toString());
+            degrees.add(cb.getText().toString());
+        } else {
+            degrees.remove(cb.getText().toString());
+        }
+
     }
 }

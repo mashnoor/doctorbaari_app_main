@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.doctorbaari.android.R;
@@ -23,6 +24,8 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.orhanobut.logger.Logger;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
@@ -38,6 +41,7 @@ public class InquiryActivity extends AppCompatActivity {
     ProgressDialog dialog;
     AsyncHttpClient client;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,7 @@ public class InquiryActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
         client = new AsyncHttpClient();
+
     }
 
 
@@ -110,4 +115,6 @@ public class InquiryActivity extends AppCompatActivity {
 
 
     }
+
+
 }

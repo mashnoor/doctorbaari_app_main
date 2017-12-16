@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -31,6 +32,9 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.orhanobut.logger.Logger;
 
+import org.json.JSONArray;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import butterknife.BindView;
@@ -49,13 +53,13 @@ public class PostSubstituteActivity extends AppCompatActivity {
     TextView tvDateFrom;
     @BindView(R.id.tvToDate)
     TextView tvToDate;
-    @BindView(R.id.spnrDegree)
-    Spinner spnrDegree;
 
     AsyncHttpClient client;
     ProgressDialog dialog;
 
     String placename = "", placelat = "", placelon = "";
+
+    ArrayList<String> degrees;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "Post For Substitute");
         registerPlaceFragment();
+        degrees = new ArrayList<>();
 
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
@@ -127,11 +132,12 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
         String date_to = tvToDate.getText().toString();
         String date_from = tvDateFrom.getText().toString();
-        String degree = spnrDegree.getSelectedItem().toString();
+        JSONArray degreesJson = new JSONArray(degrees);
+        String degree = degreesJson.toString();
         RequestParams params = new RequestParams();
-        if(date_to.isEmpty() || date_from.isEmpty() || instituteName.isEmpty() || details.isEmpty() || placename.isEmpty() || degree.isEmpty())
-        {
+        if (date_to.isEmpty() || date_from.isEmpty() || instituteName.isEmpty() || details.isEmpty() || placename.isEmpty() || degrees.isEmpty()) {
             HelperFunc.showToast(PostSubstituteActivity.this, "All fields are required");
+            return;
         }
 
         params.put("date_to", date_to);
@@ -175,7 +181,8 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
         String date_to = tvToDate.getText().toString();
         String date_from = tvDateFrom.getText().toString();
-        String degree = spnrDegree.getSelectedItem().toString();
+        JSONArray degreesJson = new JSONArray(degrees);
+        String degree = degreesJson.toString();
         Intent i = new Intent(this, ViewAvailableDoctorsActivity.class);
         i.putExtra("fromdate", date_from);
         i.putExtra("todate", date_to);
@@ -218,6 +225,18 @@ public class PostSubstituteActivity extends AppCompatActivity {
         Intent i = new Intent(this, HistoryActivity.class);
         i.putExtra("type", "sub");
         startActivity(i);
+    }
+
+    public void degreeChecked(View v) {
+        CheckBox cb = (CheckBox) v;
+
+        if (cb.isChecked()) {
+            Logger.d(cb.getText().toString());
+            degrees.add(cb.getText().toString());
+        } else {
+            degrees.remove(cb.getText().toString());
+        }
+
     }
 
 }

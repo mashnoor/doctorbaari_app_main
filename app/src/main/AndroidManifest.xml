@@ -49,16 +49,22 @@
         </activity>
         <activity
             android:name=".acvities.WelcomeActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.DoctorRegistrationActivity"
-            android:launchMode="singleInstance" />
-        <activity android:name=".acvities.NewsfeedActivity" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".acvities.NewsfeedActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen"
             android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,50 +74,86 @@
         </activity>
         <activity
             android:name=".acvities.LoginActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.PostSubstituteActivity"
             android:label="@string/title_activity_search_substitute"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".acvities.PostPermanentJobActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.ProfileActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.SearchPermanentJob"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.ViewAvailableDoctorsActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.AvaibilityListActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.HistoryActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.HistorySubSearchResult"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.SearchSubstituteJobs"
-            android:launchMode="singleInstance" />
-        <activity android:name=".acvities.InternRegistration" />
-        <activity android:name=".acvities.HospitalAuthorityRegistration" />
-        <activity android:name=".acvities.JobDetailsActivity" />
-        <activity android:name=".acvities.ProfileDetail" />
-        <activity android:name=".acvities.SubstituteJobSearchResult" />
-        <activity android:name=".acvities.Reviews" />
-        <activity android:name=".acvities.NotificationActivity" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".acvities.InternRegistration"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".acvities.HospitalAuthorityRegistration"
+
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".acvities.JobDetailsActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".acvities.ProfileDetail"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".acvities.SubstituteJobSearchResult"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".acvities.Reviews"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".acvities.NotificationActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
 
         <receiver android:name=".services.AlarmReceiver" />
 
         <activity
             android:name=".acvities.AdvertiseDetailActivity"
             android:excludeFromRecents="true"
+
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name=".acvities.InquiryActivity"></activity>
+        <activity
+            android:name=".acvities.InquiryActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -101,272 +101,263 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+
+                <TextView
+                    android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
-                    android:orientation="vertical">
+                    android:text="Select with your degree"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
 
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        android:text="Select with your degree"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FCPS"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="FCPS"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:id="@+id/checkedText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:onClick="degreeChecked"
-                            android:text="FCPS Medicine" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:onClick="degreeChecked"
-                            android:text="FCPS Surgery" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:onClick="degreeChecked"
-                            android:text="FCPS Obstetrics" />
-
-
-                    </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/checkedTextGyno"
+                        android:id="@+id/checkedText"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:onClick="degreeChecked"
-                        android:text="FCPS Gynacology" />
-
-
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:onClick="degreeChecked"
-                        android:text="MD"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:id="@+id/checkedText3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="MS Gynacology" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="MS Surgery" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="MS Obstatic" />
-
-
-                    </LinearLayout>
-
-
-                    <TextView
-                        android:id="@+id/textViewOther"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="OTHER"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:id="@+id/checkedText7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="MRCP" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="FRCP" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="MRCS" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="FRCS" />
-
-                        <CheckBox
-                            android:id="@+id/checkedTextFecs"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="FACS" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-
-                        <CheckBox
-                            android:id="@+id/checkedTextFcpsPart_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="FCPS part 2" />
-
-
-                        <CheckBox
-                            android:id="@+id/checkedTextFcpsPart_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="FCPS part 1" />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:id="@+id/checkedText11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="Diploma" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="M.Phil" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:id="@+id/checkedText13"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="PGT" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText14"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:onClick="degreeChecked"
-                            android:text="FCGP" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText15"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="CCD" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText16"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="DMU" />
-
-                        <CheckBox
-                            android:id="@+id/checkedText17"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="degreeChecked"
-                            android:text="CMU" />
-
-
-                    </LinearLayout>
-
+                        android:text="FCPS Medicine" />
 
                     <CheckBox
-                        android:id="@+id/checkedTextTraining"
+                        android:id="@+id/checkedText1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:onClick="degreeChecked"
-                        android:text="CPR Training" />
-
+                        android:text="FCPS Surgery" />
 
                     <CheckBox
-                        android:id="@+id/checkedTextMBbs"
+                        android:id="@+id/checkedText2"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:onClick="degreeChecked"
-                        android:text="MBBS" />
+                        android:text="FCPS Obstetrics" />
 
 
                 </LinearLayout>
+
+
+                <CheckBox
+                    android:id="@+id/checkedTextGyno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="degreeChecked"
+                    android:text="FCPS Gynacology" />
+
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:onClick="degreeChecked"
+                    android:text="MD"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkedText3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="MS Gynacology" />
+
+                    <CheckBox
+                        android:id="@+id/checkedText4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="MS Surgery" />
+
+                    <CheckBox
+                        android:id="@+id/checkedText5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="MS Obstatic" />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/textViewOther"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="OTHER"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkedText7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="MRCP" />
+
+                    <CheckBox
+                        android:id="@+id/checkedText8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="FRCP" />
+
+                    <CheckBox
+                        android:id="@+id/checkedText9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="MRCS" />
+
+                    <CheckBox
+                        android:id="@+id/checkedText10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="FRCS" />
+
+                    <CheckBox
+                        android:id="@+id/checkedTextFecs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="FACS" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <CheckBox
+                        android:id="@+id/checkedTextFcpsPart_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="FCPS part 2" />
+
+
+                    <CheckBox
+                        android:id="@+id/checkedTextFcpsPart_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="FCPS part 1" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkedText11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="Diploma" />
+
+                    <CheckBox
+                        android:id="@+id/checkedText12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="M.Phil" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkedText13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="PGT" />
+
+                    <CheckBox
+                        android:id="@+id/checkedText14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:onClick="degreeChecked"
+                        android:text="FCGP" />
+
+                    <CheckBox
+                        android:id="@+id/checkedText15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="CCD" />
+
+                    <CheckBox
+                        android:id="@+id/checkedText16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="DMU" />
+
+                    <CheckBox
+                        android:id="@+id/checkedText17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="CMU" />
+
+
+                </LinearLayout>
+
+
+                <CheckBox
+                    android:id="@+id/checkedTextTraining"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="degreeChecked"
+                    android:text="CPR Training" />
+
+
+                <CheckBox
+                    android:id="@+id/checkedTextMBbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="degreeChecked"
+                    android:text="MBBS" />
 
 
                 <LinearLayout
@@ -493,9 +484,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:background="@color/black_bg"
-                    android:textColor="@color/white"
                     android:onClick="goSignup"
-                    android:text="Sign Up" />
+                    android:text="Sign Up"
+                    android:textColor="@color/white" />
 
 
             </LinearLayout>

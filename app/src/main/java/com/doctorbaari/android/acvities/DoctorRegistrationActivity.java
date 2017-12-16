@@ -216,9 +216,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
             AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
             try {
                 callbackManager.onActivityResult(requestCode, resultCode, data);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
 
             }
             if (loginResult.getError() != null) {
