@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.acvities.DoctorRegistrationActivity;
 import com.doctorbaari.android.acvities.HospitalAuthorityRegistration;
+import com.doctorbaari.android.acvities.InquiryActivity;
 import com.doctorbaari.android.acvities.InternRegistration;
 import com.doctorbaari.android.acvities.LoginActivity;
 import com.doctorbaari.android.acvities.NewsfeedActivity;
@@ -79,6 +80,7 @@ public class SideNToolbarController {
 
         PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIcon(R.drawable.logout);
         PrimaryDrawerItem about = new PrimaryDrawerItem().withName("About").withIcon(R.drawable.about);
+        PrimaryDrawerItem inquiry = new PrimaryDrawerItem().withName("Hospital Inquiry").withIcon(R.drawable.inquiry);
 
 
         final Drawer d = new DrawerBuilder()
@@ -100,9 +102,11 @@ public class SideNToolbarController {
                         new DividerDrawerItem(),
                         searchSubstitute, //10
                         new DividerDrawerItem(),
-                        about, //12
+                        inquiry, //12
                         new DividerDrawerItem(),
-                        logout //14
+                        about, //14
+                        new DividerDrawerItem(),
+                        logout //16
 
 
                 )
@@ -131,8 +135,11 @@ public class SideNToolbarController {
                             case 10:
                                 activity.startActivity(new Intent(activity, SearchSubstituteJobs.class));
                                 break;
+                            case 12:
+                                activity.startActivity(new Intent(activity, InquiryActivity.class));
+                                break;
 
-                            case 14:
+                            case 16:
                                 AccountKit.logOut();
                                 DBHelper.setSignedInStatus(activity, false);
                                 activity.finishAffinity();

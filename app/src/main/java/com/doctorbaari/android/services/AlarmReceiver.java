@@ -1,10 +1,12 @@
 package com.doctorbaari.android.services;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
 
@@ -50,6 +52,11 @@ public class AlarmReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, id, intent, 0);
 
         mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.customnotificaiton));
+        mBuilder.setAutoCancel(true);
+
+        mBuilder.setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE);
+
 
         NotificationManager mNotificationManager =
 

@@ -111,6 +111,7 @@
             android:name=".acvities.AdvertiseDetailActivity"
             android:excludeFromRecents="true"
             android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity android:name=".acvities.InquiryActivity"></activity>
     </application>
 
 </manifest>

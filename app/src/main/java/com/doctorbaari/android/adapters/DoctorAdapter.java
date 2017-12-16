@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.models.DoctorSub;
+import com.doctorbaari.android.utils.HelperFunc;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -77,15 +78,12 @@ public class DoctorAdapter extends BaseAdapter {
         ivFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-
-                    new Intent(Intent.ACTION_VIEW,
-                            Uri.parse(currentDoctorSub.getFbProfile()));
-                } catch (Exception e) {
-                    Toast.makeText(activity, "Facebook Profile not available!", Toast.LENGTH_LONG).show();
+                if (!currentDoctorSub.getFbProfile().contains("facebook.com")) {
+                    HelperFunc.showToast(activity, "Facebook profile not available");
+                } else {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentDoctorSub.getFbProfile()));
+                    activity.startActivity(browserIntent);
                 }
-
-//catches and opens a url to the desired page
 
             }
         });
