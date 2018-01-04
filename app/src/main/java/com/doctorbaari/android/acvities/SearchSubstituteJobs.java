@@ -109,11 +109,19 @@ public class SearchSubstituteJobs extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
                 // TODO Auto-generated method stub
+                String month = String.valueOf(monthOfYear + 1);
+                String day = String.valueOf(dayOfMonth);
+                if (month.length() == 1)
+                    month = "0" + month;
+                // TODO Auto-generated method stub
+                if (day.length() == 1)
+                    day = "0" + day;
+
                 if (which == 0)
-                    etFromDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                    etFromDate.setText(year + "-" + month + "-" + day);
 
                 else
-                    etToDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                    etToDate.setText(year + "-" + month + "-" + day);
             }
 
         };

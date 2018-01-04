@@ -63,6 +63,13 @@ public class DoctorSub {
     
     private String type;
 
+    @SerializedName("distance")
+    private String distance;
+
+    public String getDistance() {
+        return distance;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -206,5 +213,6 @@ public class DoctorSub {
     public void setType(String type) {
         this.type = type;
     }
+
 
 }

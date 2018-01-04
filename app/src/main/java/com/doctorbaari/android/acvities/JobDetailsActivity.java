@@ -60,8 +60,9 @@ public class JobDetailsActivity extends AppCompatActivity {
         job = Geson.g().fromJson(i.getStringExtra("job"), Job.class);
         if (job.getType().equals("per")) {
             tvTodate.setVisibility(View.INVISIBLE);
-            tvFromDate.setText("Deadline: " + job.getDeadline());
-            tvJobType.setText("Job Type: Permanent");
+            tvFromDate.setText(job.getDeadline());
+            tvTodate.setText("Not Available");
+            tvJobType.setText("Permanent");
             RequestOptions requestOptions = new RequestOptions();
             requestOptions.placeholder(R.drawable.no_image);
             requestOptions.error(R.drawable.no_image);
@@ -69,18 +70,22 @@ public class JobDetailsActivity extends AppCompatActivity {
             Glide.with(JobDetailsActivity.this).load(job.getImageLink()).apply(requestOptions).into(ivPermanentJobImage);
 
         } else {
-            tvFromDate.setText("From Date: " + job.getDateFrom());
-            tvTodate.setText("To Date: " + job.getDateTo());
-            tvJobType.setText("Job Type: Temporary");
+            tvFromDate.setText(job.getDateFrom());
+            tvTodate.setText(job.getDateTo());
+            tvJobType.setText("Temporary");
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.no_image);
+            requestOptions.error(R.drawable.no_image);
+
 
         }
         tvPostTime.setText(job.getPostDatetime());
 
 
-        tvInstitute.setText("Institute: " + job.getInstitute());
-        tvPreferredDegree.setText("Preferred Degree: " + job.getDegree());
-        tvPlace.setText("Place: " + job.getPlace());
-        tvDetails.setText("Details: " + job.getDetails());
+        tvInstitute.setText(job.getInstitute());
+        tvPreferredDegree.setText(job.getDegree());
+        tvPlace.setText(job.getPlace());
+        tvDetails.setText(job.getDetails());
 
 
     }

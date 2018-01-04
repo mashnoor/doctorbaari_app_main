@@ -61,6 +61,13 @@ public class Job {
     @SerializedName("imagelink")
     private String imageLink;
 
+    @SerializedName("distance")
+    private String distance;
+
+    public String getDistance() {
+        return distance;
+    }
+
     public String getImageLink() {
         return imageLink;
     }

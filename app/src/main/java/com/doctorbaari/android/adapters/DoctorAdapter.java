@@ -67,10 +67,12 @@ public class DoctorAdapter extends BaseAdapter {
         TextView tvCollege = v.findViewById(R.id.tvCollege);
         TextView tvDegree = v.findViewById(R.id.tvDegree);
         TextView tvLocation = v.findViewById(R.id.tvLocation);
+        TextView tvDistance = v.findViewById(R.id.tvDistance);
 
         ImageView ivFacebook = v.findViewById(R.id.ivFb);
         ImageView ivCall = v.findViewById(R.id.ivCall);
         ImageView ivPlace = v.findViewById(R.id.ivPlace);
+
 
         final DoctorSub currentDoctorSub = getItem(i);
 
@@ -137,6 +139,7 @@ public class DoctorAdapter extends BaseAdapter {
         tvCollege.setText("College: " + currentDoctorSub.getCollege());
         tvDegree.setText("Degree: " + currentDoctorSub.getDegree());
         tvLocation.setText("Location: " + currentDoctorSub.getPlace());
+        tvDistance.setText("Distance: " + currentDoctorSub.getDistance());
 
 
         return v;

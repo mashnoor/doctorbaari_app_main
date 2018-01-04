@@ -33,7 +33,7 @@ import cz.msebera.android.httpclient.Header;
 public class InquiryActivity extends AppCompatActivity {
 
 
-    String placename = "";
+    String placename = "", placelat = "", placelon = "";
 
     @BindView(R.id.lvInquiry)
     ListView lvInquiry;
@@ -71,6 +71,8 @@ public class InquiryActivity extends AppCompatActivity {
                 // TODO: Get info about the selected place.
                 Logger.d(place.getName());
                 placename = place.getName().toString();
+                placelat = String.valueOf(place.getLatLng().latitude);
+                placelon = String.valueOf(place.getLatLng().longitude);
 
             }
 
@@ -88,7 +90,9 @@ public class InquiryActivity extends AppCompatActivity {
             HelperFunc.showToast(InquiryActivity.this, "All fields must be filled!");
             return;
         }
-        RequestParams params = new RequestParams("place", placename);
+        RequestParams params = new RequestParams();
+        params.put("placelat", placelat);
+        params.put("placelon", placelon);
         client.post(Constants.MAKE_INQUIRY, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {

@@ -176,9 +176,6 @@ public class InternRegistration extends AppCompatActivity {
         });
 
 
-
-
-
     }
 
     private void getCollegeList() {
@@ -196,9 +193,8 @@ public class InternRegistration extends AppCompatActivity {
 
                 String[] collegesFinal = new String[colleges.length + 1];
                 collegesFinal[0] = "Select your college";
-                for(int  i = 1; i<=colleges.length; i++)
-                {
-                    collegesFinal[i] =colleges[i-1];
+                for (int i = 1; i <= colleges.length; i++) {
+                    collegesFinal[i] = colleges[i - 1];
                 }
                 ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
                         (InternRegistration.this, android.R.layout.simple_spinner_item,
@@ -301,9 +297,7 @@ public class InternRegistration extends AppCompatActivity {
 
         try {
             callbackManager.onActivityResult(requestCode, resultCode, data);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
 

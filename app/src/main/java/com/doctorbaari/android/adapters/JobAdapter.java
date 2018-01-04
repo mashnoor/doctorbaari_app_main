@@ -73,6 +73,8 @@ public class JobAdapter extends BaseAdapter {
         TextView tvInstitueName = v.findViewById(R.id.tvInstituteName);
         TextView tvLocation = v.findViewById(R.id.tvLocation);
         TextView postedOn = v.findViewById(R.id.tvPostedOn);
+        TextView tvDistance = v.findViewById(R.id.tvDistance);
+
         ImageView ivLocation = v.findViewById(R.id.ivLocation);
 
         Button btnContact = v.findViewById(R.id.btnContact);
@@ -86,6 +88,8 @@ public class JobAdapter extends BaseAdapter {
                 activity.startActivity(i);
             }
         });
+
+        tvDistance.setText("Distance: " + currpost.getDistance() + " KM");
 
 
         tvInstitueName.setText(currpost.getInstitute());

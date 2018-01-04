@@ -13,10 +13,12 @@ import com.doctorbaari.android.R;
 import com.doctorbaari.android.adapters.JobAdapter;
 import com.doctorbaari.android.models.Job;
 import com.doctorbaari.android.utils.Constants;
+import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +58,9 @@ public class NewsfeedActivity extends AppCompatActivity {
     }
 
     private void getNewsFeed() {
-        client.get(Constants.GET_NEWSFEED, new AsyncHttpResponseHandler() {
+        RequestParams params = new RequestParams();
+        params.put("userid", DBHelper.getUserid(NewsfeedActivity.this));
+        client.post(Constants.GET_NEWSFEED, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
                 super.onStart();
@@ -89,11 +93,12 @@ public class NewsfeedActivity extends AppCompatActivity {
         i.putExtra("type", "sub");
         startActivity(i);
     }
-    public void goNotification(View v)
-    {
+
+    public void goNotification(View v) {
         Intent i = new Intent(this, NotificationActivity.class);
         startActivity(i);
     }
+
     public void goAvaibilityActivity(View v) {
         Intent i = new Intent(this, AvaibilityListActivity.class);
         i.putExtra("type", "sub");

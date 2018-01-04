@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
@@ -54,8 +55,12 @@ public class AlarmReceiver extends BroadcastReceiver {
         mBuilder.setContentIntent(pendingIntent);
         mBuilder.setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.customnotificaiton));
         mBuilder.setAutoCancel(true);
+        mBuilder.setColor(Color.GREEN);
 
-        mBuilder.setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE);
+        
+
+        mBuilder.setDefaults(Notification.DEFAULT_ALL);
+        mBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);
 
 
         NotificationManager mNotificationManager =

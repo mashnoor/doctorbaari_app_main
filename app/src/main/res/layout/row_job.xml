@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
 
             android:layout_marginBottom="7dp"
-            android:textColor="@color/black_bg"
             android:text="Location:"
+            android:textColor="@color/black_bg"
             android:textSize="15sp" />
 
         <TextView
@@ -37,9 +37,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
-            android:textColor="@color/black_bg"
+            android:text="Posted On:"
 
-            android:text="Posted On:"/>
+            android:textColor="@color/black_bg" />
+
+        <TextView
+            android:id="@+id/tvDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="Distance:"
+
+            android:textColor="@color/black_bg" />
 
 
         <LinearLayout
