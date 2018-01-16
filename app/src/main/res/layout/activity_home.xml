@@ -12,14 +12,14 @@
         android:id="@+id/slideImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:interval="4000"
-        app:loopSlides="true"
+        android:layout_above="@id/homeMenu"
+        android:layout_below="@id/toolbar"
+        app:animateIndicators="true"
         app:defaultBanner="1"
         app:defaultIndicators="circle"
-        app:animateIndicators="true"
-        android:layout_above="@id/homeMenu"
+        app:interval="4000"
 
-        android:layout_below="@id/toolbar" />
+        app:loopSlides="true" />
 
 
     <LinearLayout
@@ -29,8 +29,7 @@
 
         android:layout_alignParentBottom="true"
         android:background="#086865"
-        android:orientation="vertical"
-     >
+        android:orientation="vertical">
 
 
         <LinearLayout
@@ -47,8 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="goNewsFeed"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
 
                 <ImageView
@@ -74,9 +73,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="10dp"
                 android:onClick="goPostedPermanentJobs"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
 
                 <ImageView
@@ -105,9 +104,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="10dp"
                 android:onClick="goSearchPermanentJob"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
 
                 <ImageView
@@ -146,8 +145,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="goPostSubJobs"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
 
                 <ImageView
@@ -174,9 +173,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="10dp"
                 android:onClick="goSearchSubJobs"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
 
                 <ImageView
@@ -205,9 +204,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="10dp"
                 android:onClick="goHospitalInquiry"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
 
                 <ImageView
@@ -235,10 +234,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-
             android:onClick="goAvailabilityActivity"
+
             android:orientation="horizontal"
+            android:padding="10dp"
             android:weightSum="3">
 
 
@@ -248,8 +247,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
 
                 <ImageView
@@ -306,9 +305,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:padding="10dp"
                 android:onClick="goNewMedicineUpdates"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
 
                 <ImageView

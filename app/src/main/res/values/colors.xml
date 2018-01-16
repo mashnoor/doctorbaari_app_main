@@ -17,6 +17,7 @@
     <color name="material_drawer_primary_text">#ffffff</color>
     <color name="new_tool_color">#086865</color>
     <color name="off_white">#fcf9e6</color>
+    <color name="dark_red">#8B0000</color>
 
 
 </resources>

@@ -147,7 +147,7 @@
         <activity
             android:name=".acvities.AdvertiseDetailActivity"
             android:excludeFromRecents="true"
-            android:theme="@style/Theme.AppCompat.Dialog" />
+            android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".acvities.InquiryActivity"
             android:launchMode="singleInstance"

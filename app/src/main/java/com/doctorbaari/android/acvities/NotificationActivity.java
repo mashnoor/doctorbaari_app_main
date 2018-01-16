@@ -14,8 +14,4 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
     }
-    public void goMySchedule(View v)
-    {
-        startActivity(new Intent(this, AvaibilityListActivity.class));
-    }
 }
