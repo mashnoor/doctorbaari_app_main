@@ -21,34 +21,111 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-
-        <TextView
-            android:id="@+id/tvLocation"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            android:layout_marginBottom="7dp"
-            android:text="Location:"
-            android:textColor="@color/black_bg"
-            android:textSize="15sp" />
+            <TextView
 
-        <TextView
-            android:id="@+id/tvPostedOn"
-            android:layout_width="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="Posted by: "
+                android:textColor="@color/black_bg"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPostedBy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="1000km"
+
+                android:textColor="@color/black_bg" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:text="Posted On:"
+            android:orientation="horizontal">
 
-            android:textColor="@color/black_bg" />
+            <TextView
 
-        <TextView
-            android:id="@+id/tvDistance"
-            android:layout_width="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="Location: "
+                android:textColor="@color/black_bg"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text=" Uttara"
+                android:textColor="@color/black_bg"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
-            android:text="Distance:"
+            android:orientation="horizontal">
 
-            android:textColor="@color/black_bg" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="Posted On: "
+                android:textColor="@color/black_bg"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPostedOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="2018-1-12"
+                android:textColor="@color/black_bg" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="Distance: "
+                android:textColor="@color/black_bg"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="2018-1-12"
+                android:textColor="@color/black_bg" />
+
+
+        </LinearLayout>
 
 
         <LinearLayout
@@ -59,13 +136,14 @@
             android:orientation="horizontal">
 
 
-            <ImageView
-                android:id="@+id/ivLocation"
-                android:layout_width="30dp"
+            <Button
+                android:id="@+id/btnLocation"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
                 android:layout_weight="0.29"
-                android:src="@drawable/location_black" />
+                android:background="@color/black_bg"
+                android:text="Location"
+                android:textColor="@color/white" />
 
 
             <Button

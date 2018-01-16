@@ -46,4 +46,6 @@
         <item>MUU</item>
         <item>PGT</item>
     </string-array>
+
+    <string name="title_activity_job_circular_fullscreen_view">JobCircularFullscreenView</string>
 </resources>

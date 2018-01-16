@@ -47,11 +47,6 @@ public class NewsfeedActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        client.cancelAllRequests(true);
-    }
 
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
@@ -80,7 +75,7 @@ public class NewsfeedActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 showToast("Some error occured");
-                Log.d("-------------", new String(responseBody));
+                Log.d("-------------", error.getMessage());
                 dialog.dismiss();
 
             }
@@ -101,7 +96,7 @@ public class NewsfeedActivity extends AppCompatActivity {
 
     public void goAvaibilityActivity(View v) {
         Intent i = new Intent(this, AvaibilityListActivity.class);
-        i.putExtra("type", "sub");
+        i.putExtra("type", "all");
         startActivity(i);
     }
 }

@@ -24,25 +24,13 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin">
 
-            <Button
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button_style"
-                android:onClick="goPostedPermanentJobs"
-                android:text="My Posted Jobs"
-                android:textColor="#ffffff"
-                android:textStyle="bold" />
-
 
             <EditText
                 android:id="@+id/etInstitution"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Institution"
+                android:hint="Institution Name"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -51,35 +39,28 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:focusable="false"
-                android:hint="Starting form"
+                android:hint="Job Joining Date"
                 android:inputType="textPersonName" />
 
-            <LinearLayout
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="Institution Location"
+                android:textColor="@color/black_bg"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+            <fragment
+                android:id="@+id/place_autocomplete_fragment"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:layout_gravity="center" />
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="Place"
-                    android:textColor="@color/black_bg"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <fragment
-                    android:id="@+id/place_autocomplete_fragment"
-                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-
-
-            </LinearLayout>
 
             <ImageView
                 android:id="@+id/ivPermanentJobImage"
@@ -91,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="selectImage"
                 android:padding="10dp"
-                android:text="Select Image" />
+                android:text="Upload Job Circular Photo" />
 
 
             <TextView
@@ -99,7 +80,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:text="Select Preferred degree"
+                android:layout_marginTop="10dp"
+                android:text="Select Preferred degrees"
+                android:textColor="@color/black_bg"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -121,6 +104,7 @@
                     android:id="@+id/checkedText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="FCPS Medicine" />
 
@@ -128,26 +112,35 @@
                     android:id="@+id/checkedText1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="FCPS Surgery" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/checkedText2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
-                    android:text="FCPS Obstetrics" />
+                    android:text="FCPS Obstetrics " />
 
+                <CheckBox
+                    android:id="@+id/checkedTextGyno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="degreeChecked"
+                    android:text="FCPS Gynacology and obs" />
 
             </LinearLayout>
-
-
-            <CheckBox
-                android:id="@+id/checkedTextGyno"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="degreeChecked"
-                android:text="FCPS Gynacology" />
 
 
             <TextView
@@ -156,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:onClick="degreeChecked"
-                android:text="MD"
+                android:text="MD/MS"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -169,25 +162,27 @@
                     android:id="@+id/checkedText3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
-                    android:text="MS Gynacology" />
+                    android:text="MD" />
 
                 <CheckBox
                     android:id="@+id/checkedText4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="MS Surgery" />
 
-                <CheckBox
-                    android:id="@+id/checkedText5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="degreeChecked"
-                    android:text="MS Obstatic" />
-
 
             </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkedText5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="degreeChecked"
+                android:text="MS Gynocology and Obstatic" />
 
 
             <TextView
@@ -253,6 +248,7 @@
                     android:id="@+id/checkedTextFcpsPart_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="FCPS part 2" />
 
@@ -261,6 +257,7 @@
                     android:id="@+id/checkedTextFcpsPart_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="FCPS part 1" />
 
@@ -277,6 +274,7 @@
                     android:id="@+id/checkedText11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="Diploma" />
 
@@ -284,6 +282,7 @@
                     android:id="@+id/checkedText12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="M.Phil" />
 
@@ -300,6 +299,7 @@
                     android:id="@+id/checkedText13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="PGT" />
 
@@ -307,7 +307,7 @@
                     android:id="@+id/checkedText14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="FCGP" />
 
@@ -315,6 +315,7 @@
                     android:id="@+id/checkedText15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="CCD" />
 
@@ -322,6 +323,7 @@
                     android:id="@+id/checkedText16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="DMU" />
 
@@ -329,6 +331,7 @@
                     android:id="@+id/checkedText17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="degreeChecked"
                     android:text="CMU" />
 

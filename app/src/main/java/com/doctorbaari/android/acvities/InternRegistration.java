@@ -1,5 +1,6 @@
 package com.doctorbaari.android.acvities;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -11,13 +12,16 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -40,6 +44,11 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -48,12 +57,16 @@ import com.orhanobut.logger.Logger;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
+import pl.aprilapps.easyphotopicker.DefaultCallback;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class InternRegistration extends AppCompatActivity {
 
@@ -62,10 +75,9 @@ public class InternRegistration extends AppCompatActivity {
 
     @BindView(R.id.etContactNo)
     EditText etContactno;
-    @BindView(R.id.etDateOfBirth)
-    EditText etdateOfBirth;
-    @BindView(R.id.spnrCollege)
-    Spinner spnrCollege;
+
+    @BindView(R.id.etMedicalCollegeName)
+    EditText etMedicalCollege;
 
     @BindView(R.id.etRegistrationNo)
     EditText etRegNo;
@@ -85,6 +97,10 @@ public class InternRegistration extends AppCompatActivity {
     String profileLink = "";
     String imageLink = "";
 
+    File imgfile = null;
+    @BindView(R.id.ivCertificateImage)
+    ImageView ivCertificateImage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,30 +115,6 @@ public class InternRegistration extends AppCompatActivity {
         dialog.setMessage("Connecting with Doctor Baari server...");
         Logger.addLogAdapter(new AndroidLogAdapter());
         verifyNumber();
-        getCollegeList();
-        final Calendar myCalendar = Calendar.getInstance();
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
-                etdateOfBirth.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
-
-            }
-
-        };
-
-        etdateOfBirth.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new DatePickerDialog(InternRegistration.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
 
 
         loginButton.setReadPermissions(Arrays.asList(
@@ -178,43 +170,6 @@ public class InternRegistration extends AppCompatActivity {
 
     }
 
-    private void getCollegeList() {
-        client.get(Constants.GET_COLLEGE_LIST, new AsyncHttpResponseHandler() {
-            @Override
-            public void onStart() {
-                super.onStart();
-                dialog.show();
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String response = new String(responseBody);
-                String[] colleges = Geson.g().fromJson(response, String[].class);
-
-                String[] collegesFinal = new String[colleges.length + 1];
-                collegesFinal[0] = "Select your college";
-                for (int i = 1; i <= colleges.length; i++) {
-                    collegesFinal[i] = colleges[i - 1];
-                }
-                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
-                        (InternRegistration.this, android.R.layout.simple_spinner_item,
-                                collegesFinal); //selected item will look like a spinner set from XML
-
-                spinnerArrayAdapter.setDropDownViewResource(android.R.layout
-                        .simple_spinner_dropdown_item);
-                spnrCollege.setAdapter(spinnerArrayAdapter);
-                dialog.dismiss();
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                showToast("Something went wrong");
-                dialog.dismiss();
-
-            }
-        });
-    }
 
     private void showToast(String s) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show();
@@ -223,16 +178,16 @@ public class InternRegistration extends AppCompatActivity {
     public void goSignup(View v) {
 
         String fullName = etFullName.getText().toString().trim();
-        String medicalCollege = spnrCollege.getSelectedItem().toString();
+        String medicalCollege = etMedicalCollege.getText().toString();
         String contactNo = etContactno.getText().toString().trim();
-        String dateOfBirth = etdateOfBirth.getText().toString().trim();
+        String dateOfBirth = "Not Available";
         String workLocation = workingPlaceName;
         String regNo = etRegNo.getText().toString().trim();
 
         String degree = "Intern";
         if (degree.isEmpty() || fullName.isEmpty() ||
                 medicalCollege.isEmpty() || contactNo.isEmpty() || dateOfBirth.isEmpty() || workLocation.isEmpty() ||
-                regNo.isEmpty() || workingPlaceName.isEmpty()) {
+                regNo.isEmpty() || workingPlaceName.isEmpty() || imgfile == null) {
             showToast("All field are required");
             return;
         }
@@ -251,6 +206,13 @@ public class InternRegistration extends AppCompatActivity {
         params.put("email", email);
         params.put("link", profileLink);
         params.put("picture_url", imageLink);
+        try {
+            params.put("imagefile", imgfile);
+        } catch (Exception e) {
+            HelperFunc.showToast(this, "Temporary registration picture not selected");
+            return;
+        }
+
         client.post(Constants.SIGNUP_URL, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
@@ -294,6 +256,24 @@ public class InternRegistration extends AppCompatActivity {
             final int resultCode,
             final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        EasyImage.handleActivityResult(requestCode, resultCode, data, this, new DefaultCallback() {
+            @Override
+            public void onImagePickerError(Exception e, EasyImage.ImageSource source, int type) {
+                //Some error handling
+                HelperFunc.showToast(InternRegistration.this, "Something went wrong");
+            }
+
+            @Override
+            public void onImagePicked(File imageFile, EasyImage.ImageSource source, int type) {
+                imgfile = imageFile;
+                Glide.with(InternRegistration.this).load(imageFile.getAbsolutePath()).into(ivCertificateImage);
+
+            }
+
+
+        });
+
 
         try {
             callbackManager.onActivityResult(requestCode, resultCode, data);
@@ -356,6 +336,25 @@ public class InternRegistration extends AppCompatActivity {
                 configurationBuilder.build());
         startActivityForResult(intent, APP_REQUEST_CODE);
 
+    }
+
+    public void selectImage(View v) {
+        Dexter.withActivity(this).withPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE).withListener(new MultiplePermissionsListener() {
+            @Override
+            public void onPermissionsChecked(MultiplePermissionsReport report) {
+                if (report.areAllPermissionsGranted()) {
+
+                    EasyImage.openGallery(InternRegistration.this, EasyImage.REQ_PICK_PICTURE_FROM_GALLERY);
+                }
+
+
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+
+            }
+        }).check();
     }
 
     private void registerPlaceFragment() {

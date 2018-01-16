@@ -94,10 +94,10 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
 
                 if (which[0] == 0)
-                    tvDateFrom.setText(year + "-" + month + "-" + day);
+                tvDateFrom.setText(day + "-" + month + "-" + year);
 
                 else
-                    tvToDate.setText(year + "-" + month + "-" + day);
+                    tvToDate.setText(day + "-" + month + "-" + year);
             }
 
         };

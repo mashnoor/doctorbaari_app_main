@@ -19,6 +19,15 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job is needed "
+            android:textSize="18dp"
+            android:textColor="@color/black_bg"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+
 
         <EditText
             android:id="@+id/etFromDate"
@@ -26,7 +35,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:focusable="false"
-            android:hint="From Date"
+            android:hint="From "
             android:inputType="textPersonName" />
 
         <EditText
@@ -35,7 +44,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:focusable="false"
-            android:hint="To Date"
+            android:hint="To "
             android:inputType="textPersonName" />
 
 
@@ -43,7 +52,7 @@
             android:id="@+id/tvLocationType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Location"
+            android:text="Job Location"
             android:textColor="@color/black_bg"
             android:textSize="18sp"
             android:textStyle="bold" />

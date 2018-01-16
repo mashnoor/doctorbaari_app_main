@@ -3,20 +3,16 @@
     android:id="@+id/activity_welcome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome_bg"
+
     android:orientation="vertical"
     android:padding="16dp">
 
 
-    <ImageView
-
-        android:id="@+id/imageView4"
-
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerInParent="true"
-        android:layout_weight="6"
-        android:src="@drawable/db_logo_128" />
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/ivJobCircular"
+        android:layout_width="match_parent"
+        android:src="@drawable/no_image"
+        android:layout_height="match_parent"/>
 
 
 </RelativeLayout>

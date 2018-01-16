@@ -45,13 +45,17 @@ import cz.msebera.android.httpclient.Header;
 
 public class HospitalAuthorityRegistration extends AppCompatActivity {
 
-    @BindView(R.id.etFullName)
-    EditText etFullName;
+    @BindView(R.id.etInstituteName)
+    EditText etInstitutiteName;
 
     @BindView(R.id.etContactNo)
     EditText etContactno;
-    @BindView(R.id.etDateOfBirth)
-    EditText etdateOfBirth;
+
+    @BindView(R.id.etRepresentativeName)
+    EditText etRepresentativeName;
+
+    @BindView(R.id.etDesignation)
+    EditText etDesignation;
 
 
     ProgressDialog dialog;
@@ -75,29 +79,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
         Logger.addLogAdapter(new AndroidLogAdapter());
         verifyNumber();
 
-        final Calendar myCalendar = Calendar.getInstance();
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
-                etdateOfBirth.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
-
-            }
-
-        };
-
-        etdateOfBirth.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new DatePickerDialog(HospitalAuthorityRegistration.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
     }
 
     private void showToast(String s) {
@@ -106,15 +88,15 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
 
     public void goSignup(View v) {
 
-        String fullName = etFullName.getText().toString().trim();
-        String medicalCollege = "Not Available";
+        String fullName = etRepresentativeName.getText().toString().trim();
+        String medicalCollege = etInstitutiteName.getText().toString().trim();
         String contactNo = etContactno.getText().toString().trim();
-        String dateOfBirth = etdateOfBirth.getText().toString().trim();
+        String dateOfBirth = "Not Available";
         String workLocation = workingPlaceName;
         String regNo = "Not Available";
-        String degree = "Not Available";
+        String degree = etDesignation.getText().toString();
         if (fullName.isEmpty()) {
-            etFullName.setError("Full name can't be empty!");
+            etInstitutiteName.setError("Full name can't be empty!");
             return;
         }
 
@@ -122,10 +104,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
             etContactno.setError("Contact no can't be empty");
             return;
         }
-        if (dateOfBirth.isEmpty()) {
-            etdateOfBirth.setError("Date of birth can't be empty");
-            return;
-        }
+
         if (workLocation.isEmpty()) {
             showToast("Please select your working location");
             return;
@@ -215,7 +194,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
                     @Override
                     public void onError(final AccountKitError error) {
                         // Handle Error
-                        showToast("Erro gettign number");
+                        showToast("Error gettign number");
                         Log.d("------------", error.toString());
                     }
                 });

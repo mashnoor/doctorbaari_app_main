@@ -61,49 +61,163 @@
                 android:textStyle="bold"
                 android:textColor="@color/black_bg"/>
 
-
-            <TextView
-                android:id="@+id/tvInstitue"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Medical :  Institue Name"
-                android:textSize="15sp"
-                android:textColor="@color/black_bg" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvCurrentlyWorking"
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Medical College : "
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/black_bg" />
+
+                <TextView
+                    android:id="@+id/tvInstitue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Institue Name"
+                    android:textSize="15sp"
+                    android:textColor="@color/black_bg" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Currently working :  Currently Working"
-                android:textSize="15sp"
-                android:textColor="@color/black_bg" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvDegree"
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Currently working : "
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/black_bg" />
+
+                <TextView
+                    android:id="@+id/tvCurrentlyWorking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text=" Currently Working"
+                    android:textSize="15sp"
+                    android:textColor="@color/black_bg" />
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Degree :  MBBS"
-                android:textSize="15sp"
-                android:textColor="@color/black_bg" />
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Degree : "
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/black_bg" />
+
+                <TextView
+                    android:id="@+id/tvDegree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text=" MBBS"
+                    android:textSize="15sp"
+                    android:textColor="@color/black_bg" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:text="Date of Birth : "
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/black_bg" />
+
+                <TextView
+                    android:id="@+id/tvDateOfBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:text=" 19/06/1990"
+                    android:textSize="15sp"
+                    android:textColor="@color/black_bg" />
+
+
+
+            </LinearLayout>
+
 
 
             <TextView
-                android:id="@+id/tvDateOfBirth"
+                android:id="@+id/uhjd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:text="Date of Birth :  19/06/1990"
-                android:textSize="15sp"
-                android:textColor="@color/black_bg" />
+                android:layout_marginBottom="10dp"
+                android:text="Review"
+                android:textSize="20sp"
+                android:textColor="@color/black_bg"
+                android:textStyle="bold" />
+            <Button
+                android:text="View previous reviews"
+                android:onClick="viewReviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RatingBar
+                android:id="@+id/rbReview"
+                android:stepSize="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/etReview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Review" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="postReview"
+                android:text="Post Review"
+                android:background="@color/black_bg"
+                android:textColor="@color/white"
+                android:padding="10dp"/>
 
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
                 android:text="Contact Info"
                 android:textSize="20sp"
@@ -195,42 +309,6 @@
                 android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"/>
-
-            <TextView
-                android:id="@+id/uhjd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="Review"
-                android:textSize="20sp"
-                android:textColor="@color/black_bg"
-                android:textStyle="bold" />
-            <Button
-                android:text="View previous reviews"
-                android:onClick="viewReviews"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <RatingBar
-                android:id="@+id/rbReview"
-                android:stepSize="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:id="@+id/etReview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Review" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="postReview"
-                android:text="Post Review"
-                android:background="@color/black_bg"
-                android:textColor="@color/white"
-                android:padding="10dp"/>
 
 
         </LinearLayout>

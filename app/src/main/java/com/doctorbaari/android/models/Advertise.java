@@ -27,6 +27,13 @@ public class Advertise {
 
     private String createdAt;
 
+    @SerializedName("company")
+    private String company;
+
+    public String getCompany() {
+        return company;
+    }
+
     public String getDetails() {
         return details;
     }

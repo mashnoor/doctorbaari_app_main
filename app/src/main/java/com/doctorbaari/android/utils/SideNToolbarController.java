@@ -81,6 +81,7 @@ public class SideNToolbarController {
         PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIcon(R.drawable.logout);
         PrimaryDrawerItem about = new PrimaryDrawerItem().withName("About").withIcon(R.drawable.about);
         PrimaryDrawerItem inquiry = new PrimaryDrawerItem().withName("Hospital Inquiry").withIcon(R.drawable.inquiry);
+        PrimaryDrawerItem inviteOthers = new PrimaryDrawerItem().withName("Send Invitation").withIcon(R.drawable.inquiry);
 
 
         final Drawer d = new DrawerBuilder()
@@ -106,7 +107,9 @@ public class SideNToolbarController {
                         new DividerDrawerItem(),
                         about, //14
                         new DividerDrawerItem(),
-                        logout //16
+                        logout, //16
+                        new DividerDrawerItem(),
+                        inviteOthers //18
 
 
                 )
@@ -146,6 +149,15 @@ public class SideNToolbarController {
                                 activity.startActivity(new Intent(activity, LoginActivity.class));
                                 FacebookSdk.sdkInitialize(activity);
                                 LoginManager.getInstance().logOut();
+                                break;
+                            case 18:
+                                String invitationMessage = "Hey there! DoctorBaari is an awesome " +
+                                        "job exchange platform for doctors and interns! Click the link to download from play store!";
+                                Intent sendIntent = new Intent();
+                                sendIntent.setAction(Intent.ACTION_SEND);
+                                sendIntent.putExtra(Intent.EXTRA_TEXT, invitationMessage);
+                                sendIntent.setType("text/plain");
+                                activity.startActivity(sendIntent);
                                 break;
 
 

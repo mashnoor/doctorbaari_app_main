@@ -187,7 +187,8 @@ public class PostPermanentJobActivity extends AppCompatActivity {
                 dialog.dismiss();
                 showToast("Something went wrong. Try again later");
                 Logger.d(error.getMessage());
-                Logger.d(new String(responseBody));
+
+                Logger.d(error.getMessage());
 
             }
         });

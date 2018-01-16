@@ -64,16 +64,10 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
 
     @BindView(R.id.etFullName)
     EditText etFullName;
-    @BindView(R.id.spnrCollege)
-    Spinner spnrMedicalCollege;
+    @BindView(R.id.etMedicalCollegeName)
+    EditText etMedicalCollegeName;
     @BindView(R.id.etContactNo)
     EditText etContactno;
-    @BindView(R.id.etDateOfBirth)
-    EditText etdateOfBirth;
-    @BindView(R.id.login_button)
-    LoginButton loginButton;
-
-    CallbackManager callbackManager;
 
 
     @BindView(R.id.etRegistrationNo)
@@ -104,31 +98,9 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         dialog.setMessage("Connecting with Doctor Baari server...");
         Logger.addLogAdapter(new AndroidLogAdapter());
         verifyNumber();
-        getCollegeList();
-        registerLogin();
-        final Calendar myCalendar = Calendar.getInstance();
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
-                etdateOfBirth.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
 
-            }
 
-        };
-
-        etdateOfBirth.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new DatePickerDialog(DoctorRegistrationActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
     }
 
 
@@ -139,19 +111,44 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
     public void goSignup(View v) {
 
         String fullName = etFullName.getText().toString().trim();
-        String medicalCollege = spnrMedicalCollege.getSelectedItem().toString();
+        String medicalCollege = etMedicalCollegeName.getText().toString();
         String contactNo = etContactno.getText().toString().trim();
-        String dateOfBirth = etdateOfBirth.getText().toString().trim();
+        String dateOfBirth = "Not Available";
         String workLocation = workingPlaceName;
         String regNo = etRegNo.getText().toString().trim();
 
         String degree;
         JSONArray array = new JSONArray(degrees);
         degree = array.toString();
+        if(degrees.isEmpty())
+        {
+            Log.d("--------", "Degrees empty");
+        }
+        if(fullName.isEmpty())
+        {
+            Log.d("--------", "full name empty");
+        }
+        if(medicalCollege.isEmpty())
+        {
+            Log.d("--------", "Medical College Empty");
+        }
+        if(contactNo.isEmpty())
+        {
+            Log.d("-------", "contacty");
+        }
+        if(workLocation.isEmpty())
+        {
+            Log.d("---------", "work");
+        }
+        if(regNo.isEmpty())
+        {
+            Log.d("-------", "reg no");
+        }
         if (degrees.isEmpty() || fullName.isEmpty() ||
-                medicalCollege.isEmpty() || contactNo.isEmpty() || dateOfBirth.isEmpty() || workLocation.isEmpty() ||
+                medicalCollege.isEmpty() || contactNo.isEmpty() || workLocation.isEmpty() ||
                 regNo.isEmpty() || workingPlaceName.isEmpty()) {
             showToast("All field are required");
+
             return;
         }
 
@@ -188,7 +185,9 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
                 } else {
                     DBHelper.setUserId(DoctorRegistrationActivity.this, response);
                     showToast("Account created successfully");
-                    startActivity(new Intent(DoctorRegistrationActivity.this, NewsfeedActivity.class));
+                    startActivity(new Intent(DoctorRegistrationActivity.this, ConnectWithFacebookActivity.class));
+
+
                     finish();
                 }
 
@@ -214,11 +213,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
             AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
-            try {
-                callbackManager.onActivityResult(requestCode, resultCode, data);
-            } catch (Exception e) {
 
-            }
             if (loginResult.getError() != null) {
                 showToast("Something went wrong! Try again later");
                 finish();
@@ -258,98 +253,6 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
 
     }
 
-    private void registerLogin() {
-
-        loginButton.setReadPermissions(Arrays.asList(
-                "public_profile", "email"));
-
-
-        callbackManager = CallbackManager.Factory.create();
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Logger.d(loginResult.getRecentlyGrantedPermissions());
-                GraphRequest request = GraphRequest.newMeRequest(
-                        loginResult.getAccessToken(),
-                        new GraphRequest.GraphJSONObjectCallback() {
-                            @Override
-                            public void onCompleted(JSONObject object, GraphResponse response) {
-                                Log.v("LoginActivity", response.toString());
-
-                                // Application code
-                                try {
-                                    Logger.d(object);
-                                    email = object.optString("email", "Not Available");
-                                    profileLink = object.optString("link", "Not Available");
-                                    imageLink = object.getJSONObject("picture").getJSONObject("data").optString("url", "Not Available");
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                                // 01/31/1980 format
-                            }
-                        });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,name,email,gender,birthday,link,picture.type(large)");
-                request.setParameters(parameters);
-                request.executeAsync();
-
-
-            }
-
-            @Override
-            public void onCancel() {
-                showToast("Cancelled Login");
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
-                showToast("Something went wrong");
-            }
-        });
-
-
-    }
-
-    private void getCollegeList() {
-        client.get(Constants.GET_COLLEGE_LIST, new AsyncHttpResponseHandler() {
-            @Override
-            public void onStart() {
-                super.onStart();
-                dialog.show();
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String response = new String(responseBody);
-                String[] colleges = Geson.g().fromJson(response, String[].class);
-                String[] collegesFinal = new String[colleges.length + 1];
-                collegesFinal[0] = "Select your college";
-                for (int i = 1; i <= colleges.length; i++) {
-                    collegesFinal[i] = colleges[i - 1];
-                }
-                spnrMedicalCollege.setPrompt("Select Medical College");
-
-                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>
-                        (DoctorRegistrationActivity.this, android.R.layout.simple_spinner_item,
-                                collegesFinal); //selected item will look like a spinner set from XML
-                spinnerArrayAdapter.setDropDownViewResource(android.R.layout
-                        .simple_spinner_dropdown_item);
-                spnrMedicalCollege.setAdapter(spinnerArrayAdapter);
-                dialog.dismiss();
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                showToast("Something went wrong");
-                dialog.dismiss();
-
-            }
-        });
-    }
 
     private void verifyNumber() {
         final Intent intent = new Intent(this, AccountKitActivity.class);

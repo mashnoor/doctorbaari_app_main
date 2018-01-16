@@ -2,12 +2,15 @@ package com.doctorbaari.android.adapters;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
+import com.doctorbaari.android.acvities.JobDetailsActivity;
 import com.doctorbaari.android.models.DoctorSub;
 import com.doctorbaari.android.utils.HelperFunc;
 import com.karumi.dexter.Dexter;
@@ -69,54 +73,63 @@ public class DoctorAdapter extends BaseAdapter {
         TextView tvLocation = v.findViewById(R.id.tvLocation);
         TextView tvDistance = v.findViewById(R.id.tvDistance);
 
-        ImageView ivFacebook = v.findViewById(R.id.ivFb);
-        ImageView ivCall = v.findViewById(R.id.ivCall);
-        ImageView ivPlace = v.findViewById(R.id.ivPlace);
+        Button btnLocation = v.findViewById(R.id.btnLocation);
+
+        Button btnContact = v.findViewById(R.id.btnContact);
 
 
         final DoctorSub currentDoctorSub = getItem(i);
 
         //Onclick For Facebook Icon
-        ivFacebook.setOnClickListener(new View.OnClickListener() {
+        btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!currentDoctorSub.getFbProfile().contains("facebook.com")) {
-                    HelperFunc.showToast(activity, "Facebook profile not available");
-                } else {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentDoctorSub.getFbProfile()));
-                    activity.startActivity(browserIntent);
-                }
+                String[] options = new String[]{"Call", "View Facebook Profile"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                builder.setTitle("Pick a option");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0) {
+                            Dexter.withActivity(activity).withPermission(Manifest.permission.CALL_PHONE).withListener(new PermissionListener() {
+                                @Override
+                                public void onPermissionGranted(PermissionGrantedResponse response) {
+                                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + currentDoctorSub.getPhone()));
+                                    activity.startActivity(intent);
+                                }
+
+                                @Override
+                                public void onPermissionDenied(PermissionDeniedResponse response) {
+                                    HelperFunc.showToast(activity, "Call permission not granted!");
+
+                                }
+
+                                @Override
+                                public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+
+                                }
+                            }).check();
+                        } else {
+                            if (!currentDoctorSub.getFbProfile().contains("facebook.com")) {
+                                HelperFunc.showToast(activity, "Facebook profile not available");
+                            } else {
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentDoctorSub.getFbProfile()));
+                                activity.startActivity(browserIntent);
+                            }
+
+                        }
+                    }
+                });
+                builder.show();
 
             }
         });
 
-        //On Click Call
-        ivCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Dexter.withActivity(activity).withPermission(Manifest.permission.CALL_PHONE).withListener(new PermissionListener() {
-                    @Override
-                    public void onPermissionGranted(PermissionGrantedResponse response) {
-                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + currentDoctorSub.getPhone()));
-                        activity.startActivity(intent);
-                    }
 
-                    @Override
-                    public void onPermissionDenied(PermissionDeniedResponse response) {
-                        Toast.makeText(activity, "Call Permission not granted!", Toast.LENGTH_LONG).show();
 
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
-
-                    }
-                }).check();
-            }
-        });
 
         //On Click Place
-        ivPlace.setOnClickListener(new View.OnClickListener() {
+        btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);

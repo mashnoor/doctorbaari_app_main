@@ -1,18 +1,31 @@
 package com.doctorbaari.android.acvities;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.models.Job;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,8 +57,8 @@ public class JobDetailsActivity extends AppCompatActivity {
     @BindView(R.id.tvDetails)
     TextView tvDetails;
 
-    @BindView(R.id.ivPermanentJobImage)
-    ImageView ivPermanentJobImage;
+    @BindView(R.id.btnViewJobCircularImage)
+    Button btnViewJobCircularImage;
 
 
     Job job;
@@ -63,11 +76,7 @@ public class JobDetailsActivity extends AppCompatActivity {
             tvFromDate.setText(job.getDeadline());
             tvTodate.setText("Not Available");
             tvJobType.setText("Permanent");
-            RequestOptions requestOptions = new RequestOptions();
-            requestOptions.placeholder(R.drawable.no_image);
-            requestOptions.error(R.drawable.no_image);
 
-            Glide.with(JobDetailsActivity.this).load(job.getImageLink()).apply(requestOptions).into(ivPermanentJobImage);
 
         } else {
             tvFromDate.setText(job.getDateFrom());
@@ -89,6 +98,19 @@ public class JobDetailsActivity extends AppCompatActivity {
 
 
     }
+    public void viewJobCircular(View v)
+    {
+        if(job.getImageLink()==null || job.getImageLink().isEmpty() || job.getImageLink().equals("Not Available"))
+        {
+            HelperFunc.showToast(this, "Job Circular not available");
+        }
+        else
+        {
+            Intent i = new Intent(this, JobCircularFullscreenView.class);
+            i.putExtra("imagelink", job.getImageLink());
+            startActivity(i);
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -100,5 +122,46 @@ public class JobDetailsActivity extends AppCompatActivity {
         Intent i = new Intent(this, ProfileDetail.class);
         i.putExtra("userid", job.getUserid());
         startActivity(i);
+    }
+
+    public void goContact(View v)
+    {
+        String[] options = new String[]{"Call", "View Facebook Profile"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Pick a option");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0) {
+                    Dexter.withActivity(JobDetailsActivity.this).withPermission(Manifest.permission.CALL_PHONE).withListener(new PermissionListener() {
+                        @Override
+                        public void onPermissionGranted(PermissionGrantedResponse response) {
+                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + job.getUser().getPhone()));
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onPermissionDenied(PermissionDeniedResponse response) {
+                            HelperFunc.showToast(JobDetailsActivity.this, "Call permission not granted!");
+
+                        }
+
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+
+                        }
+                    }).check();
+                } else {
+                    if (!job.getUser().getFb_profile().contains("facebook.com")) {
+                        HelperFunc.showToast(JobDetailsActivity.this, "Facebook profile not available");
+                    } else {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(job.getUser().getFb_profile()));
+                        startActivity(browserIntent);
+                    }
+
+                }
+            }
+        });
+        builder.show();
     }
 }

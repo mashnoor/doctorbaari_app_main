@@ -121,13 +121,13 @@ public class ProfileDetail extends AppCompatActivity {
                 user = Geson.g().fromJson(response, User.class);
                 Logger.d(user);
                 tvUserName.setText(user.getUsername());
-                tvInstitue.setText("Medical College: " + user.getCollege());
-                tvCurrentlyWorking.setText("Currently Working: " + user.getPlace());
-                tvDegree.setText("Degree: " + user.getDegree());
-                tvDateOfBirth.setText("Date of Birth:" + user.getBirthdate());
-                tvFbLink.setText("Facebook Profle: " + user.getFb_profile());
-                tvEmail.setText("Email: " + user.getEmail());
-                tvMobile.setText("Phone: " + user.getPhone());
+                tvInstitue.setText(user.getCollege());
+                tvCurrentlyWorking.setText(user.getPlace());
+                tvDegree.setText(user.getDegree());
+
+                tvFbLink.setText(user.getFb_profile());
+                tvEmail.setText(user.getEmail());
+                tvMobile.setText(user.getPhone());
 
                 RequestOptions requestOptions = new RequestOptions();
                 requestOptions.placeholder(R.drawable.profile);

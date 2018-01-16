@@ -181,13 +181,12 @@ public class ProfileActivity extends AppCompatActivity {
                 User user = Geson.g().fromJson(response, User.class);
                 Logger.d(user);
                 tvUserName.setText(user.getUsername());
-                tvInstitue.setText("Medical College: " + user.getCollege());
-                tvCurrentlyWorking.setText("Currently Working: " + user.getPlace());
-                tvDegree.setText("Degree: " + user.getDegree());
-                tvDateOfBirth.setText("Date of Birth:" + user.getBirthdate());
-                tvFbLink.setText("Facebook Profle: " + user.getFb_profile());
-                tvEmail.setText("Email: " + user.getEmail());
-                tvMobile.setText("Phone: " + user.getPhone());
+                tvInstitue.setText(user.getCollege());
+                tvCurrentlyWorking.setText(user.getPlace());
+                tvDegree.setText(user.getDegree());
+                tvFbLink.setText(user.getFb_profile());
+                tvEmail.setText(user.getEmail());
+                tvMobile.setText(user.getPhone());
 
                 RequestOptions requestOptions = new RequestOptions();
                 requestOptions.placeholder(R.drawable.profile);
@@ -249,38 +248,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    /***
 
-     public void updateAvaibilityStatus(View v) {
-     RequestParams params = new RequestParams();
-     params.put("userid", DBHelper.getUserid(ProfileActivity.this));
-     if (swtchAvailable.isChecked())
-     params.put("status", "1");
-     else
-     params.put("status", "0");
-
-     params.put("from_date", etAvailableFromDate.getText().toString());
-     params.put("to_date", etAvailableTodate.getText().toString());
-     client.post(Constants.CHANGE_STATUS, params, new AsyncHttpResponseHandler() {
-    @Override public void onStart() {
-    super.onStart();
-    dialog.show();
-    }
-
-    @Override public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-    showToast("Changed availability status successfully");
-    dialog.dismiss();
-    }
-
-    @Override public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-
-    dialog.dismiss();
-    showToast("Something went wrong");
-    }
-    });
-     }
-     ***/
 
     public void goAvaibilityActivity(View v) {
         Intent i = new Intent(this, AvaibilityListActivity.class);

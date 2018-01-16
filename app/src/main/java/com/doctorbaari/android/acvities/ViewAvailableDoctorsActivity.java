@@ -41,7 +41,7 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_available_doctors);
         ButterKnife.bind(this);
         Logger.addLogAdapter(new AndroidLogAdapter());
-        SideNToolbarController.attach(this, "View Available Doctors");
+        SideNToolbarController.attach(this, "Available Doctor's List");
 
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);

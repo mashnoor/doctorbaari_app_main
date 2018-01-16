@@ -74,8 +74,9 @@ public class JobAdapter extends BaseAdapter {
         TextView tvLocation = v.findViewById(R.id.tvLocation);
         TextView postedOn = v.findViewById(R.id.tvPostedOn);
         TextView tvDistance = v.findViewById(R.id.tvDistance);
+        TextView tvPostedBy = v.findViewById(R.id.tvPostedBy);
 
-        ImageView ivLocation = v.findViewById(R.id.ivLocation);
+        Button ivLocation = v.findViewById(R.id.btnLocation);
 
         Button btnContact = v.findViewById(R.id.btnContact);
         Button seeDetails = v.findViewById(R.id.btnJobdetails);
@@ -89,7 +90,8 @@ public class JobAdapter extends BaseAdapter {
             }
         });
 
-        tvDistance.setText("Distance: " + currpost.getDistance() + " KM");
+        tvDistance.setText(currpost.getDistance() + " KM");
+        tvPostedBy.setText(currpost.getUsername());
 
 
         tvInstitueName.setText(currpost.getInstitute());
@@ -106,8 +108,8 @@ public class JobAdapter extends BaseAdapter {
             }
         });
 
-        postedOn.setText("Posted On: " + currpost.getPostDatetime());
-        tvLocation.setText("Location: " + currpost.getPlace());
+        postedOn.setText(currpost.getPostDatetime());
+        tvLocation.setText(currpost.getPlace());
 
         //As the Newsfeed and history are from same adapter, replace the contact buttton with see result for history
         if (activity instanceof HistoryActivity) {

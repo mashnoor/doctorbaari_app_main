@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:focusable="false"
-            android:hint="From Date"
+            android:hint="Joining Date"
             android:inputType="date" />
 
 
@@ -35,7 +35,7 @@
             android:id="@+id/tvLocationType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Location"
+            android:text="Where do you want to find a job"
             android:textSize="18sp"
             android:textColor="@color/black_bg"
             android:textStyle="bold" />

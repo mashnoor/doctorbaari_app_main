@@ -16,23 +16,56 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:onClick="goAvaibilityActivity"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
-            android:src="@drawable/time_icon_black" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:onClick="goAvaibilityActivity"
+                android:src="@drawable/time_icon_black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avaibility Schedule"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/black_bg"/>
+
+        </LinearLayout>
 
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:onClick="goViewHistory"
-            android:src="@drawable/my_schedule_button" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:onClick="goViewHistory"
+                android:src="@drawable/my_schedule_button" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="History"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/black_bg"/>
+
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -97,42 +130,117 @@
                 android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/tvInstitue"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Medical :  Institue Name"
-                android:textColor="@color/black_bg"
-                android:textSize="15sp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvCurrentlyWorking"
-                android:layout_width="match_parent"
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Medical College : "
+                    android:textStyle="bold"
+                    android:textColor="@color/black_bg"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvInstitue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Institue Name"
+                    android:textColor="@color/black_bg"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Currently working :  Currently Working"
-                android:textColor="@color/black_bg"
-                android:textSize="15sp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvDegree"
-                android:layout_width="match_parent"
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Currently working : "
+                    android:textStyle="bold"
+                    android:textColor="@color/black_bg"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvCurrentlyWorking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text=" Currently Working"
+                    android:textColor="@color/black_bg"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Degree :  MBBS"
-                android:textColor="@color/black_bg"
-                android:textSize="15sp" />
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Degree : "
+                    android:textStyle="bold"
+                    android:textColor="@color/black_bg"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvDegree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text=" MBBS"
+                    android:textColor="@color/black_bg"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
 
 
-            <TextView
-                android:id="@+id/tvDateOfBirth"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:text="Date of Birth :  19/06/1990"
-                android:textColor="@color/black_bg"
-                android:textSize="15sp" />
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Date of Birth : "
+                    android:textStyle="bold"
+                    android:textColor="@color/black_bg"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvDateOfBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:text=" 19/06/1990"
+                    android:textColor="@color/black_bg"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+
+
+
 
 
             <TextView

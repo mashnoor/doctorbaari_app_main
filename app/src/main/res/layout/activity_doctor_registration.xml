@@ -55,6 +55,7 @@
 
                 </LinearLayout>
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -62,17 +63,17 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/ivMedicalCollege"
+                        android:id="@+id/ivMedicalCollegeName"
                         android:layout_width="60dp"
                         android:layout_height="40dp"
                         android:src="@drawable/int_black" />
 
-                    <Spinner
-                        android:id="@+id/spnrCollege"
+                    <EditText
+                        android:id="@+id/etMedicalCollegeName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:entries="@array/degrees" />
+
+                        android:hint="Name of your Medical College" />
 
 
                 </LinearLayout>
@@ -96,7 +97,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
 
-                        android:hint="MBBS Registration No"
+                        android:hint="MBBS Registration Number"
                         android:inputType="numberDecimal" />
 
                 </LinearLayout>
@@ -107,8 +108,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
-                    android:text="Select with your degree"
-                    android:textSize="20dp"
+                    android:text="Select with your degree(s)"
+                    android:textColor="@color/black_bg"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
 
@@ -139,6 +141,22 @@
                         android:onClick="degreeChecked"
                         android:text="FCPS Surgery" />
 
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/checkedTextGyno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="degreeChecked"
+                        android:text="FCPS Gynacology" />
+
                     <CheckBox
                         android:id="@+id/checkedText2"
                         android:layout_width="wrap_content"
@@ -148,14 +166,6 @@
 
 
                 </LinearLayout>
-
-
-                <CheckBox
-                    android:id="@+id/checkedTextGyno"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="degreeChecked"
-                    android:text="FCPS Gynacology" />
 
 
                 <TextView
@@ -360,29 +370,7 @@
                     android:text="MBBS" />
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/ivDateOfBirth"
-                        android:layout_width="60dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/calender" />
-
-                    <EditText
-                        android:id="@+id/etDateOfBirth"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:focusable="false"
-                        android:hint="Date of Birth"
-                        android:inputType="date" />
-
-
-                </LinearLayout>
 
 
                 <LinearLayout
@@ -414,6 +402,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
 
                     android:orientation="horizontal">
 
@@ -424,15 +414,27 @@
                         android:src="@drawable/location_black" />
 
 
-                    <fragment
-                        android:id="@+id/etWorkLocation"
-                        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                    <TextView
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center" />
+                        android:layout_marginBottom="15dp"
+                        android:text="Currently working location"
+
+
+                        android:textColor="@color/black_bg"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
+
+                <fragment
+                    android:id="@+id/etWorkLocation"
+                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
 
 
             </LinearLayout>
@@ -463,20 +465,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="15dp"
-                        android:text="Terms of conditions"
+                        android:text=" Terms of conditions"
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
 
                 </LinearLayout>
 
-                <com.facebook.login.widget.LoginButton
-                    android:id="@+id/login_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp" />
 
                 <Button
                     android:id="@+id/btSignUp"

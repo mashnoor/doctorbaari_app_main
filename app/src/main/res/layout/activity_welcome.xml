@@ -55,19 +55,14 @@
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:background="@color/button"
+            android:background="@drawable/button_style"
             android:onClick="goDoctorSignUp"
-            android:text="MBBS Doctor"
+            android:text="Doctor"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
 
-        <ImageView
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:onClick="goDoctorSignUp"
-            android:src="@drawable/intern_doctors" />
+
 
 
         <Button
@@ -76,9 +71,8 @@
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:background="@color/button"
+            android:background="@drawable/button_style"
             android:onClick="goInternSignup"
-
             android:text="Intern Doctor"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -89,10 +83,9 @@
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:background="@color/button"
+            android:background="@drawable/button_style"
             android:onClick="goHospitalAuthoritySignup"
-
-            android:text="Hospital Authority"
+            android:text="Institution Authority"
             android:textColor="@color/white"
             android:textStyle="bold" />
 

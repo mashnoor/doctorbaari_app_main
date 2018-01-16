@@ -119,7 +119,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.HospitalAuthorityRegistration"
-
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
@@ -148,12 +147,17 @@
         <activity
             android:name=".acvities.AdvertiseDetailActivity"
             android:excludeFromRecents="true"
-
             android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
             android:name=".acvities.InquiryActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".acvities.JobCircularFullscreenView"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_job_circular_fullscreen_view"
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".acvities.ConnectWithFacebookActivity" />
     </application>
 
 </manifest>
