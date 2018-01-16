@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -189,8 +187,8 @@ public class ProfileActivity extends AppCompatActivity {
                 tvMobile.setText(user.getPhone());
 
                 RequestOptions requestOptions = new RequestOptions();
-                requestOptions.placeholder(R.drawable.profile);
-                requestOptions.error(R.drawable.profile);
+                requestOptions.placeholder(R.drawable.profile_black);
+                requestOptions.error(R.drawable.profile_black);
 
 
                 Glide.with(ProfileActivity.this).load(user.getPpUrl()).apply(requestOptions).into(profileImage);

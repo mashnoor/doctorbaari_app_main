@@ -12,10 +12,11 @@
 
     <color name="black_overlay">#66000000</color>
 
-    <color name="material_drawer_background">#2F4F4F</color>
+    <color name="material_drawer_background">#086865</color>
     <!-- Material DEFAULT text / items colors -->
     <color name="material_drawer_primary_text">#ffffff</color>
-    <color name="new_tool_color">#2F4F4F</color>
+    <color name="new_tool_color">#086865</color>
+    <color name="off_white">#fcf9e6</color>
 
 
 </resources>

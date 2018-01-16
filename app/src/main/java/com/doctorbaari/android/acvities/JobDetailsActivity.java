@@ -153,7 +153,7 @@ public class JobDetailsActivity extends AppCompatActivity {
                     }).check();
                 } else {
                     if (!job.getUser().getFb_profile().contains("facebook.com")) {
-                        HelperFunc.showToast(JobDetailsActivity.this, "Facebook profile not available");
+                        HelperFunc.showToast(JobDetailsActivity.this, "Facebook profile_black not available");
                     } else {
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(job.getUser().getFb_profile()));
                         startActivity(browserIntent);

@@ -57,7 +57,7 @@ public class HistorySubSearchResult extends AppCompatActivity {
     }
 
 
-    //This is for loadig the search result of the posted sub jobs
+    //This is for loadig the searchsubjob result of the posted sub jobs
     /***
 
      public void loadSearchResult(String fromDate, String toDate, String placename, String placelat, String placelon, String preferredDegree) {

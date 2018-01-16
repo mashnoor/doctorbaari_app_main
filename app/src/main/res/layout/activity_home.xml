@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ss.com.bannerslider.views.BannerSlider
+        android:id="@+id/slideImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:interval="4000"
+        app:loopSlides="true"
+        app:defaultBanner="1"
+        app:defaultIndicators="circle"
+        app:animateIndicators="true"
+        android:layout_above="@id/homeMenu"
+
+        android:layout_below="@id/toolbar" />
+
+
+    <LinearLayout
+        android:id="@+id/homeMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:background="#086865"
+        android:orientation="vertical"
+     >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="goNewsFeed"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/ivjobUpdate"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/newsfeed" />
+
+                <TextView
+                    android:id="@+id/tvjobUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:text="Job Updates"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:onClick="goPostedPermanentJobs"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/ivPostpermanentJob"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/postpermanentjob" />
+
+                <TextView
+                    android:id="@+id/tvPostpermanentJob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:gravity="center"
+                    android:text="Post Permanent job"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:onClick="goSearchPermanentJob"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/ivSearchPermanent"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/searchpermanentjob" />
+
+                <TextView
+                    android:id="@+id/tvSearchPermanent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:gravity="center"
+                    android:text="Search permanent Job"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="goPostSubJobs"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/ivPostSubstitute"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/postsubjob" />
+
+                <TextView
+                    android:id="@+id/tvPostSubstitute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+
+                    android:text="Post Substitute Job"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:onClick="goSearchSubJobs"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/ivSearchSubstitute"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/searchsubjob" />
+
+                <TextView
+                    android:id="@+id/tvSearchSubstitute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:gravity="center"
+                    android:text="Search Substitute job"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:onClick="goHospitalInquiry"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/ivHospitalInquiry"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/inquiry" />
+
+                <TextView
+                    android:id="@+id/tvHospitalInquiry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:gravity="center"
+                    android:text="Hospital inquiry"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+
+            android:onClick="goAvailabilityActivity"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/ivAvailability"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/schedule_white" />
+
+                <TextView
+                    android:id="@+id/tvAvailability"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+
+                    android:text="Availability Schedule"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="goProfile"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/ivProfiles"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/profile" />
+
+                <TextView
+                    android:id="@+id/tvProfiles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:gravity="center"
+                    android:text="Profile"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:onClick="goNewMedicineUpdates"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/ivNewMedicineUpdate"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/medicineupdate" />
+
+                <TextView
+                    android:id="@+id/tvNewMedicineUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:gravity="center"
+                    android:text="New Medicine Updates"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

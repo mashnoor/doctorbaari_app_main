@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,15 +17,12 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
-import com.doctorbaari.android.adapters.ReviewsListAdapter;
-import com.doctorbaari.android.models.Review;
 import com.doctorbaari.android.models.User;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
 import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
-import com.facebook.login.widget.LoginButton;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -130,8 +126,8 @@ public class ProfileDetail extends AppCompatActivity {
                 tvMobile.setText(user.getPhone());
 
                 RequestOptions requestOptions = new RequestOptions();
-                requestOptions.placeholder(R.drawable.profile);
-                requestOptions.error(R.drawable.profile);
+                requestOptions.placeholder(R.drawable.profile_black);
+                requestOptions.error(R.drawable.profile_black);
 
 
                 Glide.with(ProfileDetail.this).load(user.getPpUrl()).apply(requestOptions).into(profileImage);
@@ -221,7 +217,7 @@ public class ProfileDetail extends AppCompatActivity {
                     }).check();
                 } else {
                     if (!user.getFb_profile().contains("facebook.com")) {
-                        HelperFunc.showToast(ProfileDetail.this, "Facebook profile not available");
+                        HelperFunc.showToast(ProfileDetail.this, "Facebook profile_black not available");
                     } else {
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(user.getFb_profile()));
                         startActivity(browserIntent);

@@ -111,7 +111,7 @@ public class JobAdapter extends BaseAdapter {
         postedOn.setText(currpost.getPostDatetime());
         tvLocation.setText(currpost.getPlace());
 
-        //As the Newsfeed and history are from same adapter, replace the contact buttton with see result for history
+        //As the Newsfeed and schedule are from same adapter, replace the contact buttton with see result for schedule
         if (activity instanceof HistoryActivity) {
             btnContact.setText("See Result >");
             btnContact.setOnClickListener(new View.OnClickListener() {
@@ -160,7 +160,7 @@ public class JobAdapter extends BaseAdapter {
                                 }).check();
                             } else {
                                 if (!currpost.getUser().getFb_profile().contains("facebook.com")) {
-                                    showToast(activity, "Facebook profile not available");
+                                    showToast(activity, "Facebook profile_black not available");
                                 } else {
                                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currpost.getUser().getFb_profile()));
                                     activity.startActivity(browserIntent);

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.acvities.DoctorRegistrationActivity;
+import com.doctorbaari.android.acvities.HomeActitvity;
 import com.doctorbaari.android.acvities.HospitalAuthorityRegistration;
 import com.doctorbaari.android.acvities.InquiryActivity;
 import com.doctorbaari.android.acvities.InternRegistration;
@@ -20,8 +21,6 @@ import com.doctorbaari.android.acvities.PostSubstituteActivity;
 import com.doctorbaari.android.acvities.ProfileActivity;
 import com.doctorbaari.android.acvities.SearchPermanentJob;
 import com.doctorbaari.android.acvities.SearchSubstituteJobs;
-import com.doctorbaari.android.acvities.ViewAvailableDoctorsActivity;
-import com.doctorbaari.android.acvities.WelcomeActivity;
 import com.facebook.FacebookSdk;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.login.LoginManager;
@@ -70,18 +69,18 @@ public class SideNToolbarController {
     private static void createDrawer(final Activity activity, Toolbar t)
 
     {
-        PrimaryDrawerItem feedItem = new PrimaryDrawerItem().withName("Feed").withIcon(R.drawable.newsfeed);
-        PrimaryDrawerItem profileItem = new PrimaryDrawerItem().withName("Profile").withIcon(R.drawable.profileicon);
-        PrimaryDrawerItem postPermanent = new PrimaryDrawerItem().withName("Post Permanent Job").withIcon(R.drawable.postjob);
-        PrimaryDrawerItem postSub = new PrimaryDrawerItem().withName("Post for Substitute").withIcon(R.drawable.postjob);
-        PrimaryDrawerItem searchPermanent = new PrimaryDrawerItem().withName("Search for Permanent job").withIcon(R.drawable.search);
-        PrimaryDrawerItem searchSubstitute = new PrimaryDrawerItem().withName("Search for Substitute job").withIcon(R.drawable.search);
+        PrimaryDrawerItem homeItem = new PrimaryDrawerItem().withName("Home").withIcon(R.drawable.home);
+        PrimaryDrawerItem profileItem = new PrimaryDrawerItem().withName("Profile").withIcon(R.drawable.profile);
+        PrimaryDrawerItem postPermanent = new PrimaryDrawerItem().withName("Post Permanent Job").withIcon(R.drawable.postpermanentjob);
+        PrimaryDrawerItem postSub = new PrimaryDrawerItem().withName("Post for Substitute").withIcon(R.drawable.postsubjob);
+        PrimaryDrawerItem searchPermanent = new PrimaryDrawerItem().withName("Search for Permanent job").withIcon(R.drawable.searchpermanentjob);
+        PrimaryDrawerItem searchSubstitute = new PrimaryDrawerItem().withName("Search for Substitute job").withIcon(R.drawable.searchsubjob);
 
 
         PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIcon(R.drawable.logout);
         PrimaryDrawerItem about = new PrimaryDrawerItem().withName("About").withIcon(R.drawable.about);
         PrimaryDrawerItem inquiry = new PrimaryDrawerItem().withName("Hospital Inquiry").withIcon(R.drawable.inquiry);
-        PrimaryDrawerItem inviteOthers = new PrimaryDrawerItem().withName("Send Invitation").withIcon(R.drawable.inquiry);
+        PrimaryDrawerItem inviteOthers = new PrimaryDrawerItem().withName("Send Invitation").withIcon(R.drawable.invite);
 
 
         final Drawer d = new DrawerBuilder()
@@ -91,7 +90,7 @@ public class SideNToolbarController {
                 .withGenerateMiniDrawer(true)
 
                 .addDrawerItems(
-                        feedItem, //0
+                        homeItem, //0
                         new DividerDrawerItem(),
                         profileItem, //2
                         new DividerDrawerItem(),
@@ -119,8 +118,8 @@ public class SideNToolbarController {
                         Log.d("-------------", "" + position);
                         switch (position) {
                             case 0:
-                                activity.startActivity(new Intent(activity, NewsfeedActivity.class));
-
+                                activity.startActivity(new Intent(activity, HomeActitvity.class));
+                                activity.finish();
                                 break;
                             case 2:
                                 activity.startActivity(new Intent(activity, ProfileActivity.class));

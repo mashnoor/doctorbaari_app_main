@@ -30,7 +30,7 @@
             android:layout_height="25dp"
             android:layout_gravity="end"
             android:layout_weight="1"
-            android:src="@drawable/refresh_button" />
+            android:src="@drawable/refresh" />
 
 
     </LinearLayout>

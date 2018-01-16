@@ -11,14 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
-import com.doctorbaari.android.acvities.JobDetailsActivity;
 import com.doctorbaari.android.models.DoctorSub;
 import com.doctorbaari.android.utils.HelperFunc;
 import com.karumi.dexter.Dexter;
@@ -111,7 +108,7 @@ public class DoctorAdapter extends BaseAdapter {
                             }).check();
                         } else {
                             if (!currentDoctorSub.getFbProfile().contains("facebook.com")) {
-                                HelperFunc.showToast(activity, "Facebook profile not available");
+                                HelperFunc.showToast(activity, "Facebook profile_black not available");
                             } else {
                                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentDoctorSub.getFbProfile()));
                                 activity.startActivity(browserIntent);
@@ -144,8 +141,8 @@ public class DoctorAdapter extends BaseAdapter {
 
 
         RequestOptions requestOptions = new RequestOptions();
-        requestOptions.placeholder(R.drawable.profile);
-        requestOptions.error(R.drawable.profile);
+        requestOptions.placeholder(R.drawable.profile_black);
+        requestOptions.error(R.drawable.profile_black);
 
         Glide.with(activity).load(currentDoctorSub.getPpUrl()).apply(requestOptions).into(ivImage);
         tvUserName.setText(currentDoctorSub.getUsername());

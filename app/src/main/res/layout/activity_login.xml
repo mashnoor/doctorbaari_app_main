@@ -30,7 +30,7 @@
             android:layout_marginBottom="10dp"
             android:text="Welcome"
             android:textColor="@color/white"
-            android:textSize="50dp"
+            android:textSize="50sp"
             android:textStyle="bold" />
 
 
@@ -41,7 +41,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="15dp"
-            android:background="@color/black_bg"
+            android:background="@drawable/button_style"
             android:onClick="goLogin"
             android:text="Login with phone"
             android:textColor="@color/white"
@@ -54,7 +54,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="15dp"
-        android:background="@color/black_bg"
+        android:background="@drawable/button_style"
         android:onClick="goRegistration"
         android:text="Create an Account"
         android:textColor="@color/white"

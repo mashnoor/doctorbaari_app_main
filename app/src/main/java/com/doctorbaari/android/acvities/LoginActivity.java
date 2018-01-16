@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                                     finish();
                                     DBHelper.setUserId(LoginActivity.this, response);
                                     DBHelper.setSignedInStatus(LoginActivity.this, true);
-                                    startActivity(new Intent(LoginActivity.this, NewsfeedActivity.class));
+                                    startActivity(new Intent(LoginActivity.this, HomeActitvity.class));
                                 }
 
 

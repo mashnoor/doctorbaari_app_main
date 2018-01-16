@@ -33,11 +33,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:fontFamily="cursive"
+            android:layout_marginBottom="10dp"
             android:text="Welcome"
             android:textColor="@color/white"
-            android:textSize="50dp"
+            android:textSize="50sp"
             android:textStyle="bold" />
+
 
         <TextView
             android:id="@+id/textView3"

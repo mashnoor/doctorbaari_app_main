@@ -65,7 +65,7 @@
                         android:id="@+id/etInstituteName"
                         android:layout_width="60dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/profile" />
+                        android:src="@drawable/profile_black" />
 
                     <EditText
                         android:id="@+id/etRepresentativeName"

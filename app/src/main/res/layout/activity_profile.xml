@@ -28,7 +28,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:onClick="goAvaibilityActivity"
-                android:src="@drawable/time_icon_black" />
+                android:src="@drawable/schedule" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:onClick="goViewHistory"
-                android:src="@drawable/my_schedule_button" />
+                android:src="@drawable/history" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:src="@drawable/profile"
+                android:src="@drawable/profile_black"
                 app:civ_border_color="#FF000000"
                 app:civ_border_width="1dp" />
 
