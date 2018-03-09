@@ -32,14 +32,16 @@ public class HomeActitvity extends AppCompatActivity {
         SideNToolbarController.attach(this, "Home");
 
 
-
-        List<Banner> banners=new ArrayList<>();
+        List<Banner> banners = new ArrayList<>();
         banners.add(new DrawableBanner(R.drawable.s1));
         banners.add(new DrawableBanner(R.drawable.s2));
+        banners.add(new DrawableBanner(R.drawable.s3));
+        banners.add(new DrawableBanner(R.drawable.s4));
+        banners.add(new DrawableBanner(R.drawable.s5));
+        banners.add(new DrawableBanner(R.drawable.s6));
+        banners.add(new DrawableBanner(R.drawable.s7));
+        banners.add(new DrawableBanner(R.drawable.s8));
         sliderLayout.setBanners(banners);
-
-
-
 
 
     }
