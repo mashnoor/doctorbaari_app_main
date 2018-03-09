@@ -94,13 +94,10 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
 
-                        android:hint="Temporary Registration Number"
+                        android:hint="Temporary Registration Slip Number"
                         android:inputType="numberDecimal" />
 
                 </LinearLayout>
-
-
-
 
 
                 <LinearLayout
@@ -145,8 +142,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="Currently working location"
-                        android:textSize="15sp" />
+                        android:text="Institution you are current working in "
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
@@ -169,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="selectImage"
                     android:padding="10dp"
-                    android:text="Upload the photo of your temporary registration memeber slip" />
+                    android:text="Upload the photo of your temporary MBBS registration slip number" />
 
 
             </LinearLayout>
@@ -195,7 +193,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="15dp"
-                    android:text="I agree all statements in" />
+                    android:text="I agree all statements in " />
 
 
                 <TextView
@@ -204,8 +202,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="15dp"
-                    android:text="Terms of conditions"
-                    android:textSize="15dp"
+                    android:text="Terms and Conditions"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
 
@@ -214,9 +212,9 @@
             <Button
                 android:id="@+id/btSignUp"
                 android:layout_width="140dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/black_bg"
+                android:background="@drawable/button_style"
                 android:onClick="goSignup"
                 android:text="Sign Up"
                 android:textColor="@color/white" />

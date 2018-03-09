@@ -158,7 +158,10 @@
             android:label="@string/title_activity_job_circular_fullscreen_view"
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".acvities.ConnectWithFacebookActivity" />
-        <activity android:name=".acvities.HomeActitvity"></activity>
+        <activity
+            android:name=".acvities.HomeActitvity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".acvities.FeedbackActivity"></activity>
     </application>
 
 </manifest>

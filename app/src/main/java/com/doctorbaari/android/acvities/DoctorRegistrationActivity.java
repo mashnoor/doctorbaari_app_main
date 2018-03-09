@@ -184,6 +184,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
 
                 } else {
                     DBHelper.setUserId(DoctorRegistrationActivity.this, response);
+                    DBHelper.setSignedInStatus(DoctorRegistrationActivity.this, true);
                     showToast("Account created successfully");
                     startActivity(new Intent(DoctorRegistrationActivity.this, ConnectWithFacebookActivity.class));
 

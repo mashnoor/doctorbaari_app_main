@@ -123,8 +123,6 @@ public class DoctorAdapter extends BaseAdapter {
         });
 
 
-
-
         //On Click Place
         btnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,10 +144,10 @@ public class DoctorAdapter extends BaseAdapter {
 
         Glide.with(activity).load(currentDoctorSub.getPpUrl()).apply(requestOptions).into(ivImage);
         tvUserName.setText(currentDoctorSub.getUsername());
-        tvCollege.setText("College: " + currentDoctorSub.getCollege());
-        tvDegree.setText("Degree: " + currentDoctorSub.getDegree());
-        tvLocation.setText("Location: " + currentDoctorSub.getPlace());
-        tvDistance.setText("Distance: " + currentDoctorSub.getDistance());
+        tvCollege.setText(currentDoctorSub.getCollege());
+        tvDegree.setText(currentDoctorSub.getDegree());
+        tvLocation.setText(currentDoctorSub.getPlace());
+        tvDistance.setText(currentDoctorSub.getDistance());
 
 
         return v;

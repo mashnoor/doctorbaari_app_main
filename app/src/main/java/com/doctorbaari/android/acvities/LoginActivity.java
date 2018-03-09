@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
         if (DBHelper.isSignedIn(this)) {
-            startActivity(new Intent(this, NewsfeedActivity.class));
+            startActivity(new Intent(this, HomeActitvity.class));
             finish();
         }
 

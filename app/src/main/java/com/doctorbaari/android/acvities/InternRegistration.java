@@ -89,9 +89,7 @@ public class InternRegistration extends AppCompatActivity {
     String workingPlaceName = "";
     String workingPlaceLat = "";
     String workingPlaceLon = "";
-    CallbackManager callbackManager;
-    @BindView(R.id.login_button)
-    LoginButton loginButton;
+
 
     String email = "";
     String profileLink = "";
@@ -115,57 +113,6 @@ public class InternRegistration extends AppCompatActivity {
         dialog.setMessage("Connecting with Doctor Baari server...");
         Logger.addLogAdapter(new AndroidLogAdapter());
         verifyNumber();
-
-
-        loginButton.setReadPermissions(Arrays.asList(
-                "public_profile", "email"));
-
-
-        callbackManager = CallbackManager.Factory.create();
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Logger.d(loginResult.getRecentlyGrantedPermissions());
-                GraphRequest request = GraphRequest.newMeRequest(
-                        loginResult.getAccessToken(),
-                        new GraphRequest.GraphJSONObjectCallback() {
-                            @Override
-                            public void onCompleted(JSONObject object, GraphResponse response) {
-                                Log.v("LoginActivity", response.toString());
-
-                                // Application code
-                                try {
-                                    Logger.d(object);
-                                    email = object.optString("email", "Not Available");
-                                    profileLink = object.getString("link");
-                                    imageLink = object.getJSONObject("picture").getJSONObject("data").getString("url");
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                                // 01/31/1980 format
-                            }
-                        });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,name,email,gender,birthday,link,picture.type(large)");
-                request.setParameters(parameters);
-                request.executeAsync();
-
-
-            }
-
-            @Override
-            public void onCancel() {
-                showToast("Cancelled Login");
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-
-                showToast("Something went wrong");
-            }
-        });
 
 
     }
@@ -230,8 +177,9 @@ public class InternRegistration extends AppCompatActivity {
 
                 } else {
                     DBHelper.setUserId(InternRegistration.this, response);
+                    DBHelper.setSignedInStatus(InternRegistration.this, true);
                     showToast("Account created successfully");
-                    startActivity(new Intent(InternRegistration.this, NewsfeedActivity.class));
+                    startActivity(new Intent(InternRegistration.this, ConnectWithFacebookActivity.class));
                     finish();
                 }
 
@@ -244,7 +192,7 @@ public class InternRegistration extends AppCompatActivity {
                 //Log.d("--------", new String(responseBody));
                 dialog.dismiss();
                 Logger.d(new String(responseBody));
-                showToast("Some error occured");
+                showToast("Something went wrong");
             }
         });
     }
@@ -274,12 +222,6 @@ public class InternRegistration extends AppCompatActivity {
 
         });
 
-
-        try {
-            callbackManager.onActivityResult(requestCode, resultCode, data);
-        } catch (Exception e) {
-
-        }
 
         if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
             AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);

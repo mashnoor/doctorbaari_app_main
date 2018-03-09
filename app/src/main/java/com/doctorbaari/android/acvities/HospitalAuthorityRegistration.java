@@ -139,8 +139,9 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
 
                 } else {
                     DBHelper.setUserId(HospitalAuthorityRegistration.this, response);
+                    DBHelper.setSignedInStatus(HospitalAuthorityRegistration.this, true);
                     showToast("Account created successfully");
-                    startActivity(new Intent(HospitalAuthorityRegistration.this, NewsfeedActivity.class));
+                    startActivity(new Intent(HospitalAuthorityRegistration.this, HomeActitvity.class));
                     finish();
                 }
 

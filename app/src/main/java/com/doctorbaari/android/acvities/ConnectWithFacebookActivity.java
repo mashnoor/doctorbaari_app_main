@@ -125,7 +125,7 @@ public class ConnectWithFacebookActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 dialog.dismiss();
-                startActivity(new Intent(ConnectWithFacebookActivity.this, NewsfeedActivity.class));
+                startActivity(new Intent(ConnectWithFacebookActivity.this, HomeActitvity.class));
                 HelperFunc.showToast(ConnectWithFacebookActivity.this, "Conncected with facebook successfully");
                 finish();
             }

@@ -163,7 +163,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
 
-                    android:text="Post Substitute Job"
+                    android:text="Search Substitute Doctor"
                     android:textColor="@color/white" />
 
             </LinearLayout>
@@ -192,7 +192,7 @@
                     android:layout_gravity="center"
 
                     android:gravity="center"
-                    android:text="Search Substitute job"
+                    android:text="Search Temporary Job"
                     android:textColor="@color/white" />
 
             </LinearLayout>
@@ -275,7 +275,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="goProfile"
+                android:onClick="goFeedback"
                 android:orientation="vertical">
 
 
@@ -284,16 +284,15 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/profile" />
+                    android:src="@drawable/feedback" />
 
                 <TextView
-                    android:id="@+id/tvProfiles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
 
                     android:gravity="center"
-                    android:text="Profile"
+                    android:text="User Feedback"
                     android:textColor="@color/white" />
 
             </LinearLayout>
@@ -311,11 +310,10 @@
 
 
                 <ImageView
-                    android:id="@+id/ivNewMedicineUpdate"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/medicineupdate" />
+                    app:srcCompat="@drawable/invite" />
 
                 <TextView
                     android:id="@+id/tvNewMedicineUpdate"
@@ -324,7 +322,7 @@
                     android:layout_gravity="center"
 
                     android:gravity="center"
-                    android:text="New Medicine Updates"
+                    android:text="Invite Fellow Doctors"
                     android:textColor="@color/white" />
 
             </LinearLayout>

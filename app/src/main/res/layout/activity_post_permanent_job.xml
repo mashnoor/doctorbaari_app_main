@@ -72,6 +72,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="selectImage"
                 android:padding="10dp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_style"
                 android:text="Upload Job Circular Photo" />
 
 

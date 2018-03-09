@@ -251,7 +251,7 @@
                     android:onClick="viewJobCircular"
 
 
-                    android:text="Job Circular"
+                    android:text="View Job Circular"
                     android:textColor="@color/white" />
 
                 <Button

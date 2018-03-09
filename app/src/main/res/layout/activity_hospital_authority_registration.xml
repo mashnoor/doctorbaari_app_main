@@ -143,7 +143,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="Instituion Location"
-                        android:textSize="15dp" />
+                        android:textStyle="bold"
+                        android:textSize="17sp" />
 
 
                 </LinearLayout>
@@ -180,8 +181,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="15dp"
-                    android:text="Terms of conditions"
-                    android:textSize="15dp"
+                    android:text="Terms and Conditions"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
 
@@ -190,9 +191,9 @@
             <Button
                 android:id="@+id/btSignUp"
                 android:layout_width="140dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@color/black_bg"
+                android:background="@drawable/button_style"
                 android:onClick="goSignup"
                 android:text="Sign Up"
                 android:textColor="@color/white" />

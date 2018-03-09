@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="College: "
-                android:textColor="@color/black_bg"
+                android:textColor="@color/new_tool_color"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Degree: "
-                android:textColor="@color/black_bg"
+                android:textColor="@color/new_tool_color"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Location : "
-                android:textColor="@color/black_bg"
+                android:textColor="@color/new_tool_color"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Distance : "
-                android:textColor="@color/black_bg"
+                android:textColor="@color/new_tool_color"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 

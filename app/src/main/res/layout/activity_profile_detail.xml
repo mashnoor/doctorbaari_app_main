@@ -74,7 +74,7 @@
                     android:text="Medical College : "
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:textColor="@color/black_bg" />
+                    android:textColor="@color/new_tool_color" />
 
                 <TextView
                     android:id="@+id/tvInstitue"
@@ -100,9 +100,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:text="Currently working : "
-                    android:textStyle="bold"
+                    android:textColor="@color/new_tool_color"
                     android:textSize="15sp"
-                    android:textColor="@color/black_bg" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvCurrentlyWorking"
@@ -131,7 +131,7 @@
                     android:text="Degree : "
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:textColor="@color/black_bg" />
+                    android:textColor="@color/new_tool_color" />
 
                 <TextView
                     android:id="@+id/tvDegree"
@@ -145,35 +145,6 @@
 
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:text="Date of Birth : "
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="@color/black_bg" />
-
-                <TextView
-                    android:id="@+id/tvDateOfBirth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:text=" 19/06/1990"
-                    android:textSize="15sp"
-                    android:textColor="@color/black_bg" />
-
-
-
-            </LinearLayout>
-
 
 
             <TextView
