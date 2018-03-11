@@ -54,6 +54,7 @@
         <activity
             android:name=".acvities.DoctorRegistrationActivity"
             android:launchMode="singleInstance"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.NewsfeedActivity"
@@ -79,11 +80,13 @@
         <activity
             android:name=".acvities.PostSubstituteActivity"
             android:label="@string/title_activity_search_substitute"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".acvities.PostPermanentJobActivity"
             android:launchMode="singleInstance"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.ProfileActivity"
@@ -112,10 +115,12 @@
         <activity
             android:name=".acvities.SearchSubstituteJobs"
             android:launchMode="singleInstance"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.InternRegistration"
             android:launchMode="singleInstance"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.HospitalAuthorityRegistration"
@@ -132,6 +137,7 @@
         <activity
             android:name=".acvities.SubstituteJobSearchResult"
             android:launchMode="singleInstance"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait" />
         <activity
             android:name=".acvities.Reviews"
@@ -161,7 +167,9 @@
         <activity
             android:name=".acvities.HomeActitvity"
             android:launchMode="singleInstance" />
-        <activity android:name=".acvities.FeedbackActivity"></activity>
+        <activity android:name=".acvities.FeedbackActivity" />
+        <activity android:name=".acvities.ProfileEditActivity" />
+        <activity android:name=".acvities.AllWorkLocationsActivity"></activity>
     </application>
 
 </manifest>

@@ -74,6 +74,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
     File imgfile = null;
 
     ArrayList<String> degrees;
+    String fromDateConverted;
 
 
     @Override
@@ -110,7 +111,8 @@ public class PostPermanentJobActivity extends AppCompatActivity {
                     day = "0" + day;
 
 
-                etStatingFrom.setText(year + "-" + month + "-" + day);
+                etStatingFrom.setText(day + "-" + month + "/" + year);
+                fromDateConverted = year + "-" + month + "-" + day; //converted because db supports yyyy-mm-dd;
 
 
             }
@@ -151,7 +153,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         params.put("place", placename);
         params.put("details", details);
         params.put("degree", degree);
-        params.put("deadline", startingfrom);
+        params.put("deadline", fromDateConverted);
         params.put("placelat", placeLat);
         params.put("placelon", placeLon);
         if (imgfile != null) {
@@ -198,13 +200,13 @@ public class PostPermanentJobActivity extends AppCompatActivity {
     private void viewAvailableDoctors() {
 
 
-        String date_to = etStatingFrom.getText().toString();
+
         String date_from = "Not Available";
         JSONArray degreesArray = new JSONArray(degrees);
         String degree = degreesArray.toString();
         Intent i = new Intent(this, ViewAvailableDoctorsActivity.class);
         i.putExtra("fromdate", date_from);
-        i.putExtra("todate", date_to);
+        i.putExtra("todate", fromDateConverted);
         i.putExtra("degrees", degree);
         i.putExtra("placelat", placeLat);
         i.putExtra("placelon", placeLon);

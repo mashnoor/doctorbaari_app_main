@@ -57,7 +57,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
     AsyncHttpClient client;
     ProgressDialog dialog;
 
-    String placename = "", placelat = "", placelon = "";
+    String placename = "", placelat = "", placelon = "", fromDateConverted = "", toDateConverted = "";
 
     ArrayList<String> degrees;
 
@@ -94,10 +94,20 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
 
                 if (which[0] == 0)
-                tvDateFrom.setText(day + "-" + month + "-" + year);
+                {
+                    //Database Doesn't accept dd-mm-yyyy format. Instead accepts yyyy-mm-dd format
+                    //So converting it for Db, but showing in other format
+                    tvDateFrom.setText(day + "/" + month + "/" + year);
+                    fromDateConverted = year + "-" + month + "-" + day;
+                }
+
 
                 else
-                    tvToDate.setText(day + "-" + month + "-" + year);
+                {
+                    tvToDate.setText(day + "/" + month + "/" + year);
+                    toDateConverted = year + "-" + month + "-" + day;
+                }
+
             }
 
         };
@@ -150,8 +160,8 @@ public class PostSubstituteActivity extends AppCompatActivity {
             return;
         }
 
-        params.put("date_to", date_to);
-        params.put("date_from", date_from);
+        params.put("date_to", toDateConverted);
+        params.put("date_from", fromDateConverted);
         params.put("institute", instituteName);
         params.put("details", details);
         params.put("place", placename);
@@ -188,14 +198,11 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
     private void viewAvailableDoctors() {
 
-
-        String date_to = tvToDate.getText().toString();
-        String date_from = tvDateFrom.getText().toString();
         JSONArray degreesJson = new JSONArray(degrees);
         String degree = degreesJson.toString();
         Intent i = new Intent(this, ViewAvailableDoctorsActivity.class);
-        i.putExtra("fromdate", date_from);
-        i.putExtra("todate", date_to);
+        i.putExtra("fromdate", fromDateConverted);
+        i.putExtra("todate", toDateConverted);
         i.putExtra("degrees", degree);
         i.putExtra("placelat", placelat);
         i.putExtra("placelon", placelon);

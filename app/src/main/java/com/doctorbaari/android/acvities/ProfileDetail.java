@@ -50,8 +50,7 @@ public class ProfileDetail extends AppCompatActivity {
     TextView tvCurrentlyWorking;
     @BindView(R.id.tvDegree)
     TextView tvDegree;
-    @BindView(R.id.tvDateOfBirth)
-    TextView tvDateOfBirth;
+
     @BindView(R.id.tvFbLink)
     TextView tvFbLink;
     @BindView(R.id.tvEmail)

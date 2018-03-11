@@ -304,7 +304,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:onClick="goNewMedicineUpdates"
+                android:onClick="goInvite"
                 android:orientation="vertical"
                 android:padding="10dp">
 

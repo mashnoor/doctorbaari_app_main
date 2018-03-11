@@ -25,5 +25,7 @@ public class Constants {
     public final static String GET_REVIEWS = BASE_URL + "getreviews";
     public final static String GET_ADVERTISES = BASE_URL + "getadvertises";
     public final static String MAKE_INQUIRY = BASE_URL + "inquiry";
+    public final static String ADD_AND_UPDATE_LOCATION = BASE_URL + "addupdateworklocation";
+    public final static String GET_ALL_WORK_LOCATIONS = BASE_URL + "getworklocations";
 
 }

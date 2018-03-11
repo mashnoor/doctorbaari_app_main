@@ -76,12 +76,18 @@ public class HomeActitvity extends AppCompatActivity {
         startActivity(new Intent(this, AvaibilityListActivity.class));
     }
 
-    public void goProfile(View v) {
-        startActivity(new Intent(this, ProfileActivity.class));
+    public void goFeedback(View v) {
+        startActivity(new Intent(this, FeedbackActivity.class));
     }
 
-    public void goNewMedicineUpdates(View v) {
-        //startActivity(new Intent(this, ));
+    public void goInvite(View v) {
+        String invitationMessage = "Hey there! DoctorBaari is an awesome " +
+                "job exchange platform for doctors and interns! Click the link to download from play store!";
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, invitationMessage);
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
 }

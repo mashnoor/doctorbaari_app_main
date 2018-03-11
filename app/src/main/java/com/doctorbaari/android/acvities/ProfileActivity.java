@@ -57,8 +57,6 @@ public class ProfileActivity extends AppCompatActivity {
     TextView tvCurrentlyWorking;
     @BindView(R.id.tvDegree)
     TextView tvDegree;
-    @BindView(R.id.tvDateOfBirth)
-    TextView tvDateOfBirth;
     @BindView(R.id.tvFbLink)
     TextView tvFbLink;
     @BindView(R.id.tvEmail)
@@ -246,6 +244,10 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+
+    public void goViewAllWorkingLocations(View v) {
+        startActivity(new Intent(this, AllWorkLocationsActivity.class));
+    }
 
 
     public void goAvaibilityActivity(View v) {

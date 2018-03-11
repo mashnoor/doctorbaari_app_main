@@ -286,7 +286,7 @@ public class InternRegistration extends AppCompatActivity {
             public void onPermissionsChecked(MultiplePermissionsReport report) {
                 if (report.areAllPermissionsGranted()) {
 
-                    EasyImage.openGallery(InternRegistration.this, EasyImage.REQ_PICK_PICTURE_FROM_GALLERY);
+                    EasyImage.openChooserWithGallery(InternRegistration.this, "Select Image",  0);
                 }
 
 

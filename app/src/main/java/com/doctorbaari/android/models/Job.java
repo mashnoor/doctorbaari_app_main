@@ -77,7 +77,8 @@ public class Job {
     }
 
     public String getDeadline() {
-        return deadline;
+        String[] dateParts = deadline.split("-");
+        return dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
     }
 
     public String getType() {
@@ -100,33 +101,17 @@ public class Job {
         return postDatetime;
     }
 
-    public void setPostDatetime(String postDatetime) {
-        this.postDatetime = postDatetime;
-    }
 
     public String getDateTo() {
-        return dateTo;
+        String[] dateParts = dateTo.split("-");
+        return dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
     }
 
-    public void setDateTo(String dateTo) {
-        this.dateTo = dateTo;
-    }
 
     public String getDateFrom() {
         return dateFrom;
     }
 
-    public void setDateFrom(String dateFrom) {
-        this.dateFrom = dateFrom;
-    }
-
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
 
     public String getUserid() {
         return userid;
@@ -140,9 +125,6 @@ public class Job {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getPlace() {
         return place;
@@ -172,9 +154,6 @@ public class Job {
         return institute;
     }
 
-    public void setInstitute(String institute) {
-        this.institute = institute;
-    }
 
     public String getDetails() {
         return details;
