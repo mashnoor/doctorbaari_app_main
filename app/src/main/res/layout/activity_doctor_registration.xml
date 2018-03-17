@@ -130,14 +130,14 @@
                     <CheckBox
                         android:id="@+id/checkedText"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:onClick="degreeChecked"
                         android:text="FCPS Medicine" />
 
                     <CheckBox
                         android:id="@+id/checkedText1"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:onClick="degreeChecked"
                         android:text="FCPS Surgery" />
 
@@ -160,7 +160,7 @@
                     <CheckBox
                         android:id="@+id/checkedText2"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:onClick="degreeChecked"
                         android:text="FCPS Obstetrics" />
 
@@ -173,7 +173,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:onClick="degreeChecked"
                     android:text="MD"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -197,15 +196,16 @@
                         android:onClick="degreeChecked"
                         android:text="MS Surgery" />
 
-                    <CheckBox
-                        android:id="@+id/checkedText5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="degreeChecked"
-                        android:text="MS Obstatic" />
+
 
 
                 </LinearLayout>
+                <CheckBox
+                    android:id="@+id/checkedText5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="degreeChecked"
+                    android:text="MS Obstatic" />
 
 
                 <TextView
@@ -244,21 +244,28 @@
                         android:onClick="degreeChecked"
                         android:text="MRCS" />
 
-                    <CheckBox
-                        android:id="@+id/checkedText10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="degreeChecked"
-                        android:text="FRCS" />
-
-                    <CheckBox
-                        android:id="@+id/checkedTextFecs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="degreeChecked"
-                        android:text="FACS" />
 
 
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/checkedText10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="degreeChecked"
+                    android:text="FRCS" />
+
+                <CheckBox
+                    android:id="@+id/checkedTextFecs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="degreeChecked"
+                    android:text="FACS" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -336,22 +343,29 @@
                         android:onClick="degreeChecked"
                         android:text="CCD" />
 
-                    <CheckBox
-                        android:id="@+id/checkedText16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="degreeChecked"
-                        android:text="DMU" />
-
-                    <CheckBox
-                        android:id="@+id/checkedText17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="degreeChecked"
-                        android:text="CMU" />
 
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkedText16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="degreeChecked"
+                    android:text="DMU" />
+
+                <CheckBox
+                    android:id="@+id/checkedText17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="degreeChecked"
+                    android:text="CMU" />
 
 
                 <CheckBox
@@ -360,6 +374,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="degreeChecked"
                     android:text="CPR Training" />
+                </LinearLayout>
 
 
                 <CheckBox

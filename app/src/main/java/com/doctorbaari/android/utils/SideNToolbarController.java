@@ -38,6 +38,15 @@ public class SideNToolbarController {
     private SideNToolbarController() {
     }
 
+    static Drawer d;
+
+
+
+    public static void closeDrawer()
+    {
+        d.closeDrawer();
+    }
+
     public static void attach(final Activity activity, String name)
 
     {
@@ -83,7 +92,7 @@ public class SideNToolbarController {
         PrimaryDrawerItem inviteOthers = new PrimaryDrawerItem().withName("Send Invitation").withIcon(R.drawable.invite);
 
 
-        final Drawer d = new DrawerBuilder()
+        d = new DrawerBuilder()
                 .withActivity(activity)
                 .withToolbar(t)
 
@@ -118,31 +127,41 @@ public class SideNToolbarController {
                         Log.d("-------------", "" + position);
                         switch (position) {
                             case 0:
+                                closeDrawer();
                                 activity.startActivity(new Intent(activity, HomeActitvity.class));
-                                activity.finish();
                                 break;
                             case 2:
+                                closeDrawer();
                                 activity.startActivity(new Intent(activity, ProfileActivity.class));
                                 break;
                             case 4:
+                                closeDrawer();
                                 activity.startActivity(new Intent(activity, PostPermanentJobActivity.class));
                                 break;
                             case 6:
+                                closeDrawer();
                                 activity.startActivity(new Intent(activity, PostSubstituteActivity.class));
                                 break;
                             case 8:
+                                closeDrawer();
                                 activity.startActivity(new Intent(activity, SearchPermanentJob.class));
+
                                 break;
 
                             case 10:
+                                closeDrawer();
                                 activity.startActivity(new Intent(activity, SearchSubstituteJobs.class));
+
                                 break;
                             case 12:
+                                closeDrawer();
                                 activity.startActivity(new Intent(activity, InquiryActivity.class));
+
                                 break;
 
                             case 16:
                                 AccountKit.logOut();
+                                closeDrawer();
                                 DBHelper.setSignedInStatus(activity, false);
                                 activity.finishAffinity();
                                 activity.startActivity(new Intent(activity, LoginActivity.class));
@@ -156,7 +175,9 @@ public class SideNToolbarController {
                                 sendIntent.setAction(Intent.ACTION_SEND);
                                 sendIntent.putExtra(Intent.EXTRA_TEXT, invitationMessage);
                                 sendIntent.setType("text/plain");
+                                closeDrawer();
                                 activity.startActivity(sendIntent);
+
                                 break;
 
 
@@ -167,5 +188,6 @@ public class SideNToolbarController {
                 .withSelectedItem(-1)
                 .build();
         d.closeDrawer();
+
     }
 }

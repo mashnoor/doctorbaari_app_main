@@ -132,9 +132,11 @@ public class SearchSubstituteJobs extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 which = 0;
-                new DatePickerDialog(SearchSubstituteJobs.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                DatePickerDialog dlg = new DatePickerDialog(SearchSubstituteJobs.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
+                dlg.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                dlg.show();
 
             }
         });
@@ -145,10 +147,11 @@ public class SearchSubstituteJobs extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 which = 1;
-                new DatePickerDialog(SearchSubstituteJobs.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                DatePickerDialog dlg = new DatePickerDialog(SearchSubstituteJobs.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
+                dlg.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                dlg.show();
             }
         });
 

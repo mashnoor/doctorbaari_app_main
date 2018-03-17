@@ -143,6 +143,11 @@ public class ProfileDetail extends AppCompatActivity {
         });
     }
 
+    public void goViewAllWorkingLocations(View v) {
+        Intent i = new Intent(this, AllWorkLocationsOtherUserActivity.class);
+        i.putExtra("userid", getIntent().getStringExtra("userid"));
+        startActivity(i);
+    }
 
     public void postReview(View v) {
         Intent i = getIntent();
@@ -187,8 +192,7 @@ public class ProfileDetail extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void goContact(View v)
-    {
+    public void goContact(View v) {
         String[] options = new String[]{"Call", "View Facebook Profile"};
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfileDetail.this);
         builder.setTitle("Pick a option");

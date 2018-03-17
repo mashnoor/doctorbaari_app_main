@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -54,8 +55,8 @@
         <activity
             android:name=".acvities.DoctorRegistrationActivity"
             android:launchMode="singleInstance"
-            android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".acvities.NewsfeedActivity"
             android:launchMode="singleInstance"
@@ -80,14 +81,14 @@
         <activity
             android:name=".acvities.PostSubstituteActivity"
             android:label="@string/title_activity_search_substitute"
-            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".acvities.PostPermanentJobActivity"
             android:launchMode="singleInstance"
-            android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".acvities.ProfileActivity"
             android:launchMode="singleInstance"
@@ -115,13 +116,13 @@
         <activity
             android:name=".acvities.SearchSubstituteJobs"
             android:launchMode="singleInstance"
-            android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".acvities.InternRegistration"
             android:launchMode="singleInstance"
-            android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".acvities.HospitalAuthorityRegistration"
             android:launchMode="singleInstance"
@@ -137,8 +138,8 @@
         <activity
             android:name=".acvities.SubstituteJobSearchResult"
             android:launchMode="singleInstance"
-            android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".acvities.Reviews"
             android:launchMode="singleInstance"
@@ -169,7 +170,11 @@
             android:launchMode="singleInstance" />
         <activity android:name=".acvities.FeedbackActivity" />
         <activity android:name=".acvities.ProfileEditActivity" />
-        <activity android:name=".acvities.AllWorkLocationsActivity"></activity>
+        <activity
+            android:name=".acvities.AllWorkLocationsActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
+        <activity android:name=".acvities.AllWorkLocationsOtherUserActivity"></activity>
     </application>
 
 </manifest>

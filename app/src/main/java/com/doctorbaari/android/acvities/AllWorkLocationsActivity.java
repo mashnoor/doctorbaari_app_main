@@ -13,6 +13,7 @@ import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
 import com.doctorbaari.android.utils.HelperFunc;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
@@ -41,6 +42,7 @@ public class AllWorkLocationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_work_locations);
         ButterKnife.bind(this);
+        SideNToolbarController.attach(this, "My Work Locations");
         dialog = new ProgressDialog(this);
         dialog.setMessage("Loading. Please wait...");
         registerPlaceFragment();

@@ -111,22 +111,25 @@ public class PostPermanentJobActivity extends AppCompatActivity {
                     day = "0" + day;
 
 
-                etStatingFrom.setText(day + "-" + month + "/" + year);
+                etStatingFrom.setText(day + "/" + month + "/" + year);
                 fromDateConverted = year + "-" + month + "-" + day; //converted because db supports yyyy-mm-dd;
 
 
             }
 
         };
+
         etStatingFrom.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 
-                new DatePickerDialog(PostPermanentJobActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                DatePickerDialog dlg = new DatePickerDialog(PostPermanentJobActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
+                dlg.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                dlg.show();
 
             }
         });
@@ -181,6 +184,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
                 dialog.dismiss();
 
                 showToast("Successfully posted permanent job");
+                finish();
                 viewAvailableDoctors();
             }
 

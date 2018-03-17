@@ -8,6 +8,14 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
+    <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/homeMenu"
+        android:layout_below="@id/toolbar" />
+    <!---
+
     <ss.com.bannerslider.views.BannerSlider
         android:id="@+id/slideImage"
         android:layout_width="match_parent"
@@ -20,6 +28,7 @@
         app:interval="4000"
 
         app:loopSlides="true" />
+        -->
 
 
     <LinearLayout

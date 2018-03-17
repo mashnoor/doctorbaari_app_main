@@ -118,9 +118,11 @@ public class PostSubstituteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 which[0] = 0;
-                new DatePickerDialog(PostSubstituteActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                DatePickerDialog dlg = new DatePickerDialog(PostSubstituteActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
+                dlg.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                dlg.show();
 
             }
         });
@@ -131,9 +133,11 @@ public class PostSubstituteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 which[0] = 1;
-                new DatePickerDialog(PostSubstituteActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
+                DatePickerDialog dlg = new DatePickerDialog(PostSubstituteActivity.this, AlertDialog.THEME_HOLO_LIGHT, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
+                dlg.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                dlg.show();
 
             }
         });
@@ -182,6 +186,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
                 dialog.dismiss();
                 showToast("Successfully Posted");
+                finish();
                 viewAvailableDoctors();
             }
 
