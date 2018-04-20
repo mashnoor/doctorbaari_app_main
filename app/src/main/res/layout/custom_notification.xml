@@ -3,7 +3,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="90dp"
-    android:background="@color/new_tool_color"
+    android:background="@color/button_color"
     android:orientation="horizontal"
 
     android:padding="10dp"

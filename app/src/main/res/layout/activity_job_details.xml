@@ -246,7 +246,7 @@
                     android:layout_gravity="center"
 
                     android:layout_weight="3"
-                    android:background="@color/black_bg"
+                    android:background="@color/button_color"
                     android:gravity="center"
                     android:onClick="viewJobCircular"
 
@@ -275,7 +275,7 @@
                     android:layout_gravity="center"
 
                     android:layout_weight="3"
-                    android:background="@color/black_bg"
+                    android:background="@color/button_color"
                     android:gravity="center"
                     android:onClick="goContact"
 

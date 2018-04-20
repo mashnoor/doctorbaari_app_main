@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:onClick="postReview"
                 android:text="Post Review"
-                android:background="@color/black_bg"
+                android:background="@color/button_color"
                 android:textColor="@color/white"
                 android:padding="10dp"/>
 
@@ -286,7 +286,7 @@
                 android:layout_height="40dp"
                 android:onClick="goContact"
                 android:text="Contact"
-                android:background="@color/pink"
+                android:background="@color/button_color"
                 android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"/>

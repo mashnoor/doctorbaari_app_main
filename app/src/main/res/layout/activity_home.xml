@@ -14,21 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/homeMenu"
         android:layout_below="@id/toolbar" />
-    <!---
-
-    <ss.com.bannerslider.views.BannerSlider
-        android:id="@+id/slideImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/homeMenu"
-        android:layout_below="@id/toolbar"
-        app:animateIndicators="true"
-        app:defaultBanner="1"
-        app:defaultIndicators="circle"
-        app:interval="4000"
-
-        app:loopSlides="true" />
-        -->
 
 
     <LinearLayout
@@ -37,7 +22,7 @@
         android:layout_height="wrap_content"
 
         android:layout_alignParentBottom="true"
-        android:background="#086865"
+        android:background="#00ACC1"
         android:orientation="vertical">
 
 
@@ -52,8 +37,13 @@
             <LinearLayout
 
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/home_menu_design"
+                android:elevation="8dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:onClick="goNewsFeed"
                 android:orientation="vertical"
                 android:padding="10dp">
@@ -64,25 +54,32 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/newsfeed" />
+
+                    android:src="@drawable/job_updates" />
 
                 <TextView
                     android:id="@+id/tvjobUpdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
                     android:text="Job Updates"
-                    android:textColor="@color/white" />
+                    android:textColor="#5FB0BE"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
 
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/home_menu_design"
+                android:elevation="8dp"
                 android:onClick="goPostedPermanentJobs"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -92,27 +89,34 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/postpermanentjob" />
+                    android:layout_weight="6"
+                    android:src="@drawable/post_permanent_job" />
 
                 <TextView
                     android:id="@+id/tvPostpermanentJob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
+                    android:layout_weight="4"
                     android:gravity="center"
-                    android:text="Post Permanent job"
-                    android:textColor="@color/white" />
+                    android:text="Post Permanent Job"
+                    android:textColor="#5FB0BE"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
 
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
                 android:layout_gravity="center"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/home_menu_design"
+                android:elevation="8dp"
                 android:gravity="center"
+
                 android:onClick="goSearchPermanentJob"
                 android:orientation="vertical"
                 android:padding="10dp">
@@ -123,17 +127,19 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/searchpermanentjob" />
+
+                    android:src="@drawable/search_permanent_job" />
 
                 <TextView
                     android:id="@+id/tvSearchPermanent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
                     android:gravity="center"
-                    android:text="Search permanent Job"
-                    android:textColor="@color/white" />
+                    android:text="Search Permanent Job"
+                    android:textColor="#5FB0BE"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -151,8 +157,13 @@
             <LinearLayout
 
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/home_menu_design"
+                android:elevation="8dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:onClick="goPostSubJobs"
                 android:orientation="vertical"
                 android:padding="10dp">
@@ -163,7 +174,8 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/postsubjob" />
+
+                    android:src="@drawable/seach_substitute_doctor" />
 
                 <TextView
                     android:id="@+id/tvPostSubstitute"
@@ -171,17 +183,23 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-
-                    android:text="Search Substitute Doctor"
-                    android:textColor="@color/white" />
+                    android:text="Search Substitute Job"
+                    android:textColor="#5FB0BE"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
 
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/home_menu_design"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:onClick="goSearchSubJobs"
                 android:orientation="vertical"
                 android:padding="10dp">
@@ -192,26 +210,32 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/searchsubjob" />
+                    android:layout_weight="6"
+                    android:src="@drawable/search_temporary_job" />
 
                 <TextView
                     android:id="@+id/tvSearchSubstitute"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
+                    android:layout_weight="4"
                     android:gravity="center"
                     android:text="Search Temporary Job"
-                    android:textColor="@color/white" />
+                    android:textColor="#5FB0BE"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
 
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
                 android:layout_gravity="center"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/home_menu_design"
+                android:elevation="8dp"
                 android:gravity="center"
                 android:onClick="goHospitalInquiry"
                 android:orientation="vertical"
@@ -223,17 +247,18 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/inquiry" />
+                    android:src="@drawable/hospital_inquiry" />
 
                 <TextView
                     android:id="@+id/tvHospitalInquiry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
                     android:gravity="center"
-                    android:text="Hospital inquiry"
-                    android:textColor="@color/white" />
+                    android:text="Hospital Inquiry"
+                    android:textColor="#5FB0BE"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -243,19 +268,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="goAvailabilityActivity"
 
             android:orientation="horizontal"
-            android:padding="10dp"
             android:weightSum="3">
 
 
             <LinearLayout
 
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
                 android:layout_gravity="center"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/home_menu_design"
+                android:elevation="8dp"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -264,8 +291,9 @@
                     android:id="@+id/ivAvailability"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+
                     android:layout_gravity="center"
-                    android:src="@drawable/schedule_white" />
+                    android:src="@drawable/my_schedules" />
 
                 <TextView
                     android:id="@+id/tvAvailability"
@@ -273,18 +301,23 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-
-                    android:text="Availability Schedule"
-                    android:textColor="@color/white" />
+                    android:text="My Schedules"
+                    android:textColor="#5FB0BE"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
 
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:onClick="goFeedback"
+                android:background="@drawable/home_menu_design"
+                android:elevation="8dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="vertical">
 
 
@@ -293,46 +326,55 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/feedback" />
+   
+                    android:src="@drawable/user_helpline" />
 
                 <TextView
+                    android:id="@+id/tvProfiles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
 
                     android:gravity="center"
-                    android:text="User Feedback"
-                    android:textColor="@color/white" />
+                    android:text="User Helpline"
+                    android:textColor="#5FB0BE"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <LinearLayout
 
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="110dp"
                 android:layout_gravity="center"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:background="@drawable/home_menu_design"
+                android:elevation="8dp"
                 android:gravity="center"
-                android:onClick="goInvite"
                 android:orientation="vertical"
                 android:padding="10dp">
 
 
                 <ImageView
+                    android:id="@+id/ivNewMedicineUpdate"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    app:srcCompat="@drawable/invite" />
+                    
+                    android:src="@drawable/new_medicine_updates" />
 
                 <TextView
                     android:id="@+id/tvNewMedicineUpdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
                     android:gravity="center"
-                    android:text="Invite Fellow Doctors"
-                    android:textColor="@color/white" />
+                    android:text="New Medicine Updates"
+                    android:textColor="#5FB0BE"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -341,5 +383,6 @@
 
 
     </LinearLayout>
+
 
 </RelativeLayout>
