@@ -174,7 +174,10 @@
             android:name=".acvities.AllWorkLocationsActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
-        <activity android:name=".acvities.AllWorkLocationsOtherUserActivity"></activity>
+        <activity android:name=".acvities.AllWorkLocationsOtherUserActivity" />
+        <activity android:name=".acvities.UserHelplineActivity" />
+        <activity android:name=".acvities.TutorialActivity" />
+        <activity android:name=".acvities.HowtoActivity"></activity>
     </application>
 
 </manifest>

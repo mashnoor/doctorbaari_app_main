@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:background="#A0C05E"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:weightSum="7"
+        android:padding="7dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+
+
+            android:text="Inquery/Feedback/Complains" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:text="Post your inquiries/feedbacks/complains about DoctorBaari App and get almost instant reply from
+DB authority and community" />
+        <ImageView
+            android:layout_weight="1"
+            android:src="@drawable/right_arrow"
+            android:layout_width="0dp"
+
+            android:layout_gravity="center|end"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:background="@android:color/holo_red_dark"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:weightSum="7"
+        android:padding="7dp"
+        android:onClick="goHowTo"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+
+
+            android:text="How to use doctorbaari features" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:text="Click this button to see how to use any features in DoctorBaari App" />
+        <ImageView
+            android:layout_weight="1"
+            android:src="@drawable/right_arrow"
+            android:layout_width="0dp"
+
+            android:layout_gravity="center|end"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:background="@android:color/holo_blue_bright"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:weightSum="7"
+        android:padding="7dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+
+
+            android:text="FAQ" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:text="Go through the FAQ section to see the most Frequently Asked Questions and the answers" />
+        <ImageView
+            android:layout_weight="1"
+            android:src="@drawable/right_arrow"
+            android:layout_width="0dp"
+
+            android:layout_gravity="center|end"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@android:color/holo_orange_dark"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:weightSum="7"
+        android:padding="7dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+
+
+            android:text="DoctorBaari Updates" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:text="Like the Facebook page of Doctor Baari and keep updated with the latest updates of the app" />
+        <ImageView
+            android:layout_weight="1"
+            android:src="@drawable/right_arrow"
+            android:layout_width="0dp"
+
+            android:layout_gravity="center|end"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+
+</LinearLayout>

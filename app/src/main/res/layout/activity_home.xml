@@ -282,6 +282,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/home_menu_design"
                 android:elevation="8dp"
+                android:onClick="goAvailabilityActivity"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp">
@@ -317,12 +318,12 @@
                 android:background="@drawable/home_menu_design"
                 android:elevation="8dp"
                 android:layout_gravity="center"
+                android:onClick="goUserHelpline"
                 android:gravity="center"
                 android:orientation="vertical">
 
 
                 <ImageView
-                    android:id="@+id/ivProfiles"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"

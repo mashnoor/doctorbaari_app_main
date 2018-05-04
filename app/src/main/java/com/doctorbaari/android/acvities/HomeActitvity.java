@@ -135,6 +135,8 @@ public class HomeActitvity extends AppCompatActivity {
         startActivity(new Intent(this, AvaibilityListActivity.class));
     }
 
+
+
     public void goFeedback(View v) {
         startActivity(new Intent(this, FeedbackActivity.class));
     }
@@ -147,6 +149,10 @@ public class HomeActitvity extends AppCompatActivity {
         sendIntent.putExtra(Intent.EXTRA_TEXT, invitationMessage);
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
+    }
+
+    public void goUserHelpline(View v) {
+        startActivity(new Intent(this, UserHelplineActivity.class));
     }
 
 }

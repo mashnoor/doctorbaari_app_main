@@ -94,6 +94,11 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         dialog.setMessage("Getting data from server...");
     }
 
+    public void goTutorial(View v)
+    {
+        startActivity(new Intent(this, TutorialActivity.class));
+    }
+
     private void registerFuckingCalenderListener() {
         final Calendar myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {

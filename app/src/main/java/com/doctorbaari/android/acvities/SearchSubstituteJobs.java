@@ -69,6 +69,11 @@ public class SearchSubstituteJobs extends AppCompatActivity {
 
     }
 
+    public void goTutorial(View v)
+    {
+        startActivity(new Intent(this, TutorialActivity.class));
+    }
+
     private void registerPlaceFragment() {
         AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
                 .setCountry("BD")

@@ -98,7 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
                 md.update(signature.toByteArray());
                 String hash = Base64.encodeToString(md.digest(), Base64.DEFAULT);
                 Log.d("KeyHash:", hash);
-                CommonDialog.showDialog(this, hash);
+                //CommonDialog.showDialog(this, hash);
             }
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();

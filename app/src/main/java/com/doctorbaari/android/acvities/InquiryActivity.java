@@ -1,6 +1,7 @@
 package com.doctorbaari.android.acvities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -53,6 +54,11 @@ public class InquiryActivity extends AppCompatActivity {
         dialog.setMessage("Connecting to server...");
         client = new AsyncHttpClient();
 
+    }
+
+    public void goTutorial(View v)
+    {
+        startActivity(new Intent(this, TutorialActivity.class));
     }
 
 

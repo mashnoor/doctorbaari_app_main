@@ -69,6 +69,10 @@ public class SearchPermanentJob extends AppCompatActivity {
         registerFuckingCalenderListener();
     }
 
+    public void goTutorial(View v)
+    {
+        startActivity(new Intent(this, TutorialActivity.class));
+    }
     public void searchPermanent() {
         String fromDate = etFromDate.getText().toString();
         if (fromDate.isEmpty() || placename.isEmpty()) {
