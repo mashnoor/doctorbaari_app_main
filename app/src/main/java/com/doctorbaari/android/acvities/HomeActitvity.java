@@ -70,11 +70,6 @@ public class HomeActitvity extends AppCompatActivity {
         DefaultSliderView s6 = new DefaultSliderView(this);
         s6.image(R.drawable.s6);
 
-        DefaultSliderView s7 = new DefaultSliderView(this);
-        s7.image(R.drawable.s7);
-
-        DefaultSliderView s8 = new DefaultSliderView(this);
-        s8.image(R.drawable.s8);
 
         sliderShow.setPresetTransformer(SliderLayout.Transformer.Accordion);
         sliderShow.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
@@ -86,8 +81,7 @@ public class HomeActitvity extends AppCompatActivity {
         sliderShow.addSlider(s4);
         sliderShow.addSlider(s5);
         sliderShow.addSlider(s6);
-        sliderShow.addSlider(s7);
-        sliderShow.addSlider(s8);
+
 
         /***
          List<Banner> banners = new ArrayList<>();
