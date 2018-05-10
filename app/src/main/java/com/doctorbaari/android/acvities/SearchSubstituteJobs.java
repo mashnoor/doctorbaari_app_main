@@ -62,7 +62,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
         ButterKnife.bind(this);
         registerPlaceFragment();
         registerFuckingCalenderListener();
-        SideNToolbarController.attach(this, "Search Substitute Jobs");
+        SideNToolbarController.attach(this, "Search Temporary Jobs");
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");

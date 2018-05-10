@@ -66,7 +66,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_substitue);
         ButterKnife.bind(this);
-        SideNToolbarController.attach(this, "Post For Substitute");
+        SideNToolbarController.attach(this, "Search Substitute Doctor");
         registerPlaceFragment();
         degrees = new ArrayList<>();
 

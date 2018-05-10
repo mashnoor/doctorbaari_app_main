@@ -37,6 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
 
 
                 android:text="Inquery/Feedback/Complains" />
@@ -45,6 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
+                android:textColor="@color/white"
                 android:text="Post your inquiries/feedbacks/complains about DoctorBaari App and get almost instant reply from
 DB authority and community" />
             <ImageView
@@ -74,6 +76,7 @@ DB authority and community" />
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
 
 
                 android:text="How to use doctorbaari features" />
@@ -82,6 +85,7 @@ DB authority and community" />
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
+                android:textColor="@color/white"
                 android:text="Click this button to see how to use any features in DoctorBaari App" />
             <ImageView
                 android:layout_weight="1"
@@ -108,6 +112,7 @@ DB authority and community" />
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
 
 
                 android:text="FAQ" />
@@ -116,6 +121,7 @@ DB authority and community" />
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
+                android:textColor="@color/white"
                 android:text="Go through the FAQ section to see the most Frequently Asked Questions and the answers" />
             <ImageView
                 android:layout_weight="1"
@@ -140,6 +146,8 @@ DB authority and community" />
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:shadowColor="@color/white"
 
 
                 android:text="DoctorBaari Updates" />
@@ -148,6 +156,7 @@ DB authority and community" />
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
+                android:textColor="@color/white"
                 android:text="Like the Facebook page of Doctor Baari and keep updated with the latest updates of the app" />
             <ImageView
                 android:layout_weight="1"

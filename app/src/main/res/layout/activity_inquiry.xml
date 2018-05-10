@@ -11,15 +11,12 @@
     <LinearLayout
         android:background="@drawable/button_style"
         android:layout_width="match_parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_margin="16dp"
         android:onClick="goTutorial"
         android:layout_height="wrap_content">
         <TextView
             android:gravity="center"
-            android:text="If you are new here and want to search, tap here"
+            android:text="If you are new here and do not know how to Use 'Hospital Inquiry', click here"
             android:layout_width="match_parent"
             android:textColor="@android:color/white"
             android:layout_height="wrap_content" />
