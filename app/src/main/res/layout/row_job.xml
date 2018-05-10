@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
                 android:text="Posted by: "
-                android:textColor="@color/black_bg"
+                android:textColor="@color/button_color"
                 android:textStyle="bold" />
 
             <TextView
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
                 android:text="Location: "
-                android:textColor="@color/black_bg"
+                android:textColor="@color/button_color"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
                 android:text="Posted On: "
-                android:textColor="@color/black_bg"
+                android:textColor="@color/button_color"
                 android:textStyle="bold" />
 
             <TextView
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
                 android:text="Distance: "
-                android:textColor="@color/black_bg"
+                android:textColor="@color/button_color"
                 android:textStyle="bold" />
 
             <TextView

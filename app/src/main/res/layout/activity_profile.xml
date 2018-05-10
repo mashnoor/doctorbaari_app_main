@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Avaibility Schedule"
+                android:text="Availability Schedule"
                 android:textColor="@color/black_bg"
                 android:textStyle="bold" />
 
@@ -140,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:text="Medical College : "
-                    android:textColor="@color/new_tool_color"
+                    android:textColor="@color/button_color"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -167,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:text="Currently working : "
-                    android:textColor="@color/new_tool_color"
+                    android:textColor="@color/button_color"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -205,7 +205,7 @@
                     android:layout_marginBottom="5dp"
                     android:text="Degree : "
 
-                    android:textColor="@color/new_tool_color"
+                    android:textColor="@color/button_color"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 

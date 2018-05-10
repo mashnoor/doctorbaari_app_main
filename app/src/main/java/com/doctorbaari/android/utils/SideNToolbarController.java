@@ -83,7 +83,7 @@ public class SideNToolbarController {
         PrimaryDrawerItem postPermanent = new PrimaryDrawerItem().withName("Post Permanent Job").withIcon(R.drawable.postpermanentjob);
         PrimaryDrawerItem postSub = new PrimaryDrawerItem().withName("Post for Substitute").withIcon(R.drawable.postsubjob);
         PrimaryDrawerItem searchPermanent = new PrimaryDrawerItem().withName("Search for Permanent job").withIcon(R.drawable.searchpermanentjob);
-        PrimaryDrawerItem searchSubstitute = new PrimaryDrawerItem().withName("Search for Substitute job").withIcon(R.drawable.searchsubjob);
+        PrimaryDrawerItem searchSubstitute = new PrimaryDrawerItem().withName("Search Doctor").withIcon(R.drawable.searchsubjob);
 
 
         PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIcon(R.drawable.logout);

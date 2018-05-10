@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#131314</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#00B2B2</color>
     <color name="colorAccent">#131314</color>
     <color name="pink">#131314</color>
     <color name="azur">#f1f5f8</color>
@@ -12,11 +12,11 @@
 
     <color name="black_overlay">#66000000</color>
 
-    <color name="material_drawer_background">#2B4162</color>
+    <color name="material_drawer_background">#5eb1bf</color>
     <!-- Material DEFAULT text / items colors -->
     <color name="material_drawer_primary_text">#ffffff</color>
     <color name="new_tool_color">#086865</color>
-    <color name="tool_color">#2B4162</color>
+    <color name="tool_color">#5eb1bf</color>
     <color name="off_white">#fcf9e6</color>
     <color name="dark_red">#8B0000</color>
     <color name="button_color">#5eb1bf</color>

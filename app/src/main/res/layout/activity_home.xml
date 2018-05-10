@@ -183,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Search Substitute Job"
+                    android:text="Search Doctor"
                     android:textColor="#5FB0BE"
                     android:textSize="12sp"
                     android:textStyle="bold" />

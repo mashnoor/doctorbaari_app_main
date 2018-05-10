@@ -39,7 +39,7 @@ public class NewsfeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsfeed);
         ButterKnife.bind(this);
-        SideNToolbarController.attach(this, "Newsfeed");
+        SideNToolbarController.attach(this, "Job Update");
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to Doctor Baari Server...");

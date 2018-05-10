@@ -55,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="From : "
-                        android:textColor="@color/black_bg"
+                        android:textColor="@color/button_color"
                         android:textStyle="bold" />
 
 
@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:text="To : "
-                        android:textColor="@color/black_bg"
+                        android:textColor="@color/button_color"
                         android:textStyle="bold" />
 
 
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Post time : "
-                android:textColor="@color/black_bg"
+                android:textColor="@color/button_color"
                 android:textStyle="bold" />
 
 
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="Location : "
-                    android:textColor="@color/black_bg"
+                    android:textColor="@color/button_color"
                     android:textStyle="bold" />
 
                 <TextView
@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="Institution Name : "
-                    android:textColor="@color/black_bg"
+                    android:textColor="@color/button_color"
                     android:textStyle="bold" />
 
                 <TextView
@@ -173,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="Required Degree :  "
-                    android:textColor="@color/black_bg"
+                    android:textColor="@color/button_color"
                     android:textStyle="bold" />
 
                 <TextView
@@ -200,7 +200,7 @@
 
 
                     android:text="Job Type : "
-                    android:textColor="@color/black_bg"
+                    android:textColor="@color/button_color"
                     android:textStyle="bold" />
 
                 <TextView
@@ -221,7 +221,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="Details "
-                android:textColor="@color/black_bg"
+                android:textColor="@color/button_color"
                 android:textStyle="bold" />
 
             <TextView
