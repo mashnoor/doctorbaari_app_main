@@ -258,7 +258,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void goViewHistory(View view) {
         Intent i = new Intent(this, HistoryActivity.class);
-        i.putExtra("type", "sub");
+        i.putExtra("type", "all");
         startActivity(i);
     }
 }

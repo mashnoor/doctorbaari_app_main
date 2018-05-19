@@ -13,6 +13,7 @@ import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
 import com.doctorbaari.android.utils.HelperFunc;
+import com.doctorbaari.android.utils.ListViewEmptyMessageSetter;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -41,8 +42,9 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_available_doctors);
         ButterKnife.bind(this);
         Logger.addLogAdapter(new AndroidLogAdapter());
-        SideNToolbarController.attach(this, "Available Doctor's List");
+        SideNToolbarController.attach(this, "Available Doctors' List");
 
+        ListViewEmptyMessageSetter.set(this, lvSubstitute, "No doctor available right now. Check the updates later.");
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting with server...");
@@ -52,6 +54,7 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
 
 
     public void searchAvailableDoctors() {
+
         Intent i = getIntent();
         RequestParams params = new RequestParams();
         String fromDate = i.getStringExtra("fromdate");

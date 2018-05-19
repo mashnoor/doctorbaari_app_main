@@ -173,6 +173,7 @@ public class InternRegistration extends AppCompatActivity {
                 String response = new String(responseBody);
                 if (response.equals("occupied")) {
                     showToast("Number already exists. Please login");
+                    startActivity(new Intent(InternRegistration.this, LoginActivity.class));
                     finish();
 
                 } else {

@@ -6,7 +6,7 @@ package com.doctorbaari.android.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Avaibility {
+public class Availability {
 
     @SerializedName("id")
     

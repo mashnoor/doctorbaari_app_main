@@ -7,11 +7,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.doctorbaari.android.R;
-import com.doctorbaari.android.adapters.AvaibilityListAdapter;
-import com.doctorbaari.android.models.Avaibility;
+import com.doctorbaari.android.adapters.AvailabilityListAdapter;
+import com.doctorbaari.android.models.Availability;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.ListViewEmptyMessageSetter;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -40,6 +41,7 @@ public class AvaibilityListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_avaibility_list);
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "My Availability Schedule");
+        ListViewEmptyMessageSetter.set(this, lvAvaibilityList, "Availability Schedule Empty");
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
         client = new AsyncHttpClient();
@@ -70,8 +72,8 @@ public class AvaibilityListActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
-                Avaibility[] avaibilities = Geson.g().fromJson(response, Avaibility[].class);
-                AvaibilityListAdapter adapter = new AvaibilityListAdapter(AvaibilityListActivity.this, avaibilities);
+                Availability[] avaibilities = Geson.g().fromJson(response, Availability[].class);
+                AvailabilityListAdapter adapter = new AvailabilityListAdapter(AvaibilityListActivity.this, avaibilities);
                 lvAvaibilityList.setAdapter(adapter);
                 dialog.dismiss();
             }

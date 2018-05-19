@@ -149,7 +149,7 @@ public class ConnectWithFacebookActivity extends AppCompatActivity {
 
     public void goSkip(View v)
     {
-        startActivity(new Intent(this, NewsfeedActivity.class));
+        startActivity(new Intent(this, HomeActitvity.class));
         finish();
     }
 }

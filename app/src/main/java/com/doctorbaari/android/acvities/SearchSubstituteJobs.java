@@ -236,6 +236,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
                 String response = new String(responseBody);
                 Intent i = new Intent(SearchSubstituteJobs.this, SubstituteJobSearchResult.class);
                 i.putExtra("response", response);
+                i.putExtra("type", "sub");
                 startActivity(i);
 
             }
@@ -249,5 +250,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
             }
         });
     }
+
+
 
 }

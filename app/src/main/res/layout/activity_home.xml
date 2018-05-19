@@ -51,8 +51,8 @@
 
                 <ImageView
                     android:id="@+id/ivjobUpdate"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
 
                     android:src="@drawable/job_updates" />
@@ -86,8 +86,8 @@
 
                 <ImageView
                     android:id="@+id/ivPostpermanentJob"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_weight="6"
                     android:src="@drawable/post_permanent_job" />
@@ -124,8 +124,8 @@
 
                 <ImageView
                     android:id="@+id/ivSearchPermanent"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
 
                     android:src="@drawable/search_permanent_job" />
@@ -171,8 +171,8 @@
 
                 <ImageView
                     android:id="@+id/ivPostSubstitute"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
 
                     android:src="@drawable/seach_substitute_doctor" />
@@ -183,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Search Doctor"
+                    android:text="Search Substitute Doctor"
                     android:textColor="#5FB0BE"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -207,8 +207,8 @@
 
                 <ImageView
                     android:id="@+id/ivSearchSubstitute"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_weight="6"
                     android:src="@drawable/search_temporary_job" />
@@ -244,8 +244,8 @@
 
                 <ImageView
                     android:id="@+id/ivHospitalInquiry"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:src="@drawable/hospital_inquiry" />
 
@@ -290,8 +290,8 @@
 
                 <ImageView
                     android:id="@+id/ivAvailability"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
 
                     android:layout_gravity="center"
                     android:src="@drawable/my_schedules" />
@@ -324,8 +324,8 @@
 
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
    
                     android:src="@drawable/user_helpline" />
@@ -353,18 +353,19 @@
                 android:layout_weight="1"
                 android:background="@drawable/home_menu_design"
                 android:elevation="8dp"
+                android:onClick="goViewHistory"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp">
 
 
                 <ImageView
-                    android:id="@+id/ivNewMedicineUpdate"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:id="@+id/lvHistory"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     
-                    android:src="@drawable/new_medicine_updates" />
+                    android:src="@drawable/history" />
 
                 <TextView
                     android:id="@+id/tvNewMedicineUpdate"
@@ -372,7 +373,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="New Medicine Updates"
+                    android:text="History"
                     android:textColor="#5FB0BE"
                     android:textSize="12sp"
                     android:textStyle="bold" />

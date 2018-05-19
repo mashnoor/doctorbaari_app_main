@@ -16,6 +16,7 @@ import com.doctorbaari.android.models.Job;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.ListViewEmptyMessageSetter;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -46,6 +47,7 @@ public class HistoryActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
         client = new AsyncHttpClient();
+        ListViewEmptyMessageSetter.set(this, lvHistory, "History is empty");
 
         loadHistory();
         Logger.addLogAdapter(new AndroidLogAdapter());

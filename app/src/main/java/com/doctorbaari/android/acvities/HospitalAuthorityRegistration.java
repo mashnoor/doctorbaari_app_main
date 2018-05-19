@@ -135,6 +135,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
                 String response = new String(responseBody);
                 if (response.equals("occupied")) {
                     showToast("Number already exists. Please login");
+                    startActivity(new Intent(HospitalAuthorityRegistration.this, LoginActivity.class));
                     finish();
 
                 } else {

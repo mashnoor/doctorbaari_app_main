@@ -180,6 +180,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
                 String response = new String(responseBody);
                 if (response.equals("occupied")) {
                     showToast("Number already exists. Please login");
+                    startActivity(new Intent(DoctorRegistrationActivity.this, LoginActivity.class));
                     finish();
 
                 } else {
@@ -276,6 +277,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.etWorkLocation);
+        autocompleteFragment.setHint("Currently working location");
         autocompleteFragment.setFilter(typeFilter);
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {

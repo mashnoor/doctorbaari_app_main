@@ -261,4 +261,9 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
     }
 
+    public void goTutorial(View v)
+    {
+        startActivity(new Intent(this, TutorialActivity.class));
+    }
+
 }

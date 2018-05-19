@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.doctorbaari.android.R;
+import com.doctorbaari.android.acvities.AllWorkLocationsActivity;
 import com.doctorbaari.android.acvities.DoctorRegistrationActivity;
 import com.doctorbaari.android.acvities.HomeActitvity;
 import com.doctorbaari.android.acvities.HospitalAuthorityRegistration;
@@ -80,16 +81,11 @@ public class SideNToolbarController {
     {
         PrimaryDrawerItem homeItem = new PrimaryDrawerItem().withName("Home").withIcon(R.drawable.home);
         PrimaryDrawerItem profileItem = new PrimaryDrawerItem().withName("Profile").withIcon(R.drawable.profile);
-        PrimaryDrawerItem postPermanent = new PrimaryDrawerItem().withName("Post Permanent Job").withIcon(R.drawable.postpermanentjob);
-        PrimaryDrawerItem postSub = new PrimaryDrawerItem().withName("Post for Substitute").withIcon(R.drawable.postsubjob);
-        PrimaryDrawerItem searchPermanent = new PrimaryDrawerItem().withName("Search for Permanent job").withIcon(R.drawable.searchpermanentjob);
-        PrimaryDrawerItem searchSubstitute = new PrimaryDrawerItem().withName("Search Substitute Doctor").withIcon(R.drawable.searchsubjob);
-
-
         PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIcon(R.drawable.logout);
         PrimaryDrawerItem about = new PrimaryDrawerItem().withName("About").withIcon(R.drawable.about);
-        PrimaryDrawerItem inquiry = new PrimaryDrawerItem().withName("Hospital Inquiry").withIcon(R.drawable.inquiry);
-        PrimaryDrawerItem inviteOthers = new PrimaryDrawerItem().withName("Send Invitation").withIcon(R.drawable.invite);
+        PrimaryDrawerItem newMedicineUpdates = new PrimaryDrawerItem().withName("New Medicine Updates").withIcon(R.drawable.new_medicine_updates);
+        PrimaryDrawerItem sendInvitaion = new PrimaryDrawerItem().withName("Send Invitation").withIcon(R.drawable.invite);
+        PrimaryDrawerItem addNewWorkPlace = new PrimaryDrawerItem().withName("Add New Workplace").withIcon(R.drawable.addworkplace);
 
 
         d = new DrawerBuilder()
@@ -103,22 +99,15 @@ public class SideNToolbarController {
                         new DividerDrawerItem(),
                         profileItem, //2
                         new DividerDrawerItem(),
-                        postPermanent, // 4
+                        addNewWorkPlace, //4
                         new DividerDrawerItem(),
-                        postSub, //6
+                        newMedicineUpdates, //6
                         new DividerDrawerItem(),
-                        searchPermanent, //8
+                        sendInvitaion, //8
                         new DividerDrawerItem(),
-                        searchSubstitute, //10
+                        about, //10
                         new DividerDrawerItem(),
-                        inquiry, //12
-                        new DividerDrawerItem(),
-                        about, //14
-                        new DividerDrawerItem(),
-                        logout, //16
-                        new DividerDrawerItem(),
-                        inviteOthers //18
-
+                        logout //12
 
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -136,30 +125,33 @@ public class SideNToolbarController {
                                 break;
                             case 4:
                                 closeDrawer();
-                                activity.startActivity(new Intent(activity, PostPermanentJobActivity.class));
+                                activity.startActivity(new Intent(activity, AllWorkLocationsActivity.class));
                                 break;
+
+
                             case 6:
                                 closeDrawer();
-                                activity.startActivity(new Intent(activity, PostSubstituteActivity.class));
+                                //activity.startActivity(new Intent(activity, InquiryActivity.class));
+
                                 break;
+
                             case 8:
                                 closeDrawer();
-                                activity.startActivity(new Intent(activity, SearchPermanentJob.class));
-
-                                break;
-
+                                String invitationMessage = "Hey there! DoctorBaari is a smart platform dedicated to MBBS " +
+                                        "and intern doctors to help them finding Permanent or Temporary jobs. " +
+                                        "You can also find Substitute doctors for your duty on this on this place. " +
+                                        "Why don't you give it a try? Click the link below to download DoctorBaari app from PlayStore.";
+                                Intent sendIntent = new Intent();
+                                sendIntent.setAction(Intent.ACTION_SEND);
+                                sendIntent.putExtra(Intent.EXTRA_TEXT, invitationMessage);
+                                sendIntent.setType("text/plain");
+                                activity.startActivity(sendIntent);
                             case 10:
                                 closeDrawer();
-                                activity.startActivity(new Intent(activity, SearchSubstituteJobs.class));
-
+                                HelperFunc.openUrlInBrowser(activity, "https://doctorbaari.com/#menu#about");
                                 break;
+
                             case 12:
-                                closeDrawer();
-                                activity.startActivity(new Intent(activity, InquiryActivity.class));
-
-                                break;
-
-                            case 16:
                                 AccountKit.logOut();
                                 closeDrawer();
                                 DBHelper.setSignedInStatus(activity, false);
@@ -168,17 +160,7 @@ public class SideNToolbarController {
                                 FacebookSdk.sdkInitialize(activity);
                                 LoginManager.getInstance().logOut();
                                 break;
-                            case 18:
-                                String invitationMessage = "Hey there! DoctorBaari is an awesome " +
-                                        "job exchange platform for doctors and interns! Click the link to download from play store!";
-                                Intent sendIntent = new Intent();
-                                sendIntent.setAction(Intent.ACTION_SEND);
-                                sendIntent.putExtra(Intent.EXTRA_TEXT, invitationMessage);
-                                sendIntent.setType("text/plain");
-                                closeDrawer();
-                                activity.startActivity(sendIntent);
 
-                                break;
 
 
                         }

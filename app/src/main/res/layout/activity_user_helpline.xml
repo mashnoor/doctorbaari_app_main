@@ -16,7 +16,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="15dp"
         android:orientation="vertical">
 
@@ -106,6 +106,7 @@ DB authority and community" />
             android:weightSum="7"
             android:layout_marginBottom="10dp"
             android:padding="7dp"
+            android:onClick="goFaq"
             android:orientation="horizontal">
 
             <TextView
@@ -113,7 +114,6 @@ DB authority and community" />
                 android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-
 
                 android:text="FAQ" />
 

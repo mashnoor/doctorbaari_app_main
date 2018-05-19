@@ -18,6 +18,11 @@ public class WelcomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 
     public void goDoctorSignUp(View v) {
         startActivity(new Intent(WelcomeActivity.this, DoctorRegistrationActivity.class));

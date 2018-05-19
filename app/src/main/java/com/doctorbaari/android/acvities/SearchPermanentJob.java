@@ -98,6 +98,7 @@ public class SearchPermanentJob extends AppCompatActivity {
                 dialog.dismiss();
                 String response = new String(responseBody);
                 Intent i = new Intent(SearchPermanentJob.this, SubstituteJobSearchResult.class);
+                i.putExtra("type", "per");
                 i.putExtra("response", response);
                 startActivity(i);
 

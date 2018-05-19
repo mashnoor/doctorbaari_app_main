@@ -8,15 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.doctorbaari.android.R;
-import com.doctorbaari.android.acvities.SearchPermanentJob;
 import com.doctorbaari.android.acvities.SubstituteJobSearchResult;
-import com.doctorbaari.android.models.Avaibility;
+import com.doctorbaari.android.models.Availability;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.loopj.android.http.AsyncHttpClient;
@@ -30,12 +28,12 @@ import cz.msebera.android.httpclient.Header;
  * Created by Nowfel Mashnoor on 12/2/2017.
  */
 
-public class AvaibilityListAdapter extends BaseAdapter {
+public class AvailabilityListAdapter extends BaseAdapter {
 
     private Activity activity;
-    private Avaibility[] avaibilities;
+    private Availability[] avaibilities;
 
-    public AvaibilityListAdapter(Activity activity, Avaibility[] avaibilities) {
+    public AvailabilityListAdapter(Activity activity, Availability[] avaibilities) {
         this.activity = activity;
         this.avaibilities = avaibilities;
     }
@@ -46,7 +44,7 @@ public class AvaibilityListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Avaibility getItem(int i) {
+    public Availability getItem(int i) {
         return avaibilities[i];
     }
 
@@ -70,7 +68,7 @@ public class AvaibilityListAdapter extends BaseAdapter {
         Button btnSeeResults = v.findViewById(R.id.btnSeeresults);
         final Switch swtchAvailable = v.findViewById(R.id.swtchAvailable);
 
-        final Avaibility currAvaibility = getItem(i);
+        final Availability currAvaibility = getItem(i);
 
         btnSeeResults.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +80,7 @@ public class AvaibilityListAdapter extends BaseAdapter {
 
                 RequestParams params = new RequestParams();
                 params.put("fromdate", currAvaibility.getFromDate());
+                params.put("todate", currAvaibility.getToDate());
                 params.put("userid", DBHelper.getUserid(activity));
                 params.put("place", currAvaibility.getPlace());
                 params.put("placelat", currAvaibility.getPlacelat());
@@ -105,6 +104,8 @@ public class AvaibilityListAdapter extends BaseAdapter {
                         String response = new String(responseBody);
                         Intent i = new Intent(activity, SubstituteJobSearchResult.class);
                         i.putExtra("response", response);
+
+                        i.putExtra("type", currAvaibility.getType());
                         activity.startActivity(i);
 
                     }
@@ -124,7 +125,10 @@ public class AvaibilityListAdapter extends BaseAdapter {
         tvFromdate.setText("From Date: " + currAvaibility.getFromDate());
         tvTodate.setText("To Date: " + currAvaibility.getToDate());
         tvLocation.setText("Location: " + currAvaibility.getPlace());
-        tvJobType.setText("Job Type: " + currAvaibility.getType());
+        if(currAvaibility.getType().equals("sub"))
+            tvJobType.setText("Job Type: Substitute");
+        else
+            tvJobType.setText("Job Type: Permanent");
         if (currAvaibility.getAvailable().equals("1")) {
             swtchAvailable.setChecked(true);
         } else {

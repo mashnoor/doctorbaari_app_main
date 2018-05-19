@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.doctorbaari.android.models.Job;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.ListViewEmptyMessageSetter;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -39,7 +41,8 @@ public class NewsfeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsfeed);
         ButterKnife.bind(this);
-        SideNToolbarController.attach(this, "Job Update");
+        SideNToolbarController.attach(this, "Job Updates");
+        ListViewEmptyMessageSetter.set(this, lvnewsFeed, "No job updates");
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to Doctor Baari Server...");
@@ -53,6 +56,7 @@ public class NewsfeedActivity extends AppCompatActivity {
     }
 
     private void getNewsFeed() {
+
         RequestParams params = new RequestParams();
         params.put("userid", DBHelper.getUserid(NewsfeedActivity.this));
         client.post(Constants.GET_NEWSFEED, params, new AsyncHttpResponseHandler() {

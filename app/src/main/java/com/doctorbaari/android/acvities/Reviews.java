@@ -13,6 +13,8 @@ import com.doctorbaari.android.models.Review;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.Geson;
 import com.doctorbaari.android.utils.HelperFunc;
+import com.doctorbaari.android.utils.ListViewEmptyMessageSetter;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -35,6 +37,8 @@ public class Reviews extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reviews);
         ButterKnife.bind(this);
+        SideNToolbarController.attach(this, "Reviews");
+        ListViewEmptyMessageSetter.set(this, lvReviews, "No Reviews");
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
@@ -42,6 +46,8 @@ public class Reviews extends AppCompatActivity {
     }
 
     private void loadReviews() {
+        //Set Empty Review
+
         Intent i = getIntent();
         String userid = i.getStringExtra("userid");
         RequestParams params = new RequestParams();

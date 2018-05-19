@@ -130,14 +130,15 @@ public class HomeActitvity extends AppCompatActivity {
     }
 
 
-
     public void goFeedback(View v) {
         startActivity(new Intent(this, FeedbackActivity.class));
     }
 
     public void goInvite(View v) {
-        String invitationMessage = "Hey there! DoctorBaari is an awesome " +
-                "job exchange platform for doctors and interns! Click the link to download from play store!";
+        String invitationMessage = "Hey there! DoctorBaari is a smart platform dedicated to MBBS " +
+                "and intern doctors to help them finding Permanent or Temporary jobs. " +
+                "You can also find Substitute doctors for your duty on this on this place. " +
+                "Why don't you give it a try? Click the link below to download DoctorBaari app from PlayStore.";
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, invitationMessage);
@@ -147,6 +148,12 @@ public class HomeActitvity extends AppCompatActivity {
 
     public void goUserHelpline(View v) {
         startActivity(new Intent(this, UserHelplineActivity.class));
+    }
+
+    public void goViewHistory(View view) {
+        Intent i = new Intent(this, HistoryActivity.class);
+        i.putExtra("type", "all");
+        startActivity(i);
     }
 
 }

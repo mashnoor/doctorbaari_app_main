@@ -28,6 +28,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style"
                 android:gravity="center"
+                android:onClick="goHowToSearchPermanent"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -52,6 +53,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style"
                 android:gravity="center"
+                android:onClick="goHowToSearchTemporaryJob"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -76,6 +78,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style"
                 android:gravity="center"
+                android:onClick="goHowToSearchSubstituteDoctor"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -100,6 +103,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style"
                 android:gravity="center"
+                android:onClick="goHowToUseHospitalInquiries"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -124,6 +128,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style"
                 android:gravity="center"
+                android:onClick="goHowToPostPermanentJob"
                 android:orientation="horizontal">
 
                 <ImageView

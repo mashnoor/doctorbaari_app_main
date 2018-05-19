@@ -114,6 +114,7 @@ public class JobAdapter extends BaseAdapter {
         //As the Newsfeed and schedule are from same adapter, replace the contact buttton with see result for schedule
         if (activity instanceof HistoryActivity) {
             btnContact.setText("See Result >");
+            tvDistance.setText("Not Available");
             btnContact.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
