@@ -65,6 +65,9 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
         String placelon = i.getStringExtra("placelon");
         String type = i.getStringExtra("type");
 
+        Logger.d("From Date = " + fromDate + " To Date: " + toDate + " Degrees: " + preferredDegree + " lat: " +
+                placelat + " lon: " + placelon + " type: " + type);
+
         params.put("fromdate", fromDate);
         params.put("todate", toDate);
 
@@ -94,7 +97,7 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Logger.d(new String(responseBody));
+                //Logger.d(new String(responseBody));
                 dialog.dismiss();
                 HelperFunc.showToast(ViewAvailableDoctorsActivity.this, "Something went wrong");
 
@@ -102,6 +105,13 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
     }
 
 }

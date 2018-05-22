@@ -1,60 +1,83 @@
-package com.doctorbaari.android.acvities;
+package com.doctorbaari.android.services;
 
-import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.doctorbaari.android.R;
+import com.doctorbaari.android.acvities.SplashActivity;
 import com.doctorbaari.android.models.Advertise;
-import com.doctorbaari.android.services.AlarmReceiver;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.orhanobut.logger.AndroidLogAdapter;
+import com.loopj.android.http.SyncHttpClient;
 import com.orhanobut.logger.Logger;
 
 import java.util.Calendar;
 
 import cz.msebera.android.httpclient.Header;
 
-
-public class SplashActivity extends AppCompatActivity {
-
-
-    AsyncHttpClient client;
+public class DoctorbaariFirebaseMsg extends FirebaseMessagingService {
+    private static final String TAG = "FCM Service";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        // TODO: Handle FCM messages here.
+        // If the application is in the foreground handle both data and notification messages here.
+        // Also if you intend on generating your own notifications as a result of a received FCM
+        // message, here is where that should be initiated.
 
-        setContentView(R.layout.activity_splash);
-        client = new AsyncHttpClient();
-        Logger.addLogAdapter(new AndroidLogAdapter());
-        getAdvertises();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(mainIntent);
-                finish();
-            }
-        }, 2000);
+        String title = remoteMessage.getData().get("title");
+
+
+        if (title.toLowerCase().equals("refresh")) {
+            getAdvertises();
+        } else {
+            String body = remoteMessage.getData().get("body");
+            Log.d(TAG, remoteMessage.getData().get("title"));
+            Log.d(TAG, "From: " + remoteMessage.getFrom());
+
+            Log.d(TAG, "Token: " + FirebaseInstanceId.getInstance().getToken());
+
+            showNotification(title, body, 5);
+
+        }
 
 
     }
 
+    private void showNotification(String title, String message, int id) {
+
+
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.main_logo)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri);
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(id /* ID of notification */, notificationBuilder.build());
+    }
+
+
     private void getAdvertises() {
+        SyncHttpClient client = new SyncHttpClient();
         client.get(Constants.GET_ADVERTISES, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -62,7 +85,7 @@ public class SplashActivity extends AppCompatActivity {
                 Logger.d(response);
                 Advertise[] advertises = Geson.g().fromJson(response, Advertise[].class);
                 cancelAllPreviousAlarms();
-                DBHelper.saveAdvertises(SplashActivity.this, advertises);
+                DBHelper.saveAdvertises(getApplicationContext(), advertises);
                 for (Advertise advertise : advertises) {
                     setNotificationAlarm(advertise);
                 }
@@ -77,7 +100,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void cancelAllPreviousAlarms() {
-        Advertise[] advertises = DBHelper.getAdvertises(SplashActivity.this);
+        Advertise[] advertises = DBHelper.getAdvertises(getApplicationContext());
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         for (Advertise advertise : advertises) {
             Intent alarm = new Intent(this, AlarmReceiver.class);

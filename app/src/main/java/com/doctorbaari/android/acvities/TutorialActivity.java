@@ -14,4 +14,11 @@ public class TutorialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tutorial);
         SideNToolbarController.attach(this, "Tutorial");
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
 }

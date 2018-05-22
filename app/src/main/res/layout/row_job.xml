@@ -127,6 +127,31 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/availableSwitchLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:text="Available: "
+                android:textColor="@color/button_color"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/swtchJobAvailable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/button_color" />
+
+
+        </LinearLayout>
+
 
         <LinearLayout
 

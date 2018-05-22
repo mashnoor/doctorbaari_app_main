@@ -177,7 +177,18 @@
         <activity android:name=".acvities.AllWorkLocationsOtherUserActivity" />
         <activity android:name=".acvities.UserHelplineActivity" />
         <activity android:name=".acvities.TutorialActivity" />
-        <activity android:name=".acvities.HowtoActivity"></activity>
+        <activity android:name=".acvities.HowtoActivity" />
+        <activity android:name=".acvities.NewMedicineUpdatesActivity"/>
+        <service android:name=".services.DoctorbaariFirebaseMsg">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".services.DoctorbaariFirebaseInstance">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

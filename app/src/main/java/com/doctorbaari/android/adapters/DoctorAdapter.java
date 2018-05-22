@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
+import com.doctorbaari.android.acvities.ProfileDetail;
 import com.doctorbaari.android.models.DoctorSub;
 import com.doctorbaari.android.utils.HelperFunc;
 import com.karumi.dexter.Dexter;
@@ -24,6 +25,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.orhanobut.logger.Logger;
 
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -73,6 +75,8 @@ public class DoctorAdapter extends BaseAdapter {
         Button btnLocation = v.findViewById(R.id.btnLocation);
 
         Button btnContact = v.findViewById(R.id.btnContact);
+
+        Button btnUserProfile = v.findViewById(R.id.btnUserProfile);
 
 
         final DoctorSub currentDoctorSub = getItem(i);
@@ -134,6 +138,16 @@ public class DoctorAdapter extends BaseAdapter {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        btnUserProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Logger.d(currentDoctorSub.getId());
+                Intent i = new Intent(activity, ProfileDetail.class);
+                i.putExtra("userid", currentDoctorSub.getId());
+                activity.startActivity(i);
             }
         });
 

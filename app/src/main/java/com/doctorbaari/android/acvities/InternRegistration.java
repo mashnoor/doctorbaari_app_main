@@ -44,6 +44,7 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -117,6 +118,12 @@ public class InternRegistration extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
 
     private void showToast(String s) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show();
@@ -153,6 +160,7 @@ public class InternRegistration extends AppCompatActivity {
         params.put("email", email);
         params.put("link", profileLink);
         params.put("picture_url", imageLink);
+        params.put("token", FirebaseInstanceId.getInstance().getToken());
         try {
             params.put("imagefile", imgfile);
         } catch (Exception e) {
@@ -287,7 +295,7 @@ public class InternRegistration extends AppCompatActivity {
             public void onPermissionsChecked(MultiplePermissionsReport report) {
                 if (report.areAllPermissionsGranted()) {
 
-                    EasyImage.openChooserWithGallery(InternRegistration.this, "Select Image",  0);
+                    EasyImage.openChooserWithGallery(InternRegistration.this, "Select Image", 0);
                 }
 
 

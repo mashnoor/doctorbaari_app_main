@@ -41,6 +41,7 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -167,6 +168,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
         params.put("email", email);
         params.put("link", profileLink);
         params.put("picture_url", imageLink);
+        params.put("token", FirebaseInstanceId.getInstance().getToken());
         client.post(Constants.SIGNUP_URL, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
@@ -268,6 +270,23 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
                 configurationBuilder.build());
         startActivityForResult(intent, APP_REQUEST_CODE);
 
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        if(SideNToolbarController.isDrawerOpen())
+            SideNToolbarController.closeDrawer();
+        else
+            super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(R.anim.enter, R.anim.exit);
     }
 
     private void registerPlaceFragment() {

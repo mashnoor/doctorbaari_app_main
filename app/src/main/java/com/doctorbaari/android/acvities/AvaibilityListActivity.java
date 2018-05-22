@@ -51,6 +51,22 @@ public class AvaibilityListActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(SideNToolbarController.isDrawerOpen())
+            SideNToolbarController.closeDrawer();
+        else
+            super.onBackPressed();
+    }
+
 
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();

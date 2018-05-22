@@ -16,6 +16,7 @@ import com.doctorbaari.android.acvities.HospitalAuthorityRegistration;
 import com.doctorbaari.android.acvities.InquiryActivity;
 import com.doctorbaari.android.acvities.InternRegistration;
 import com.doctorbaari.android.acvities.LoginActivity;
+import com.doctorbaari.android.acvities.NewMedicineUpdatesActivity;
 import com.doctorbaari.android.acvities.NewsfeedActivity;
 import com.doctorbaari.android.acvities.PostPermanentJobActivity;
 import com.doctorbaari.android.acvities.PostSubstituteActivity;
@@ -42,10 +43,13 @@ public class SideNToolbarController {
     static Drawer d;
 
 
-
-    public static void closeDrawer()
-    {
+    public static void closeDrawer() {
         d.closeDrawer();
+    }
+
+    public static boolean isDrawerOpen()
+    {
+        return d.isDrawerOpen();
     }
 
     public static void attach(final Activity activity, String name)
@@ -72,6 +76,7 @@ public class SideNToolbarController {
 
 
         activityName.setText(name);
+        //activity.overridePendingTransition(R.anim.enter, R.anim.exit);
 
 
     }
@@ -131,7 +136,7 @@ public class SideNToolbarController {
 
                             case 6:
                                 closeDrawer();
-                                //activity.startActivity(new Intent(activity, InquiryActivity.class));
+                                activity.startActivity(new Intent(activity, NewMedicineUpdatesActivity.class));
 
                                 break;
 
@@ -160,7 +165,6 @@ public class SideNToolbarController {
                                 FacebookSdk.sdkInitialize(activity);
                                 LoginManager.getInstance().logOut();
                                 break;
-
 
 
                         }

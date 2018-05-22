@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitCallback;
@@ -143,8 +144,12 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
+    }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
     }
 }
 

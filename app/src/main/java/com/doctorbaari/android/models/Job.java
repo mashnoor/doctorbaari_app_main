@@ -14,7 +14,6 @@ public class Job {
 
     private String postDatetime;
     @SerializedName("date_to")
-
     private String dateTo;
     @SerializedName("date_from")
 
@@ -44,7 +43,7 @@ public class Job {
 
     private String details;
     @SerializedName("available")
-    private Integer available;
+    private String available;
 
     @SerializedName("deadline")
     private String deadline;
@@ -77,8 +76,7 @@ public class Job {
     }
 
     public String getDeadline() {
-        String[] dateParts = deadline.split("-");
-        return dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
+       return deadline;
     }
 
     public String getType() {
@@ -103,8 +101,7 @@ public class Job {
 
 
     public String getDateTo() {
-        String[] dateParts = dateTo.split("-");
-        return dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
+        return dateTo;
     }
 
 
@@ -163,12 +160,36 @@ public class Job {
         this.details = details;
     }
 
-    public Integer getAvailable() {
+    public String getAvailable() {
         return available;
     }
 
-    public void setAvailable(Integer available) {
+    public void setAvailable(String available) {
         this.available = available;
     }
 
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", postDatetime='" + postDatetime + '\'' +
+                ", dateTo='" + dateTo + '\'' +
+                ", dateFrom='" + dateFrom + '\'' +
+                ", duration=" + duration +
+                ", userid='" + userid + '\'' +
+                ", username='" + username + '\'' +
+                ", place='" + place + '\'' +
+                ", placelat='" + placelat + '\'' +
+                ", placelon='" + placelon + '\'' +
+                ", institute='" + institute + '\'' +
+                ", details='" + details + '\'' +
+                ", available='" + available + '\'' +
+                ", deadline='" + deadline + '\'' +
+                ", type='" + type + '\'' +
+                ", degree='" + degree + '\'' +
+                ", user=" + user +
+                ", imageLink='" + imageLink + '\'' +
+                ", distance='" + distance + '\'' +
+                '}';
+    }
 }

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "105119966153",
+    "firebase_url": "https://doctorbaari-a5820.firebaseio.com",
+    "project_id": "doctorbaari-a5820",
+    "storage_bucket": "doctorbaari-a5820.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105119966153:android:f2ed406888711bd7",
+        "android_client_info": {
+          "package_name": "com.doctorbaari.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "105119966153-m4mv4u4bkckvgs1279lnms943el9uhe7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoCSxAg_HRCypSj8k6UI_tVSP4xA0RCVo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

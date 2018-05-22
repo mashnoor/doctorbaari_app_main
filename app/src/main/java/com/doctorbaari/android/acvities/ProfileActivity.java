@@ -261,4 +261,19 @@ public class ProfileActivity extends AppCompatActivity {
         i.putExtra("type", "all");
         startActivity(i);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+    @Override
+    public void onBackPressed() {
+
+        if(SideNToolbarController.isDrawerOpen())
+            SideNToolbarController.closeDrawer();
+        else
+            super.onBackPressed();
+    }
 }

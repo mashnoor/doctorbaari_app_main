@@ -34,19 +34,31 @@ public class HomeActitvity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        super.onResume();
+
         SideNToolbarController.closeDrawer();
+        super.onResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(SideNToolbarController.isDrawerOpen())
+            SideNToolbarController.closeDrawer();
+        else
+            super.onBackPressed();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //overridePendingTransition(R.anim.enter, R.anim.exit);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "Home");
@@ -155,5 +167,7 @@ public class HomeActitvity extends AppCompatActivity {
         i.putExtra("type", "all");
         startActivity(i);
     }
+
+
 
 }

@@ -3,15 +3,19 @@ package com.doctorbaari.android.adapters;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -23,13 +27,22 @@ import com.doctorbaari.android.acvities.HistorySubSearchResult;
 import com.doctorbaari.android.acvities.JobDetailsActivity;
 import com.doctorbaari.android.acvities.ViewAvailableDoctorsActivity;
 import com.doctorbaari.android.models.Job;
+import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.Geson;
+import com.doctorbaari.android.utils.HelperFunc;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import java.util.logging.Logger;
+
+import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by Nowfel Mashnoor on 11/7/2017.
@@ -60,7 +73,7 @@ public class JobAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         View v = view;
         if (v == null) {
             final LayoutInflater layoutInflater = LayoutInflater.from(activity);
@@ -80,6 +93,13 @@ public class JobAdapter extends BaseAdapter {
 
         Button btnContact = v.findViewById(R.id.btnContact);
         Button seeDetails = v.findViewById(R.id.btnJobdetails);
+
+        final Switch swtchJobAvailable = v.findViewById(R.id.swtchJobAvailable);
+
+        if (currpost.getAvailable().equals("1"))
+            swtchJobAvailable.setChecked(true);
+        else
+            swtchJobAvailable.setChecked(false);
         seeDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,21 +135,69 @@ public class JobAdapter extends BaseAdapter {
         if (activity instanceof HistoryActivity) {
             btnContact.setText("See Result >");
             tvDistance.setText("Not Available");
+
+
             btnContact.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(activity, ViewAvailableDoctorsActivity.class);
                     intent.putExtra("fromdate", currpost.getDateFrom());
-                    intent.putExtra("todate", currpost.getDateTo());
+                    if (currpost.getType().equals("sub"))
+                        intent.putExtra("todate", currpost.getDateTo());
+                    else
+                        intent.putExtra("todate", "");
 
                     intent.putExtra("placelat", currpost.getPlacelat());
                     intent.putExtra("placelon", currpost.getPlacelon());
-                    intent.putExtra("degree", currpost.getDegree());
+                    intent.putExtra("degrees", currpost.getDegree());
                     intent.putExtra("type", currpost.getType());
+                    com.orhanobut.logger.Logger.d(currpost.toString());
                     activity.startActivity(intent);
                 }
             });
+
+            swtchJobAvailable.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getItem(i).setAvailable(swtchJobAvailable.isChecked() ? "1" : "0");
+                    final ProgressDialog dialog = new ProgressDialog(activity);
+                    dialog.setMessage("Status changing. Please wait...");
+
+                    AsyncHttpClient client = new AsyncHttpClient();
+                    RequestParams params = new RequestParams();
+                    params.put("id", currpost.getId());
+                    params.put("type", currpost.getType());
+                    params.put("value", swtchJobAvailable.isChecked() ? "1" : "0");
+                    client.post(Constants.CHANGE_JOB_AVAILABLE_STATUS, params, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onStart() {
+                            super.onStart();
+                            dialog.show();
+                        }
+
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                            dialog.dismiss();
+                            HelperFunc.showToast(activity, "Successfully changed status");
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                            dialog.dismiss();
+                            HelperFunc.showToast(activity, "Something went wrong.");
+
+                        }
+                    });
+
+
+                }
+            });
+
+
         } else {
+            LinearLayout availableSwitchContainer = v.findViewById(R.id.availableSwitchLayout);
+            ((ViewManager) availableSwitchContainer.getParent()).removeView(availableSwitchContainer);
+
             btnContact.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

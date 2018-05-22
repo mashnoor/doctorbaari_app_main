@@ -31,6 +31,7 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -65,6 +66,14 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
     String workingPlaceName = "";
     String workingPlaceLat = "";
     String workingPlaceLon = "";
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +131,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
         params.put("placelat", workingPlaceLat);
         params.put("placelon", workingPlaceLon);
         params.put("type", "hospital");
+        params.put("token", FirebaseInstanceId.getInstance().getToken());
         client.post(Constants.SIGNUP_URL, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {

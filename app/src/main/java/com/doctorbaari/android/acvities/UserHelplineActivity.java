@@ -27,4 +27,11 @@ public class UserHelplineActivity extends AppCompatActivity {
     {
         HelperFunc.openUrlInBrowser(this, "https://doctorbaari.com/#menu#FAQ");
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
 }

@@ -35,6 +35,11 @@ public class NewsfeedActivity extends AppCompatActivity {
     AsyncHttpClient client;
     ProgressDialog dialog;
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,5 +107,14 @@ public class NewsfeedActivity extends AppCompatActivity {
         Intent i = new Intent(this, AvaibilityListActivity.class);
         i.putExtra("type", "all");
         startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(SideNToolbarController.isDrawerOpen())
+            SideNToolbarController.closeDrawer();
+        else
+            super.onBackPressed();
     }
 }

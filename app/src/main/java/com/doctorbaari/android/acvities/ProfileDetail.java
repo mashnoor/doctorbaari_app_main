@@ -99,6 +99,7 @@ public class ProfileDetail extends AppCompatActivity {
 
         Intent i = getIntent();
         String userid = i.getStringExtra("userid");
+        Logger.d("User id = " + userid);
         RequestParams params = new RequestParams();
         params.put("userid", userid);
         client.post(Constants.GET_PROFILE_URL, params, new AsyncHttpResponseHandler() {
@@ -231,4 +232,13 @@ public class ProfileDetail extends AppCompatActivity {
         });
         builder.show();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
+
 }

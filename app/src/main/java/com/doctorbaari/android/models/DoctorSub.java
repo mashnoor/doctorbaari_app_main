@@ -10,7 +10,7 @@ public class DoctorSub {
 
     @SerializedName("id")
     
-    private Integer id;
+    private String id;
     @SerializedName("created_at")
     
     private String createdAt;
@@ -70,11 +70,11 @@ public class DoctorSub {
         return distance;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -208,6 +208,31 @@ public class DoctorSub {
 
     public String getType() {
         return type;
+    }
+
+    @Override
+    public String toString() {
+        return "DoctorSub{" +
+                "id=" + id +
+                ", createdAt='" + createdAt + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", fbProfile='" + fbProfile + '\'' +
+                ", ppUrl='" + ppUrl + '\'' +
+                ", birthdate='" + birthdate + '\'' +
+                ", college='" + college + '\'' +
+                ", place='" + place + '\'' +
+                ", mbbsReg='" + mbbsReg + '\'' +
+                ", degree='" + degree + '\'' +
+                ", placelat='" + placelat + '\'' +
+                ", placelon='" + placelon + '\'' +
+                ", available='" + available + '\'' +
+                ", fromDate='" + fromDate + '\'' +
+                ", toDate='" + toDate + '\'' +
+                ", type='" + type + '\'' +
+                ", distance='" + distance + '\'' +
+                '}';
     }
 
     public void setType(String type) {

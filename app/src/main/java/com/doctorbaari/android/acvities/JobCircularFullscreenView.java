@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import butterknife.BindView;
@@ -35,9 +36,13 @@ public class JobCircularFullscreenView extends AppCompatActivity {
 
     }
 
+
+
     @Override
     protected void onPause() {
         super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
         finish();
     }
 }

@@ -33,6 +33,21 @@ public class HistorySubSearchResult extends AppCompatActivity {
     @BindView(R.id.lvSubstitute)
     ListView lvSubstitute;
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(SideNToolbarController.isDrawerOpen())
+            SideNToolbarController.closeDrawer();
+        else
+            super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

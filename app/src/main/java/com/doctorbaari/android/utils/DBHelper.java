@@ -1,6 +1,7 @@
 package com.doctorbaari.android.utils;
 
 import android.app.Activity;
+import android.content.Context;
 
 import com.doctorbaari.android.models.Advertise;
 import com.orhanobut.hawk.Hawk;
@@ -20,6 +21,11 @@ public class DBHelper {
         Hawk.init(activity).build();
         return Hawk.get("userid");
     }
+    public static String getUserid(Context context)
+    {
+        Hawk.init(context).build();
+        return Hawk.get("userid", null);
+    }
     public static void setSignedInStatus(Activity activity, boolean val)
     {
         Hawk.init(activity).build();
@@ -35,7 +41,18 @@ public class DBHelper {
         Hawk.init(activity).build();
         Hawk.put("advertises", advertises);
     }
+
+    public static void saveAdvertises(Context activity, Advertise[] advertises)
+    {
+        Hawk.init(activity).build();
+        Hawk.put("advertises", advertises);
+    }
     public static Advertise[] getAdvertises(Activity activity)
+    {
+        Hawk.init(activity).build();
+        return Hawk.get("advertises", new Advertise[]{});
+    }
+    public static Advertise[] getAdvertises(Context activity)
     {
         Hawk.init(activity).build();
         return Hawk.get("advertises", new Advertise[]{});

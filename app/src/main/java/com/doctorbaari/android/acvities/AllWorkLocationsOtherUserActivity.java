@@ -40,6 +40,21 @@ public class AllWorkLocationsOtherUserActivity extends AppCompatActivity {
         dialog.setMessage("Loading. Please wait...");
         loadWorkLocations();
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(SideNToolbarController.isDrawerOpen())
+            SideNToolbarController.closeDrawer();
+        else
+            super.onBackPressed();
+    }
 
 
     private void loadWorkLocations() {

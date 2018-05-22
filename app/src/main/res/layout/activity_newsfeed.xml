@@ -17,18 +17,20 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="2">
 
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_weight="1">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
 
@@ -39,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Availability Schedule"
+                android:gravity="center"
                 android:textColor="@color/black_bg"
                 android:textStyle="bold"
                 android:layout_gravity="center"/>
@@ -48,17 +51,20 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:onClick="goNotification"
             android:layout_weight="1">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
 
-                android:onClick="goNotification"
+
                 android:src="@drawable/notification" />
 
             <TextView

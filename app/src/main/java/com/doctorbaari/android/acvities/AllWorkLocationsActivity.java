@@ -114,6 +114,21 @@ public class AllWorkLocationsActivity extends AppCompatActivity {
             });
         }
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(SideNToolbarController.isDrawerOpen())
+            SideNToolbarController.closeDrawer();
+        else
+            super.onBackPressed();
+    }
 
     private void registerPlaceFragment() {
         AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()

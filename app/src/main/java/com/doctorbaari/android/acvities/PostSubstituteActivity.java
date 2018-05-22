@@ -266,4 +266,11 @@ public class PostSubstituteActivity extends AppCompatActivity {
         startActivity(new Intent(this, TutorialActivity.class));
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
 }

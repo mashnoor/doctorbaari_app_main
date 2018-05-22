@@ -45,4 +45,11 @@ public class SubstituteJobSearchResult extends AppCompatActivity {
         ListViewEmptyMessageSetter.set(this, lvSubstituteJobSearchResult, "No result found");
         lvSubstituteJobSearchResult.setAdapter(adapter);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
 }

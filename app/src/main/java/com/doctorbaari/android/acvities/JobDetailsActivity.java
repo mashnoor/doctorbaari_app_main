@@ -164,4 +164,11 @@ public class JobDetailsActivity extends AppCompatActivity {
         });
         builder.show();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
 }

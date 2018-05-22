@@ -56,6 +56,13 @@ public class InquiryActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
     public void goTutorial(View v)
     {
         startActivity(new Intent(this, TutorialActivity.class));

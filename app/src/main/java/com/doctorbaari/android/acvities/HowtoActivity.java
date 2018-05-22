@@ -42,6 +42,21 @@ public class HowtoActivity extends AppCompatActivity {
         HelperFunc.openUrlInBrowser(this, "https://doctorbaari.com/#menu#tutorial#post");
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(SideNToolbarController.isDrawerOpen())
+            SideNToolbarController.closeDrawer();
+        else
+            super.onBackPressed();
+    }
 
 
 

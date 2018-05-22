@@ -69,8 +69,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
 
     }
 
-    public void goTutorial(View v)
-    {
+    public void goTutorial(View v) {
         startActivity(new Intent(this, TutorialActivity.class));
     }
 
@@ -251,6 +250,12 @@ public class SearchSubstituteJobs extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
 
 
 }

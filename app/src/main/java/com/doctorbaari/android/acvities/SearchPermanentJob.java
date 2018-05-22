@@ -46,7 +46,6 @@ public class SearchPermanentJob extends AppCompatActivity {
     EditText etFromDate;
 
 
-
     AsyncHttpClient client;
 
 
@@ -69,10 +68,10 @@ public class SearchPermanentJob extends AppCompatActivity {
         registerFuckingCalenderListener();
     }
 
-    public void goTutorial(View v)
-    {
+    public void goTutorial(View v) {
         startActivity(new Intent(this, TutorialActivity.class));
     }
+
     public void searchPermanent() {
         String fromDate = etFromDate.getText().toString();
         if (fromDate.isEmpty() || placename.isEmpty()) {
@@ -228,6 +227,12 @@ public class SearchPermanentJob extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SideNToolbarController.closeDrawer();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
+    }
 
 
 }

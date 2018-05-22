@@ -11,6 +11,7 @@ import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.HelperFunc;
+import com.doctorbaari.android.utils.SideNToolbarController;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -45,6 +46,17 @@ public class ConnectWithFacebookActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
         Logger.d(data);
+    }
+    @Override
+    public void onBackPressed() {
+
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.enter, R.anim.exit);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

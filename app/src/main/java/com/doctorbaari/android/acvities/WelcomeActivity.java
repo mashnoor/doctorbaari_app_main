@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.doctorbaari.android.R;
+import com.doctorbaari.android.utils.SideNToolbarController;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -21,6 +22,8 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+
+        overridePendingTransition(R.anim.enter, R.anim.exit);
         finish();
     }
 
@@ -36,4 +39,6 @@ public class WelcomeActivity extends AppCompatActivity {
     public void goHospitalAuthoritySignup(View v) {
         startActivity(new Intent(this, HospitalAuthorityRegistration.class));
     }
+
+
 }
