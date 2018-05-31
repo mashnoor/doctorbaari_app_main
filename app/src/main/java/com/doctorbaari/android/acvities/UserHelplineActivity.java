@@ -34,4 +34,14 @@ public class UserHelplineActivity extends AppCompatActivity {
         SideNToolbarController.closeDrawer();
         overridePendingTransition(R.anim.enter, R.anim.exit);
     }
+
+    public void goGroup(View v)
+    {
+        HelperFunc.openUrlInBrowser(this, "https://www.facebook.com/groups/623620854637015/");
+    }
+
+    public void goPage(View v)
+    {
+        HelperFunc.openUrlInBrowser(this, "https://www.facebook.com/DoctorBaari-Smart-job-exchanging-platform-for-Doctors-1689187547844056");
+    }
 }

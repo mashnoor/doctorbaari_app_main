@@ -1,33 +1,22 @@
 package com.doctorbaari.android.acvities;
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
-import com.doctorbaari.android.utils.Geson;
 import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitCallback;
@@ -37,8 +26,6 @@ import com.facebook.accountkit.PhoneNumber;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
@@ -53,14 +40,8 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
-
-import org.json.JSONObject;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -108,11 +89,11 @@ public class InternRegistration extends AppCompatActivity {
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "Intern Doctor Registration");
         registerPlaceFragment();
-        Logger.addLogAdapter(new AndroidLogAdapter());
+
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting with Doctor Baari server...");
-        Logger.addLogAdapter(new AndroidLogAdapter());
+
         verifyNumber();
 
 
@@ -200,7 +181,7 @@ public class InternRegistration extends AppCompatActivity {
 
                 //Log.d("--------", new String(responseBody));
                 dialog.dismiss();
-                Logger.d(new String(responseBody));
+
                 showToast("Something went wrong");
             }
         });
@@ -252,7 +233,7 @@ public class InternRegistration extends AppCompatActivity {
                     public void onSuccess(final Account account) {
                         PhoneNumber phn = account.getPhoneNumber();
 
-                        Logger.d(phn);
+
                         phoneNumber = phn.toString();
                         etContactno.setText(phoneNumber);
 
@@ -321,7 +302,7 @@ public class InternRegistration extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Logger.d(place.getName());
+
                 workingPlaceName = place.getName().toString();
                 workingPlaceLat = String.valueOf(place.getLatLng().latitude);
                 workingPlaceLon = String.valueOf(place.getLatLng().longitude);
@@ -330,7 +311,7 @@ public class InternRegistration extends AppCompatActivity {
             @Override
             public void onError(Status status) {
                 // TODO: Handle the error.
-                Logger.d(status);
+
             }
         });
 

@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -35,8 +33,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
+
 
 import org.json.JSONArray;
 
@@ -85,7 +82,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         SideNToolbarController.attach(this, "Post Permanent Job");
         registerPlaceFragment();
         degrees = new ArrayList<>();
-        Logger.d(new AndroidLogAdapter());
+
         registerFuckingCalenderListener();
 
 
@@ -196,9 +193,6 @@ public class PostPermanentJobActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 dialog.dismiss();
                 showToast("Something went wrong. Try again later");
-                Logger.d(error.getMessage());
-
-                Logger.d(error.getMessage());
 
             }
         });
@@ -279,7 +273,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Logger.d(place.getName());
+
                 placeName = place.getName().toString();
                 placeLat = String.valueOf(place.getLatLng().latitude);
                 placeLon = String.valueOf(place.getLatLng().longitude);
@@ -289,7 +283,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
             @Override
             public void onError(Status status) {
                 // TODO: Handle the error.
-                Logger.d(status);
+
             }
         });
 
@@ -305,7 +299,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         CheckBox cb = (CheckBox) v;
 
         if (cb.isChecked()) {
-            Logger.d(cb.getText().toString());
+
             degrees.add(cb.getText().toString());
         } else {
             degrees.remove(cb.getText().toString());

@@ -18,8 +18,7 @@ import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,7 +48,7 @@ public class AvaibilityListActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
         client = new AsyncHttpClient();
-        Logger.addLogAdapter(new AndroidLogAdapter());
+
 
         loadAvaibilityList();
 
@@ -79,7 +78,7 @@ public class AvaibilityListActivity extends AppCompatActivity {
 
     private void loadAvaibilityList() {
         RequestParams params = new RequestParams();
-        Logger.d(getIntent().getStringExtra("type"));
+
         params.put("type", getIntent().getStringExtra("type"));
         params.put("userid", DBHelper.getUserid(AvaibilityListActivity.this));
         client.post(Constants.GET_AVAIBILITY_LIST, params, new AsyncHttpResponseHandler() {
@@ -102,7 +101,7 @@ public class AvaibilityListActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 showToast("Something went wrong");
                 dialog.dismiss();
-                Logger.d(new String(responseBody));
+
             }
         });
     }

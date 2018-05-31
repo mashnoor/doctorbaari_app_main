@@ -32,8 +32,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,7 +79,6 @@ public class ProfileDetail extends AppCompatActivity {
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
-        Logger.addLogAdapter(new AndroidLogAdapter());
         loadUserProfile();
 
 
@@ -99,7 +97,7 @@ public class ProfileDetail extends AppCompatActivity {
 
         Intent i = getIntent();
         String userid = i.getStringExtra("userid");
-        Logger.d("User id = " + userid);
+
         RequestParams params = new RequestParams();
         params.put("userid", userid);
         client.post(Constants.GET_PROFILE_URL, params, new AsyncHttpResponseHandler() {
@@ -113,9 +111,9 @@ public class ProfileDetail extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
 
-                Logger.d(response);
+
                 user = Geson.g().fromJson(response, User.class);
-                Logger.d(user);
+
                 tvUserName.setText(user.getUsername());
                 tvInstitue.setText(user.getCollege());
                 tvCurrentlyWorking.setText(user.getPlace());
@@ -137,7 +135,7 @@ public class ProfileDetail extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Logger.d("error");
+
                 dialog.dismiss();
 
             }
@@ -189,7 +187,7 @@ public class ProfileDetail extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 HelperFunc.showToast(ProfileDetail.this, "Something went wrong");
                 dialog.dismiss();
-                Logger.d(new String(responseBody));
+
 
             }
         });

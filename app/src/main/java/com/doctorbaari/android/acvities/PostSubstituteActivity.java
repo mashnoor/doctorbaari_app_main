@@ -1,7 +1,6 @@
 package com.doctorbaari.android.acvities;
 
 import android.app.AlertDialog;
-
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,11 +8,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +27,7 @@ import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.Logger;
+
 
 import org.json.JSONArray;
 
@@ -229,7 +226,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Logger.d(place.getName());
+
                 placename = place.getName().toString();
                 placelat = String.valueOf(place.getLatLng().latitude);
                 placelon = String.valueOf(place.getLatLng().longitude);
@@ -238,7 +235,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
             @Override
             public void onError(Status status) {
                 // TODO: Handle the error.
-                Logger.d(status);
+
             }
         });
 
@@ -254,7 +251,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
         CheckBox cb = (CheckBox) v;
 
         if (cb.isChecked()) {
-            Logger.d(cb.getText().toString());
+
             degrees.add(cb.getText().toString());
         } else {
             degrees.remove(cb.getText().toString());

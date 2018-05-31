@@ -2,6 +2,7 @@ package com.doctorbaari.android.utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -92,7 +93,7 @@ public class SideNToolbarController {
         PrimaryDrawerItem sendInvitaion = new PrimaryDrawerItem().withName("Invite Other Doctors").withIcon(R.drawable.invite);
         PrimaryDrawerItem addNewWorkPlace = new PrimaryDrawerItem().withName("Add New Workplace").withIcon(R.drawable.addworkplace);
         PrimaryDrawerItem howToUseDoctorBaari = new PrimaryDrawerItem().withName("How to use DoctorBaari").withIcon(R.drawable.howto);
-
+        PrimaryDrawerItem checkForUpdates = new PrimaryDrawerItem().withName("Check for update").withIcon(R.drawable.update);
 
         d = new DrawerBuilder()
                 .withActivity(activity)
@@ -115,7 +116,9 @@ public class SideNToolbarController {
                         new DividerDrawerItem(),
                         about, //12
                         new DividerDrawerItem(),
-                        logout //14
+                        checkForUpdates, //14
+                        new DividerDrawerItem(),
+                        logout //16
 
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -164,6 +167,15 @@ public class SideNToolbarController {
                                 break;
 
                             case 14:
+                                closeDrawer();
+                                final String appPackageName = activity.getPackageName(); // getPackageName() from Context or Activity object
+                                try {
+                                    activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                                } catch (android.content.ActivityNotFoundException anfe) {
+                                    HelperFunc.openUrlInBrowser(activity, "https://play.google.com/store/apps/details?id=" + appPackageName);
+                                }
+                                break;
+                            case 16:
                                 AccountKit.logOut();
                                 closeDrawer();
                                 DBHelper.setSignedInStatus(activity, false);

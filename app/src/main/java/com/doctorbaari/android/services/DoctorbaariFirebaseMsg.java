@@ -10,8 +10,11 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.doctorbaari.android.R;
-import com.doctorbaari.android.acvities.SplashActivity;
 import com.doctorbaari.android.models.Advertise;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
@@ -19,19 +22,13 @@ import com.doctorbaari.android.utils.Geson;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.ResponseHandlerInterface;
-import com.loopj.android.http.SyncHttpClient;
-import com.orhanobut.logger.Logger;
 
-import java.io.IOException;
-import java.net.URI;
+
+import org.json.JSONArray;
+
 import java.util.Calendar;
 
-import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.HttpResponse;
-import cz.msebera.android.httpclient.util.EntityUtils;
+import okhttp3.OkHttpClient;
 
 public class DoctorbaariFirebaseMsg extends FirebaseMessagingService {
     private static final String TAG = "FCM Service";
@@ -48,7 +45,7 @@ public class DoctorbaariFirebaseMsg extends FirebaseMessagingService {
 
 
         if (title.toLowerCase().equals("refresh")) {
-            getAdvertises();
+            getAdvertises2();
         } else {
             String body = remoteMessage.getData().get("body");
             Log.d(TAG, remoteMessage.getData().get("title"));
@@ -80,32 +77,35 @@ public class DoctorbaariFirebaseMsg extends FirebaseMessagingService {
         notificationManager.notify(id /* ID of notification */, notificationBuilder.build());
     }
 
+    private void getAdvertises2() {
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+                .build();
+        AndroidNetworking.initialize(getApplicationContext(), okHttpClient);
 
-    private void getAdvertises() {
-        SyncHttpClient client = new SyncHttpClient();
+        AndroidNetworking.get(Constants.GET_ADVERTISES)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        String resp = response.toString();
 
+                        Advertise[] advertises = Geson.g().fromJson(resp, Advertise[].class);
+                        cancelAllPreviousAlarms();
+                        DBHelper.saveAdvertises(getApplicationContext(), advertises);
+                        for (Advertise advertise : advertises) {
+                            setNotificationAlarm(advertise);
+                        }
+                    }
 
+                    @Override
+                    public void onError(ANError error) {
 
-        client.get(Constants.GET_ADVERTISES, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String response = new String(responseBody);
-                Logger.d(response);
-                Advertise[] advertises = Geson.g().fromJson(response, Advertise[].class);
-                cancelAllPreviousAlarms();
-                DBHelper.saveAdvertises(getApplicationContext(), advertises);
-                for (Advertise advertise : advertises) {
-                    setNotificationAlarm(advertise);
-                }
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-            }
-        });
+                    }
+                });
     }
+
+
 
     private void cancelAllPreviousAlarms() {
         Advertise[] advertises = DBHelper.getAdvertises(getApplicationContext());
@@ -121,8 +121,6 @@ public class DoctorbaariFirebaseMsg extends FirebaseMessagingService {
 
     private Calendar getCalenderInstaseForTime(int hour, int min) {
         Calendar timeOff9 = Calendar.getInstance();
-        Logger.d(hour);
-        Logger.d(min);
 
         timeOff9.set(Calendar.HOUR_OF_DAY, hour);
         timeOff9.set(Calendar.MINUTE, min);
@@ -130,7 +128,6 @@ public class DoctorbaariFirebaseMsg extends FirebaseMessagingService {
         if (timeOff9.before(Calendar.getInstance())) {
             timeOff9.add(Calendar.DATE, 1);
         }
-        Logger.d(timeOff9.getTimeInMillis());
         return timeOff9;
     }
 
@@ -145,8 +142,7 @@ public class DoctorbaariFirebaseMsg extends FirebaseMessagingService {
 
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, getCalenderInstaseForTime(advertise.getHour(), advertise.getMinute()).getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        Logger.d("Alarm Set for - ");
-        Logger.d(advertise);
+
 
     }
 

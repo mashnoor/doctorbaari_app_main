@@ -28,6 +28,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:weightSum="7"
+            android:onClick="goGroup"
             android:layout_marginBottom="10dp"
             android:padding="7dp"
 
@@ -140,6 +141,7 @@ DB authority and community" />
             android:gravity="center"
             android:weightSum="7"
             android:padding="7dp"
+            android:onClick="goPage"
             android:orientation="horizontal">
 
             <TextView

@@ -11,14 +11,11 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
-
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.acvities.AdvertiseDetailActivity;
-import com.doctorbaari.android.acvities.ProfileDetail;
 import com.doctorbaari.android.models.Advertise;
 import com.doctorbaari.android.utils.Geson;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
+
 
 
 /**
@@ -28,11 +25,10 @@ import com.orhanobut.logger.Logger;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Logger.addLogAdapter(new AndroidLogAdapter());
-        Logger.d("Alarm Worked!!!");
+
 
         Advertise advertise = Geson.g().fromJson(intent.getStringExtra("advertise"), Advertise.class);
-        Logger.d(advertise.toString());
+
         sendNotification(context, advertise.getTitle(), advertise.getBody(), advertise.getCompany(), advertise.getDetails(), advertise.getId());
     }
 

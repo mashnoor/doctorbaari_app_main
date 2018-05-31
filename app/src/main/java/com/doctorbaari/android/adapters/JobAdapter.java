@@ -13,17 +13,13 @@ import android.view.ViewGroup;
 import android.view.ViewManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.doctorbaari.android.R;
-import com.doctorbaari.android.acvities.AvaibilityListActivity;
 import com.doctorbaari.android.acvities.HistoryActivity;
-import com.doctorbaari.android.acvities.HistorySubSearchResult;
 import com.doctorbaari.android.acvities.JobDetailsActivity;
 import com.doctorbaari.android.acvities.ViewAvailableDoctorsActivity;
 import com.doctorbaari.android.models.Job;
@@ -39,8 +35,6 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
-import java.util.logging.Logger;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -158,7 +152,7 @@ public class JobAdapter extends BaseAdapter {
                     intent.putExtra("placelon", currpost.getPlacelon());
                     intent.putExtra("degrees", currpost.getDegree());
                     intent.putExtra("type", currpost.getType());
-                    com.orhanobut.logger.Logger.d(currpost.toString());
+
                     activity.startActivity(intent);
                 }
             });

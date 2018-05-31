@@ -18,8 +18,7 @@ import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,7 +40,7 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_available_doctors);
         ButterKnife.bind(this);
-        Logger.addLogAdapter(new AndroidLogAdapter());
+
         SideNToolbarController.attach(this, "Available Doctors' List");
 
         ListViewEmptyMessageSetter.set(this, lvSubstitute, "Currently no doctor is available. As soon as any doctor is available, they will contact with you");
@@ -65,8 +64,7 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
         String placelon = i.getStringExtra("placelon");
         String type = i.getStringExtra("type");
 
-        Logger.d("From Date = " + fromDate + " To Date: " + toDate + " Degrees: " + preferredDegree + " lat: " +
-                placelat + " lon: " + placelon + " type: " + type);
+
 
         params.put("fromdate", fromDate);
 
@@ -87,7 +85,7 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
-                Logger.d(response);
+
                 DoctorSub[] subs = Geson.g().fromJson(response, DoctorSub[].class);
                 DoctorAdapter adapter = new DoctorAdapter(ViewAvailableDoctorsActivity.this, subs);
                 lvSubstitute.setAdapter(adapter);

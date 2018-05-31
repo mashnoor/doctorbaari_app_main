@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +17,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.models.User;
-import com.doctorbaari.android.utils.CommonDialog;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
@@ -32,9 +31,6 @@ import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
-
 
 import org.json.JSONObject;
 
@@ -79,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
-        Logger.d(data);
+
     }
 
     @Override
@@ -88,7 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "Your Profile");
-        Logger.addLogAdapter(new AndroidLogAdapter());
+
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
                     "com.doctorbaari.android",
@@ -119,7 +115,7 @@ public class ProfileActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Logger.d(loginResult.getRecentlyGrantedPermissions());
+
                 GraphRequest request = GraphRequest.newMeRequest(
                         loginResult.getAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
@@ -129,7 +125,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                                 // Application code
                                 try {
-                                    Logger.d(object);
+
                                     String email = object.optString("email", "Not Available");
                                     String profileLink = object.optString("link", "Not Available");
                                     String imageLink = object.getJSONObject("picture").getJSONObject("data").getString("url");
@@ -172,10 +168,9 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
-                Logger.d(DBHelper.getUserid(ProfileActivity.this));
-                Logger.d(response);
+
                 User user = Geson.g().fromJson(response, User.class);
-                Logger.d(user);
+
                 tvUserName.setText(user.getUsername());
                 tvInstitue.setText(user.getCollege());
                 tvCurrentlyWorking.setText(user.getPlace());
@@ -195,7 +190,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Logger.d("error");
+
                 dialog.dismiss();
 
             }
@@ -220,7 +215,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onStart() {
                 super.onStart();
                 dialog.show();
-                Logger.d(DBHelper.getUserid(ProfileActivity.this));
+
             }
 
             @Override
@@ -237,8 +232,6 @@ public class ProfileActivity extends AppCompatActivity {
 
                 dialog.dismiss();
                 showToast("Something went wrong");
-                Logger.d(error.getMessage());
-                Logger.d(new String(responseBody));
 
             }
         });

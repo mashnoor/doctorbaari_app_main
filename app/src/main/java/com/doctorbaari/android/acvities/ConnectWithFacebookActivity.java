@@ -2,17 +2,15 @@ package com.doctorbaari.android.acvities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.crashlytics.android.Crashlytics;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.HelperFunc;
-import com.doctorbaari.android.utils.SideNToolbarController;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -23,7 +21,6 @@ import com.facebook.login.widget.LoginButton;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.Logger;
 
 import org.json.JSONObject;
 
@@ -32,7 +29,6 @@ import java.util.Arrays;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
-import io.fabric.sdk.android.Fabric;
 
 public class ConnectWithFacebookActivity extends AppCompatActivity {
 
@@ -47,7 +43,7 @@ public class ConnectWithFacebookActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
-        Logger.d(data);
+
     }
     @Override
     public void onBackPressed() {
@@ -79,7 +75,7 @@ public class ConnectWithFacebookActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Logger.d(loginResult.getRecentlyGrantedPermissions());
+
                 GraphRequest request = GraphRequest.newMeRequest(
                         loginResult.getAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
@@ -89,7 +85,7 @@ public class ConnectWithFacebookActivity extends AppCompatActivity {
 
                                 // Application code
                                 try {
-                                    Logger.d(object);
+
                                     String email = object.optString("email", "Not Available");
                                     String profileLink = object.optString("link", "Not Available");
                                     String imageLink = object.getJSONObject("picture").getJSONObject("data").getString("url");
@@ -133,7 +129,7 @@ public class ConnectWithFacebookActivity extends AppCompatActivity {
             public void onStart() {
                 super.onStart();
                 dialog.show();
-                Logger.d(DBHelper.getUserid(ConnectWithFacebookActivity.this));
+
             }
 
             @Override
@@ -151,8 +147,7 @@ public class ConnectWithFacebookActivity extends AppCompatActivity {
 
                 dialog.dismiss();
                 HelperFunc.showToast(ConnectWithFacebookActivity.this, "Something went wrong");
-                Logger.d(error.getMessage());
-                Logger.d(new String(responseBody));
+
                 finish();
 
             }

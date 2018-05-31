@@ -23,7 +23,7 @@ import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.Logger;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -147,7 +147,7 @@ public class AllWorkLocationsActivity extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Logger.d(place.getName());
+
                 workingPlaceName = place.getName().toString();
                 workingPlaceLat = String.valueOf(place.getLatLng().latitude);
                 workingPlaceLon = String.valueOf(place.getLatLng().longitude);
@@ -156,7 +156,7 @@ public class AllWorkLocationsActivity extends AppCompatActivity {
             @Override
             public void onError(Status status) {
                 // TODO: Handle the error.
-                Logger.d(status);
+                HelperFunc.showToast(AllWorkLocationsActivity.this, "Something went wrong");
             }
         });
 

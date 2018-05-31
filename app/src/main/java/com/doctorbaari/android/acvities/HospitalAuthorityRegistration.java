@@ -1,16 +1,12 @@
 package com.doctorbaari.android.acvities;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.doctorbaari.android.R;
@@ -35,10 +31,6 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
-
-import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,7 +77,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting with Doctor Baari server...");
-        Logger.addLogAdapter(new AndroidLogAdapter());
+
         verifyNumber();
 
 
@@ -164,7 +156,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
 
                 //Log.d("--------", new String(responseBody));
                 dialog.dismiss();
-                Logger.d(new String(responseBody));
+
                 showToast("Some error occured");
             }
         });
@@ -196,7 +188,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
                     public void onSuccess(final Account account) {
                         PhoneNumber phn = account.getPhoneNumber();
 
-                        Logger.d(phn);
+
                         phoneNumber = phn.toString();
                         etContactno.setText(phoneNumber);
 
@@ -246,7 +238,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Logger.d(place.getName());
+
                 workingPlaceName = place.getName().toString();
                 workingPlaceLat = String.valueOf(place.getLatLng().latitude);
                 workingPlaceLon = String.valueOf(place.getLatLng().longitude);
@@ -255,7 +247,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
             @Override
             public void onError(Status status) {
                 // TODO: Handle the error.
-                Logger.d(status);
+
             }
         });
 

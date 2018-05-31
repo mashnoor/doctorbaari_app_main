@@ -25,7 +25,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
-import com.orhanobut.logger.Logger;
+
 
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -144,7 +144,7 @@ public class DoctorAdapter extends BaseAdapter {
         btnUserProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Logger.d(currentDoctorSub.getId());
+
                 Intent i = new Intent(activity, ProfileDetail.class);
                 i.putExtra("userid", currentDoctorSub.getId());
                 activity.startActivity(i);

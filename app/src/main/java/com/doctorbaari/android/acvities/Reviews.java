@@ -2,9 +2,8 @@ package com.doctorbaari.android.acvities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.doctorbaari.android.R;
@@ -18,7 +17,6 @@ import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,7 +60,7 @@ public class Reviews extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
-                Logger.d(response);
+
                 Review[] reviews = Geson.g().fromJson(response, Review[].class);
                 ReviewsListAdapter adapter = new ReviewsListAdapter(Reviews.this, reviews);
                 lvReviews.setAdapter(adapter);
@@ -72,7 +70,7 @@ public class Reviews extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 HelperFunc.showToast(Reviews.this, "Something went wrong");
-                Logger.d(new String(responseBody));
+
                 dialog.dismiss();
             }
         });

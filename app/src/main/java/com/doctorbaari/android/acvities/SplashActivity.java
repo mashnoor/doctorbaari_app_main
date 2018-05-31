@@ -1,15 +1,12 @@
 package com.doctorbaari.android.acvities;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
 import com.doctorbaari.android.R;
@@ -20,8 +17,6 @@ import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
 
 import java.util.Calendar;
 
@@ -45,7 +40,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-        Logger.addLogAdapter(new AndroidLogAdapter());
+
         getAdvertises();
 
         new Handler().postDelayed(new Runnable() {
@@ -68,7 +63,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
-                Logger.d(response);
+
                 Advertise[] advertises = Geson.g().fromJson(response, Advertise[].class);
                 cancelAllPreviousAlarms();
                 DBHelper.saveAdvertises(SplashActivity.this, advertises);
@@ -99,8 +94,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private Calendar getCalenderInstaseForTime(int hour, int min) {
         Calendar timeOff9 = Calendar.getInstance();
-        Logger.d(hour);
-        Logger.d(min);
+
 
         timeOff9.set(Calendar.HOUR_OF_DAY, hour);
         timeOff9.set(Calendar.MINUTE, min);
@@ -108,7 +102,7 @@ public class SplashActivity extends AppCompatActivity {
         if (timeOff9.before(Calendar.getInstance())) {
             timeOff9.add(Calendar.DATE, 1);
         }
-        Logger.d(timeOff9.getTimeInMillis());
+
         return timeOff9;
     }
 
@@ -123,8 +117,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, getCalenderInstaseForTime(advertise.getHour(), advertise.getMinute()).getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-        Logger.d("Alarm Set for - ");
-        Logger.d(advertise);
+
 
     }
 

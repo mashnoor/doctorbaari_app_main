@@ -21,8 +21,7 @@ import com.doctorbaari.android.utils.SideNToolbarController;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,14 +58,14 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "Doctor Search History");
-        Logger.addLogAdapter(new AndroidLogAdapter());
+
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
         client = new AsyncHttpClient();
         ListViewEmptyMessageSetter.set(this, lvHistory, "History is empty");
 
         loadHistory();
-        Logger.addLogAdapter(new AndroidLogAdapter());
+
 
     }
 
@@ -101,7 +100,7 @@ public class HistoryActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 showToast("Something went wrong");
                 dialog.dismiss();
-                Logger.d(new String(responseBody));
+
 
 
             }

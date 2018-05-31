@@ -1,11 +1,9 @@
 package com.doctorbaari.android.acvities;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.doctorbaari.android.R;
@@ -23,9 +21,6 @@ import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.orhanobut.logger.Logger;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -82,7 +77,7 @@ public class InquiryActivity extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Logger.d(place.getName());
+
                 placename = place.getName().toString();
                 placelat = String.valueOf(place.getLatLng().latitude);
                 placelon = String.valueOf(place.getLatLng().longitude);
@@ -92,7 +87,7 @@ public class InquiryActivity extends AppCompatActivity {
             @Override
             public void onError(Status status) {
                 // TODO: Handle the error.
-                Logger.d(status);
+
             }
         });
 
