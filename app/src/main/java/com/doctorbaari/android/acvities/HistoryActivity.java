@@ -58,7 +58,7 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         ButterKnife.bind(this);
-        SideNToolbarController.attach(this, "Your History");
+        SideNToolbarController.attach(this, "Doctor Search History");
         Logger.addLogAdapter(new AndroidLogAdapter());
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");

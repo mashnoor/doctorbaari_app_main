@@ -222,6 +222,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        autocompleteFragment.setHint("Institution Location");
         autocompleteFragment.setFilter(typeFilter);
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
@@ -263,7 +264,7 @@ public class PostSubstituteActivity extends AppCompatActivity {
 
     public void goTutorial(View v)
     {
-        startActivity(new Intent(this, TutorialActivity.class));
+        HelperFunc.openUrlInBrowser(this, "https://doctorbaari.com/#menu#tutorial#substitute");
     }
 
     @Override

@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String response = new String(responseBody);
                                 if (response.equals("false")) {
                                     dialog.dismiss();
-                                    showToast("Account is not found. Please Sign Up");
+                                    showToast("Account is not found. Please create an account first");
 
                                 } else {
                                     finish();

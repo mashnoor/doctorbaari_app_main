@@ -171,8 +171,18 @@ public class ProfileDetail extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 dialog.dismiss();
-                HelperFunc.showToast(ProfileDetail.this, "Successfully Posted Review");
-                recreate();
+                String response = new String(responseBody);
+                if (response.equals("already")) {
+                    HelperFunc.showToast(ProfileDetail.this, "You have already reviewed once!");
+
+                } else {
+                    HelperFunc.showToast(ProfileDetail.this, "Successfully Posted Review");
+                }
+
+                etReview.setText("");
+                rbReview.setRating(0f);
+
+
             }
 
             @Override

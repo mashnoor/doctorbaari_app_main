@@ -126,16 +126,6 @@
                 android:hint="Institution Name"
                 android:inputType="textPersonName" />
 
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:text="Institution Location"
-                android:textColor="@color/black_bg"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
             <fragment
                 android:id="@+id/place_autocomplete_fragment"
                 android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"

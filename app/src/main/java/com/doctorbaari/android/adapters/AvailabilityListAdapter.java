@@ -126,7 +126,7 @@ public class AvailabilityListAdapter extends BaseAdapter {
         tvTodate.setText("To Date: " + currAvaibility.getToDate());
         tvLocation.setText("Location: " + currAvaibility.getPlace());
         if(currAvaibility.getType().equals("sub"))
-            tvJobType.setText("Job Type: Substitute");
+            tvJobType.setText("Job Type: Temporary");
         else
             tvJobType.setText("Job Type: Permanent");
         if (currAvaibility.getAvailable().equals("1")) {

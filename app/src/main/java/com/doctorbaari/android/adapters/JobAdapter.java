@@ -94,12 +94,10 @@ public class JobAdapter extends BaseAdapter {
         Button btnContact = v.findViewById(R.id.btnContact);
         Button seeDetails = v.findViewById(R.id.btnJobdetails);
 
+
         final Switch swtchJobAvailable = v.findViewById(R.id.swtchJobAvailable);
 
-        if (currpost.getAvailable().equals("1"))
-            swtchJobAvailable.setChecked(true);
-        else
-            swtchJobAvailable.setChecked(false);
+
         seeDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,19 +131,28 @@ public class JobAdapter extends BaseAdapter {
 
         //As the Newsfeed and schedule are from same adapter, replace the contact buttton with see result for schedule
         if (activity instanceof HistoryActivity) {
-            btnContact.setText("See Result >");
+            btnContact.setText("View Update");
             tvDistance.setText("Not Available");
+
+            if (currpost.getAvailable().equals("1"))
+                swtchJobAvailable.setChecked(true);
+            else
+                swtchJobAvailable.setChecked(false);
 
 
             btnContact.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(activity, ViewAvailableDoctorsActivity.class);
-                    intent.putExtra("fromdate", currpost.getDateFrom());
-                    if (currpost.getType().equals("sub"))
+
+                    if (currpost.getType().equals("sub")) {
+                        intent.putExtra("fromdate", currpost.getDateFrom());
                         intent.putExtra("todate", currpost.getDateTo());
-                    else
+                    } else {
+                        intent.putExtra("fromdate", currpost.getDeadline());
                         intent.putExtra("todate", "");
+                    }
+
 
                     intent.putExtra("placelat", currpost.getPlacelat());
                     intent.putExtra("placelon", currpost.getPlacelon());
@@ -196,7 +203,8 @@ public class JobAdapter extends BaseAdapter {
 
         } else {
             LinearLayout availableSwitchContainer = v.findViewById(R.id.availableSwitchLayout);
-            ((ViewManager) availableSwitchContainer.getParent()).removeView(availableSwitchContainer);
+            if (availableSwitchContainer != null)
+                ((ViewManager) availableSwitchContainer.getParent()).removeView(availableSwitchContainer);
 
             btnContact.setOnClickListener(new View.OnClickListener() {
                 @Override

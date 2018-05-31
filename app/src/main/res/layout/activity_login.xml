@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="Only job exchanging platform for doctors"
+        android:text="If you are new here, Please CREATE AN ACCOUNT first"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 

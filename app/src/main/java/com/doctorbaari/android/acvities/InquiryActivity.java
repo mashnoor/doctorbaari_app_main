@@ -65,7 +65,7 @@ public class InquiryActivity extends AppCompatActivity {
 
     public void goTutorial(View v)
     {
-        startActivity(new Intent(this, TutorialActivity.class));
+        HelperFunc.openUrlInBrowser(this, "https://doctorbaari.com/#menu#tutorial#inquiries");
     }
 
 

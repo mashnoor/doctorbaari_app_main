@@ -60,15 +60,6 @@
                 android:inputType="textPersonName" />
 
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Institution Location"
-                android:textColor="@color/black_bg"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
 
             <fragment
                 android:id="@+id/place_autocomplete_fragment"

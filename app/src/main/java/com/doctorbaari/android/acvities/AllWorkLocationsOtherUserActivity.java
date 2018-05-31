@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
+import com.crashlytics.android.Crashlytics;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.adapters.WorkLoacationAdapter;
 import com.doctorbaari.android.models.WorkLocation;
@@ -22,6 +23,7 @@ import com.loopj.android.http.RequestParams;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
+import io.fabric.sdk.android.Fabric;
 
 public class AllWorkLocationsOtherUserActivity extends AppCompatActivity {
 
@@ -34,6 +36,7 @@ public class AllWorkLocationsOtherUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_work_locations_other_user);
+
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "My Work Locations");
         dialog = new ProgressDialog(this);

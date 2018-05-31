@@ -70,7 +70,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
     }
 
     public void goTutorial(View v) {
-        startActivity(new Intent(this, TutorialActivity.class));
+        HelperFunc.openUrlInBrowser(this, "https://doctorbaari.com/#menu#tutorial#temporary");
     }
 
     private void registerPlaceFragment() {
@@ -81,6 +81,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        autocompleteFragment.setHint("Job Location");
         autocompleteFragment.setFilter(typeFilter);
 
 
@@ -190,7 +191,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
 
 
                 dialog.dismiss();
-                HelperFunc.showToast(SearchSubstituteJobs.this, "Successfully added to avaibility list");
+                HelperFunc.showToast(SearchSubstituteJobs.this, "Successfully added to availability list");
                 searchSubstituteJobs();
 
 
@@ -233,6 +234,7 @@ public class SearchSubstituteJobs extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 dialog.dismiss();
                 String response = new String(responseBody);
+                Logger.d(response);
                 Intent i = new Intent(SearchSubstituteJobs.this, SubstituteJobSearchResult.class);
                 i.putExtra("response", response);
                 i.putExtra("type", "sub");

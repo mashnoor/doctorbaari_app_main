@@ -64,15 +64,6 @@
             android:inputType="textPersonName" />
 
 
-        <TextView
-            android:id="@+id/tvLocationType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Job Location"
-            android:textColor="@color/black_bg"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
         <fragment
             android:id="@+id/place_autocomplete_fragment"
             android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"

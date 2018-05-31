@@ -108,7 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
-                    android:text="Select with your degree(s)"
+                    android:text="Select your degree(s)"
                     android:textColor="@color/black_bg"
                     android:textSize="15sp"
                     android:textStyle="bold" />

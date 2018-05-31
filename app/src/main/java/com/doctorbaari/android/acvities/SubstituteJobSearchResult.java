@@ -36,13 +36,13 @@ public class SubstituteJobSearchResult extends AppCompatActivity {
         }
         else
         {
-            SideNToolbarController.attach(this, "Substitute Job Search Result");
+            SideNToolbarController.attach(this, "Temporary Job Search Result");
         }
         String response = i.getStringExtra("response");
         Job[] posts = Geson.g().fromJson(response, Job[].class);
         JobAdapter adapter = new JobAdapter(SubstituteJobSearchResult.this, posts);
 
-        ListViewEmptyMessageSetter.set(this, lvSubstituteJobSearchResult, "No result found");
+        ListViewEmptyMessageSetter.set(this, lvSubstituteJobSearchResult, "As soon as any job is available, the authority will contact with you");
         lvSubstituteJobSearchResult.setAdapter(adapter);
     }
 

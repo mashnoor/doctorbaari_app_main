@@ -11,6 +11,7 @@ import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.models.Advertise;
 import com.doctorbaari.android.services.AlarmReceiver;
@@ -25,6 +26,7 @@ import com.orhanobut.logger.Logger;
 import java.util.Calendar;
 
 import cz.msebera.android.httpclient.Header;
+import io.fabric.sdk.android.Fabric;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -37,7 +39,12 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
+        Fabric.with(this, new Crashlytics());
         client = new AsyncHttpClient();
+
+
+
+
         Logger.addLogAdapter(new AndroidLogAdapter());
         getAdvertises();
 
@@ -48,8 +55,10 @@ public class SplashActivity extends AppCompatActivity {
                 Intent mainIntent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(mainIntent);
                 finish();
+
             }
         }, 2000);
+
 
 
     }

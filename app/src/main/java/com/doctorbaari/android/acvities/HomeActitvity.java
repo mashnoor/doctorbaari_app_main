@@ -86,7 +86,7 @@ public class HomeActitvity extends AppCompatActivity {
         sliderShow.setPresetTransformer(SliderLayout.Transformer.Accordion);
         sliderShow.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         sliderShow.setCustomAnimation(new DescriptionAnimation());
-        sliderShow.setDuration(4000);
+        sliderShow.setDuration(8000);
         sliderShow.addSlider(s1);
         sliderShow.addSlider(s2);
         sliderShow.addSlider(s3);

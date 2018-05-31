@@ -44,7 +44,7 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
         Logger.addLogAdapter(new AndroidLogAdapter());
         SideNToolbarController.attach(this, "Available Doctors' List");
 
-        ListViewEmptyMessageSetter.set(this, lvSubstitute, "No doctor available right now. Check the updates later.");
+        ListViewEmptyMessageSetter.set(this, lvSubstitute, "Currently no doctor is available. As soon as any doctor is available, they will contact with you");
         client = new AsyncHttpClient();
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting with server...");
@@ -69,6 +69,7 @@ public class ViewAvailableDoctorsActivity extends AppCompatActivity {
                 placelat + " lon: " + placelon + " type: " + type);
 
         params.put("fromdate", fromDate);
+
         params.put("todate", toDate);
 
         params.put("placelat", placelat);

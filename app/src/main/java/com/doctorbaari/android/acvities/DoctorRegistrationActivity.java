@@ -181,7 +181,7 @@ public class DoctorRegistrationActivity extends AppCompatActivity {
                 dialog.dismiss();
                 String response = new String(responseBody);
                 if (response.equals("occupied")) {
-                    showToast("Number already exists. Please login");
+                    showToast("You created an account already. Please login with phone");
                     startActivity(new Intent(DoctorRegistrationActivity.this, LoginActivity.class));
                     finish();
 

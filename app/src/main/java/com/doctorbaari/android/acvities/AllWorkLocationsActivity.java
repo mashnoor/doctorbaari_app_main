@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
+import com.crashlytics.android.Crashlytics;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.adapters.WorkLoacationAdapter;
 import com.doctorbaari.android.models.WorkLocation;
@@ -27,6 +28,7 @@ import com.orhanobut.logger.Logger;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
+import io.fabric.sdk.android.Fabric;
 
 public class AllWorkLocationsActivity extends AppCompatActivity {
 
@@ -41,6 +43,7 @@ public class AllWorkLocationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_work_locations);
+
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "My Work Locations");
         dialog = new ProgressDialog(this);
@@ -137,6 +140,7 @@ public class AllWorkLocationsActivity extends AppCompatActivity {
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.etWorkLocation);
+        autocompleteFragment.setHint("Add New Workplace");
         autocompleteFragment.setFilter(typeFilter);
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {

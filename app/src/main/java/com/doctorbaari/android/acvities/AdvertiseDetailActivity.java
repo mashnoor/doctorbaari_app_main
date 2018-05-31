@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.doctorbaari.android.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.fabric.sdk.android.Fabric;
 
 public class AdvertiseDetailActivity extends Activity {
 
@@ -28,6 +30,7 @@ public class AdvertiseDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_advertise_detail);
+
         getWindow()
                 .getAttributes().windowAnimations = R.style.DialogAnimation;
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

@@ -302,7 +302,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="My Schedules"
+                    android:text="Job Search History"
                     android:textColor="#5FB0BE"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -373,7 +373,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="History"
+                    android:text="Doctor Search History"
                     android:textColor="#5FB0BE"
                     android:textSize="12sp"
                     android:textStyle="bold" />

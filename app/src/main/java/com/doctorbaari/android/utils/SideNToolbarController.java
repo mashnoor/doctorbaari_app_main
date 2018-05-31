@@ -13,6 +13,7 @@ import com.doctorbaari.android.acvities.AllWorkLocationsActivity;
 import com.doctorbaari.android.acvities.DoctorRegistrationActivity;
 import com.doctorbaari.android.acvities.HomeActitvity;
 import com.doctorbaari.android.acvities.HospitalAuthorityRegistration;
+import com.doctorbaari.android.acvities.HowtoActivity;
 import com.doctorbaari.android.acvities.InquiryActivity;
 import com.doctorbaari.android.acvities.InternRegistration;
 import com.doctorbaari.android.acvities.LoginActivity;
@@ -47,8 +48,7 @@ public class SideNToolbarController {
         d.closeDrawer();
     }
 
-    public static boolean isDrawerOpen()
-    {
+    public static boolean isDrawerOpen() {
         return d.isDrawerOpen();
     }
 
@@ -89,8 +89,9 @@ public class SideNToolbarController {
         PrimaryDrawerItem logout = new PrimaryDrawerItem().withName("Logout").withIcon(R.drawable.logout);
         PrimaryDrawerItem about = new PrimaryDrawerItem().withName("About").withIcon(R.drawable.about);
         PrimaryDrawerItem newMedicineUpdates = new PrimaryDrawerItem().withName("New Medicine Updates").withIcon(R.drawable.new_medicine_updates);
-        PrimaryDrawerItem sendInvitaion = new PrimaryDrawerItem().withName("Send Invitation").withIcon(R.drawable.invite);
+        PrimaryDrawerItem sendInvitaion = new PrimaryDrawerItem().withName("Invite Other Doctors").withIcon(R.drawable.invite);
         PrimaryDrawerItem addNewWorkPlace = new PrimaryDrawerItem().withName("Add New Workplace").withIcon(R.drawable.addworkplace);
+        PrimaryDrawerItem howToUseDoctorBaari = new PrimaryDrawerItem().withName("How to use DoctorBaari").withIcon(R.drawable.howto);
 
 
         d = new DrawerBuilder()
@@ -108,11 +109,13 @@ public class SideNToolbarController {
                         new DividerDrawerItem(),
                         newMedicineUpdates, //6
                         new DividerDrawerItem(),
-                        sendInvitaion, //8
+                        howToUseDoctorBaari, //8
                         new DividerDrawerItem(),
-                        about, //10
+                        sendInvitaion, //10
                         new DividerDrawerItem(),
-                        logout //12
+                        about, //12
+                        new DividerDrawerItem(),
+                        logout //14
 
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -133,6 +136,10 @@ public class SideNToolbarController {
                                 activity.startActivity(new Intent(activity, AllWorkLocationsActivity.class));
                                 break;
 
+                            case 8:
+                                closeDrawer();
+                                activity.startActivity(new Intent(activity, HowtoActivity.class));
+                                break;
 
                             case 6:
                                 closeDrawer();
@@ -140,7 +147,7 @@ public class SideNToolbarController {
 
                                 break;
 
-                            case 8:
+                            case 10:
                                 closeDrawer();
                                 String invitationMessage = "Hey there! DoctorBaari is a smart platform dedicated to MBBS " +
                                         "and intern doctors to help them finding Permanent or Temporary jobs. " +
@@ -151,12 +158,12 @@ public class SideNToolbarController {
                                 sendIntent.putExtra(Intent.EXTRA_TEXT, invitationMessage);
                                 sendIntent.setType("text/plain");
                                 activity.startActivity(sendIntent);
-                            case 10:
+                            case 12:
                                 closeDrawer();
                                 HelperFunc.openUrlInBrowser(activity, "https://doctorbaari.com/#menu#about");
                                 break;
 
-                            case 12:
+                            case 14:
                                 AccountKit.logOut();
                                 closeDrawer();
                                 DBHelper.setSignedInStatus(activity, false);

@@ -69,7 +69,7 @@ public class SearchPermanentJob extends AppCompatActivity {
     }
 
     public void goTutorial(View v) {
-        startActivity(new Intent(this, TutorialActivity.class));
+        HelperFunc.openUrlInBrowser(this, "https://doctorbaari.com/#menu#tutorial#permanent");
     }
 
     public void searchPermanent() {

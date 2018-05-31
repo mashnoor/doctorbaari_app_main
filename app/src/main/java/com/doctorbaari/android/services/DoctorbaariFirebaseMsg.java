@@ -21,12 +21,17 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.ResponseHandlerInterface;
 import com.loopj.android.http.SyncHttpClient;
 import com.orhanobut.logger.Logger;
 
+import java.io.IOException;
+import java.net.URI;
 import java.util.Calendar;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.util.EntityUtils;
 
 public class DoctorbaariFirebaseMsg extends FirebaseMessagingService {
     private static final String TAG = "FCM Service";
@@ -78,6 +83,9 @@ public class DoctorbaariFirebaseMsg extends FirebaseMessagingService {
 
     private void getAdvertises() {
         SyncHttpClient client = new SyncHttpClient();
+
+
+
         client.get(Constants.GET_ADVERTISES, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

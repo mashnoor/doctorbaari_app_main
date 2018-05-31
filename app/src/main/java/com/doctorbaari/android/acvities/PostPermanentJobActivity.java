@@ -94,9 +94,8 @@ public class PostPermanentJobActivity extends AppCompatActivity {
         dialog.setMessage("Getting data from server...");
     }
 
-    public void goTutorial(View v)
-    {
-        startActivity(new Intent(this, TutorialActivity.class));
+    public void goTutorial(View v) {
+        HelperFunc.openUrlInBrowser(this, "https://doctorbaari.com/#menu#tutorial#post");
     }
 
     private void registerFuckingCalenderListener() {
@@ -209,7 +208,6 @@ public class PostPermanentJobActivity extends AppCompatActivity {
     private void viewAvailableDoctors() {
 
 
-
         String date_from = "Not Available";
         JSONArray degreesArray = new JSONArray(degrees);
         String degree = degreesArray.toString();
@@ -272,6 +270,7 @@ public class PostPermanentJobActivity extends AppCompatActivity {
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        autocompleteFragment.setHint("Institution Location");
 
         autocompleteFragment.setFilter(typeFilter);
 

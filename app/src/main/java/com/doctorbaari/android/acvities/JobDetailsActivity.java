@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.models.Job;
+import com.doctorbaari.android.utils.DBHelper;
 import com.doctorbaari.android.utils.Geson;
 import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
@@ -98,14 +99,11 @@ public class JobDetailsActivity extends AppCompatActivity {
 
 
     }
-    public void viewJobCircular(View v)
-    {
-        if(job.getImageLink()==null || job.getImageLink().isEmpty() || job.getImageLink().equals("Not Available"))
-        {
+
+    public void viewJobCircular(View v) {
+        if (job.getImageLink() == null || job.getImageLink().isEmpty() || job.getImageLink().equals("Not Available")) {
             HelperFunc.showToast(this, "Job Circular not available");
-        }
-        else
-        {
+        } else {
             Intent i = new Intent(this, JobCircularFullscreenView.class);
             i.putExtra("imagelink", job.getImageLink());
             startActivity(i);
@@ -119,13 +117,17 @@ public class JobDetailsActivity extends AppCompatActivity {
     }
 
     public void viewProfile(View v) {
-        Intent i = new Intent(this, ProfileDetail.class);
-        i.putExtra("userid", job.getUserid());
-        startActivity(i);
+        if (job.getUserid().equals(DBHelper.getUserid(this))) {
+            startActivity(new Intent(this, ProfileActivity.class));
+        } else {
+            Intent i = new Intent(this, ProfileDetail.class);
+            i.putExtra("userid", job.getUserid());
+            startActivity(i);
+        }
+
     }
 
-    public void goContact(View v)
-    {
+    public void goContact(View v) {
         String[] options = new String[]{"Call", "View Facebook Profile"};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Pick a option");
