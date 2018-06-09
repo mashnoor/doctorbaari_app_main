@@ -261,7 +261,7 @@ public class InternRegistration extends AppCompatActivity {
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
                         LoginType.PHONE,
-                        AccountKitActivity.ResponseType.TOKEN).setDefaultCountryCode("+880"); // or .ResponseType.TOKEN
+                        AccountKitActivity.ResponseType.TOKEN).setDefaultCountryCode("+880").setReadPhoneStateEnabled(false); // or .ResponseType.TOKEN
         // ... perform additional configuration ...
         intent.putExtra(
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
@@ -314,6 +314,11 @@ public class InternRegistration extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public void goTermsAndConditions(View v) {
+        HelperFunc.openUrlInBrowser(this, "https://doctorbaari.com/#menu#terms");
 
     }
 }

@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toolbar;
 
+import com.crashlytics.android.Crashlytics;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 
 import com.doctorbaari.android.R;
@@ -17,6 +16,7 @@ import com.doctorbaari.android.utils.SideNToolbarController;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.fabric.sdk.android.Fabric;
 
 
 public class HomeActitvity extends AppCompatActivity {
@@ -49,7 +49,7 @@ public class HomeActitvity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        if(SideNToolbarController.isDrawerOpen())
+        if (SideNToolbarController.isDrawerOpen())
             SideNToolbarController.closeDrawer();
         else
             super.onBackPressed();
@@ -59,6 +59,7 @@ public class HomeActitvity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //overridePendingTransition(R.anim.enter, R.anim.exit);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         SideNToolbarController.attach(this, "Home");
@@ -138,7 +139,7 @@ public class HomeActitvity extends AppCompatActivity {
     }
 
     public void goAvailabilityActivity(View v) {
-        startActivity(new Intent(this, AvaibilityListActivity.class));
+        startActivity(new Intent(this, AvailabilityListActivity.class));
     }
 
 
@@ -167,7 +168,6 @@ public class HomeActitvity extends AppCompatActivity {
         i.putExtra("type", "all");
         startActivity(i);
     }
-
 
 
 }

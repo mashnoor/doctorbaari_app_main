@@ -25,19 +25,19 @@
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <LinearLayout
-                android:background="@drawable/button_style"
                 android:layout_width="match_parent"
-                android:onClick="goTutorial"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style"
+                android:onClick="goTutorial">
 
 
                 <TextView
-                    android:gravity="center"
-                    android:text="If you are new here and do not know how to Post a permanent job , Click here"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:padding="15dp"
-                    android:textColor="@android:color/white"
-                    android:layout_height="wrap_content" />
+                    android:text="If you are new here and do not know how to Post a permanent job , Click here"
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
 
@@ -58,7 +58,6 @@
                 android:focusable="false"
                 android:hint="Job Joining Date"
                 android:inputType="textPersonName" />
-
 
 
             <fragment
@@ -131,14 +130,12 @@
                     android:text="CCD" />
 
 
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
 
 
                 <CheckBox
@@ -218,6 +215,7 @@
                     android:text="FCPS part 2" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -243,10 +241,6 @@
                     android:layout_height="wrap_content"
                     android:onClick="degreeChecked"
                     android:text="FRCP" />
-
-
-
-
 
 
             </LinearLayout>
@@ -293,7 +287,6 @@
                     android:text="MS (Surgery)" />
 
 
-
             </LinearLayout>
 
             <CheckBox
@@ -335,8 +328,6 @@
                 android:text="FCPS (Gynaecology and Obstetrics)" />
 
 
-
-
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
@@ -350,11 +341,10 @@
             <EditText
                 android:id="@+id/etDetails"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="100dp"
                 android:background="@drawable/edit_text_style"
-
-                android:hint="Write in here"
-                android:inputType="textPersonName" />
+                android:ems="10"
+                android:hint="Enter your details" />
 
             <Button
                 android:id="@+id/btnPost"

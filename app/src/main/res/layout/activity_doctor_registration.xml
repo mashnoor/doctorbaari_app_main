@@ -441,6 +441,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="15dp"
+                        android:onClick="goTermsAndConditions"
                         android:text=" Terms and Conditions"
                         android:textSize="15sp"
                         android:textStyle="bold" />

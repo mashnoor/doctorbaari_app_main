@@ -50,7 +50,10 @@ public class SideNToolbarController {
     }
 
     public static boolean isDrawerOpen() {
-        return d.isDrawerOpen();
+        if (d != null)
+            return d.isDrawerOpen();
+
+        return false;
     }
 
     public static void attach(final Activity activity, String name)
@@ -155,12 +158,15 @@ public class SideNToolbarController {
                                 String invitationMessage = "Hey there! DoctorBaari is a smart platform dedicated to MBBS " +
                                         "and intern doctors to help them finding Permanent or Temporary jobs. " +
                                         "You can also find Substitute doctors for your duty on this on this place. " +
-                                        "Why don't you give it a try? Click the link below to download DoctorBaari app from PlayStore.";
+                                        "Why don't you give it a try? Click the link below to download DoctorBaari app from PlayStore." +
+                                        "" +
+                                        " https://play.google.com/store/apps/details?id=com.doctorbaari.android";
                                 Intent sendIntent = new Intent();
                                 sendIntent.setAction(Intent.ACTION_SEND);
                                 sendIntent.putExtra(Intent.EXTRA_TEXT, invitationMessage);
                                 sendIntent.setType("text/plain");
                                 activity.startActivity(sendIntent);
+                                break;
                             case 12:
                                 closeDrawer();
                                 HelperFunc.openUrlInBrowser(activity, "https://doctorbaari.com/#menu#about");

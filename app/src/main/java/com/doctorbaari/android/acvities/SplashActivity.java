@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);
-        Fabric.with(this, new Crashlytics());
+
         client = new AsyncHttpClient();
 
 

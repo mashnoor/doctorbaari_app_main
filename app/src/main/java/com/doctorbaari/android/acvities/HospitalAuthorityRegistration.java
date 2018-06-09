@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.utils.Constants;
 import com.doctorbaari.android.utils.DBHelper;
+import com.doctorbaari.android.utils.HelperFunc;
 import com.doctorbaari.android.utils.SideNToolbarController;
 import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
@@ -198,8 +199,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
                     @Override
                     public void onError(final AccountKitError error) {
                         // Handle Error
-                        showToast("Error gettign number");
-                        Log.d("------------", error.toString());
+                        showToast("Error getting number");
                     }
                 });
 
@@ -216,7 +216,7 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
         AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
                 new AccountKitConfiguration.AccountKitConfigurationBuilder(
                         LoginType.PHONE,
-                        AccountKitActivity.ResponseType.TOKEN).setDefaultCountryCode("+880"); // or .ResponseType.TOKEN
+                        AccountKitActivity.ResponseType.TOKEN).setDefaultCountryCode("+880").setReadPhoneStateEnabled(false); // or .ResponseType.TOKEN
         // ... perform additional configuration ...
         intent.putExtra(
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
@@ -250,6 +250,12 @@ public class HospitalAuthorityRegistration extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public void goTermsAndConditions(View v)
+    {
+        HelperFunc.openUrlInBrowser(this, "https://doctorbaari.com/#menu#terms");
 
     }
 

@@ -62,7 +62,6 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/etInstituteName"
                         android:layout_width="60dp"
                         android:layout_height="40dp"
                         android:src="@drawable/profile_black" />
@@ -182,6 +181,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="15dp"
                     android:text="Terms and Conditions"
+                    android:onClick="goTermsAndConditions"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 

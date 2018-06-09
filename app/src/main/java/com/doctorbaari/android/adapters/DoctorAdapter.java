@@ -87,7 +87,7 @@ public class DoctorAdapter extends BaseAdapter {
             public void onClick(View view) {
                 String[] options = new String[]{"Call", "View Facebook Profile"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                builder.setTitle("Pick a option");
+                builder.setTitle("Pick an option");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

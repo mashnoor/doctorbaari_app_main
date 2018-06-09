@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.doctorbaari.android.R;
 import com.doctorbaari.android.adapters.AvailabilityListAdapter;
 import com.doctorbaari.android.models.Availability;
@@ -23,9 +22,8 @@ import com.loopj.android.http.RequestParams;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
-import io.fabric.sdk.android.Fabric;
 
-public class AvaibilityListActivity extends AppCompatActivity {
+public class AvailabilityListActivity extends AppCompatActivity {
 
 
     @BindView(R.id.lvAvaibilityList)
@@ -39,12 +37,12 @@ public class AvaibilityListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_avaibility_list);
+        setContentView(R.layout.activity_availability_list);
 
         ButterKnife.bind(this);
 
         SideNToolbarController.attach(this, "Job Search History");
-        ListViewEmptyMessageSetter.set(this, lvAvaibilityList, "Availability Schedule Empty");
+        ListViewEmptyMessageSetter.set(this, lvAvaibilityList, "History is empty");
         dialog = new ProgressDialog(this);
         dialog.setMessage("Connecting to server...");
         client = new AsyncHttpClient();
@@ -80,7 +78,7 @@ public class AvaibilityListActivity extends AppCompatActivity {
         RequestParams params = new RequestParams();
 
         params.put("type", getIntent().getStringExtra("type"));
-        params.put("userid", DBHelper.getUserid(AvaibilityListActivity.this));
+        params.put("userid", DBHelper.getUserid(AvailabilityListActivity.this));
         client.post(Constants.GET_AVAIBILITY_LIST, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
@@ -92,7 +90,7 @@ public class AvaibilityListActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = new String(responseBody);
                 Availability[] avaibilities = Geson.g().fromJson(response, Availability[].class);
-                AvailabilityListAdapter adapter = new AvailabilityListAdapter(AvaibilityListActivity.this, avaibilities);
+                AvailabilityListAdapter adapter = new AvailabilityListAdapter(AvailabilityListActivity.this, avaibilities);
                 lvAvaibilityList.setAdapter(adapter);
                 dialog.dismiss();
             }

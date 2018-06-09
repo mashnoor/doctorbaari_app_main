@@ -244,7 +244,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     public void goAvaibilityActivity(View v) {
-        Intent i = new Intent(this, AvaibilityListActivity.class);
+        Intent i = new Intent(this, AvailabilityListActivity.class);
         i.putExtra("type", "all");
         startActivity(i);
     }
