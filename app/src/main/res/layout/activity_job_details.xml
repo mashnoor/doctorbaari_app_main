@@ -229,6 +229,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:autoLink="web"
+                android:linksClickable="true"
                 android:text="Bhong chomg"
                 android:textColor="@color/black_bg" />
 

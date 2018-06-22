@@ -30,3 +30,8 @@
 -keep public class com.google.android.gms.* { public *; }
 -dontwarn com.google.android.gms.**
 -dontwarn com.squareup.okhttp.**
+-keepattributes *Annotation*
+-keepattributes SourceFile,LineNumberTable
+-keepresourcexmlelements manifest/application/meta-data@name=io.fabric.ApiKey
+-keep class com.crashlytics.** { *; }
+-dontwarn com.crashlytics.**
